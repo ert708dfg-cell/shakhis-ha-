@@ -1,0 +1,1193 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111318">
+<meta name="description" content="مستشار أعطال السيارات: تشخيص محلي وخطوات فحص وسجل أعطال ومساعد متصل اختياري">
+<link rel="manifest" href="manifest.webmanifest">
+<title>مستشار أعطال السيارات V8.7 - موسوعة تويوتا ومخططات EPC</title>
+<style>
+:root{--bg:#0b0d11;--panel:#141820;--panel2:#1a202a;--line:#2b3442;--text:#f3f5f8;--muted:#aab4c3;--accent:#f3b544;--accent2:#ffda83;--good:#65d6a0;--warn:#ffb86b;--bad:#ff7474;--blue:#82b7ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#19202b 0,#0b0d11 48%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.65}button,input,select,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;position:relative;z-index:1}.wrap{max-width:1080px;margin:auto;padding:18px}.hero{padding:24px 20px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#1a202b,#101319);margin-bottom:16px}.brand{display:flex;align-items:center;gap:12px}.logo{width:54px;height:54px;display:grid;place-items:center;background:var(--accent);color:#171717;border-radius:16px;font-size:28px;font-weight:900}.hero h1{font-size:clamp(24px,4vw,34px);margin:0}.hero p{margin:7px 0 0;color:var(--muted)}.pill{display:inline-block;padding:3px 10px;border:1px solid #66532c;color:var(--accent2);border-radius:999px;font-size:12px;margin-top:12px}.nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.tab{border:1px solid var(--line);background:#12161d;color:var(--text);padding:10px 14px;border-radius:12px}.tab.active{background:var(--accent);color:#171717;border-color:var(--accent);font-weight:800}.panel{background:rgba(20,24,32,.96);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}.panel h2,.panel h3{margin:0 0 10px}.sub{color:var(--muted);font-size:14px;margin-top:-4px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:13px;color:#c8d0dc}.field input,.field select,.field textarea{width:100%;background:#0d1117;border:1px solid #303a49;color:var(--text);padding:11px 12px;border-radius:11px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}.field textarea{min-height:84px;resize:vertical}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.choice{border:1px solid var(--line);background:#10151c;color:var(--text);text-align:right;padding:12px;border-radius:12px;min-height:54px}.choice.selected{border-color:var(--accent);background:#292317}.btn{border:0;background:var(--accent);color:#151515;padding:11px 16px;border-radius:12px;font-weight:800}.btn.secondary{background:#252d39;color:var(--text);border:1px solid #394353}.btn.danger{background:#4a2226;color:#ffe4e4;border:1px solid #793b42}.btn:disabled{opacity:.45;cursor:not-allowed}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.hidden{display:none!important}.notice{padding:12px;border-radius:12px;background:#272115;border:1px solid #65502b;color:#ffe1a5;margin:10px 0}.notice.red{background:#321b20;border-color:#743943;color:#ffd5d9}.notice.green{background:#13291f;border-color:#285c44;color:#bdf5d7}.stephead{display:flex;justify-content:space-between;gap:10px;align-items:center}.progress{height:7px;background:#29313d;border-radius:20px;overflow:hidden;margin:10px 0 16px}.progress span{display:block;height:100%;background:var(--accent);width:0;transition:width .2s}.result{border:1px solid var(--line);background:#10151c;border-radius:14px;padding:14px;margin:10px 0}.rank{color:var(--accent2);font-size:12px;font-weight:800}.tag{display:inline-block;border-radius:8px;padding:2px 7px;font-size:12px;background:#26303e;color:#d9e7fb;margin:2px}.muted{color:var(--muted)}.small{font-size:12px;color:var(--muted)}.code{font-family:ui-monospace,monospace;direction:ltr;display:inline-block}.list{padding-right:20px}.record{border:1px solid var(--line);padding:12px;border-radius:12px;margin:8px 0}.record h3{font-size:16px}.footer{text-align:center;color:#7f8b9c;font-size:12px;padding:12px}.empty{padding:18px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
+.mechanic-only{display:none!important}body.mechanic-mode .mechanic-only{display:initial!important}body.mechanic-mode .tab.mechanic-only{display:inline-block!important}body.mechanic-mode .field.mechanic-only{display:flex!important}
+
+.vehicle-catalog{border:1px solid #3a4658;border-radius:14px;padding:14px;margin:12px 0;background:#10151c}
+.vehicle-catalog h3{margin:0 0 8px}
+.vehicle-catalog .vehicle-badges{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.vehicle-catalog .vehicle-badge{border:1px solid #475569;border-radius:999px;padding:4px 9px;font-size:12px;color:#d7e4f5}
+.vehicle-part{border:1px solid #303a49;border-radius:12px;padding:12px;margin:9px 0;background:#0d1117}
+.vehicle-part h4{margin:0 0 6px}
+.vehicle-part p{margin:5px 0}
+
+@media(max-width:680px){.wrap{padding:11px}.grid,.grid3,.choices{grid-template-columns:1fr}.hero{padding:17px}.panel{padding:14px}.brand{align-items:flex-start}.logo{flex-shrink:0}}
+
+/* V8 interactive engine explorer */
+.engine-explorer{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(250px,1fr);gap:14px;align-items:start}
+.engine-stage{position:relative;min-height:300px;overflow:hidden;border:1px solid #2a4058;border-radius:16px;background:radial-gradient(ellipse at 50% 48%,#243447 0,#0b111a 62%,#080b10 100%);perspective:900px;padding:12px}
+.engine-model{transform-style:preserve-3d;transform:rotateX(7deg) rotateY(-12deg) scale(1);transition:transform .25s ease;min-height:260px;display:grid;place-items:center}
+.engine-model svg{width:100%;max-height:330px;filter:drop-shadow(0 20px 18px #0009)}
+.engine-part{cursor:pointer;outline:none;transition:filter .15s,opacity .15s}.engine-part:hover,.engine-part.selected{filter:drop-shadow(0 0 7px #f3b544);opacity:1}.engine-part:focus{outline:2px solid #f3b544}
+.hotspot{cursor:pointer;fill:#f3b544;stroke:#fff2c5;stroke-width:2}.hotspot-label{font-size:12px;fill:#f4f7fb;paint-order:stroke;stroke:#0b0d11;stroke-width:3px;stroke-linejoin:round}
+.engine-controls{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.engine-controls button{padding:8px 10px;border-radius:10px;border:1px solid #34465a;background:#151d28;color:#f4f6f9}.engine-controls button.active{background:#f3b544;color:#151515}
+.engine-detail{border:1px solid #344153;border-radius:14px;background:#10151d;padding:14px;min-height:270px}.engine-detail h3{color:#ffda83}.engine-detail .detail-label{color:#8fc8ff;font-weight:700}.engine-note{font-size:12px;color:#aab4c3}
+.vehicle-chooser{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}.vehicle-chooser button{border:1px solid #344153;background:#111720;color:#f4f6f9;padding:9px;border-radius:10px}.vehicle-chooser button.active{border-color:#f3b544;color:#ffda83;background:#282216}
+@media(max-width:760px){.engine-explorer{grid-template-columns:1fr}.engine-stage{min-height:260px}.engine-model{min-height:220px}.vehicle-chooser{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* V8.1: visible component illustrations for parts catalog */
+.part-illustration{width:100%;height:126px;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 45%,#26394d 0,#101721 72%);border:1px solid #34485d;border-radius:12px;margin:8px 0 12px;overflow:hidden}
+.part-illustration svg{width:100%;height:118px;max-width:230px;filter:drop-shadow(0 7px 6px #0008)}
+.part-card h3{margin-top:4px}
+.vehicle-part-illustration{width:88px;height:76px;float:right;margin:0 0 8px 12px;border-radius:10px;background:#121b27;border:1px solid #34485d;display:grid;place-items:center}
+.vehicle-part-illustration svg{width:76px;height:66px}
+.vehicle-part:after{content:"";display:block;clear:both}
+@media(max-width:480px){.part-illustration{height:112px}.part-illustration svg{height:104px}.vehicle-part-illustration{width:72px;height:66px}.vehicle-part-illustration svg{width:62px;height:58px}}
+
+
+/* Corolla catalog step 1: fully local artwork and compact navigation */
+.corolla-catalog{border:1px solid #394557;background:#10151d}
+.corolla-catalog .stepbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
+.corolla-catalog .step{padding:10px;border:1px solid #303b4b;border-radius:12px;background:#0d1219;color:#cbd5e1;font-size:13px}
+.corolla-catalog .step.active{border-color:#f3b544;color:#ffe3a1;background:#292318}
+.corolla-catalog .catalog-tools{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.corolla-catalog .catalog-tools input,.corolla-catalog .catalog-tools select{width:100%;min-width:0;background:#0b1017;color:#f3f5f8;border:1px solid #354153;padding:11px;border-radius:10px}
+.corolla-catalog .category-row{display:flex;gap:7px;overflow-x:auto;padding:8px 0 12px}
+.corolla-catalog .cat-btn{white-space:nowrap;background:#171e28;color:#e8edf4;border:1px solid #344154;border-radius:999px;padding:8px 12px}
+.corolla-catalog .cat-btn.active{background:#f3b544;color:#171717;border-color:#f3b544;font-weight:800}
+.corolla-catalog .corolla-parts-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.corolla-catalog .c-part{border:1px solid #303b4b;background:#151b24;border-radius:14px;padding:12px;min-width:0}
+.corolla-catalog .c-art{height:120px;border-radius:10px;background:linear-gradient(135deg,#202a38,#0c1118);display:grid;place-items:center;overflow:hidden;margin-bottom:10px}
+.corolla-catalog .c-art svg{display:block;width:100%;height:100%;max-width:220px}
+.corolla-catalog .c-part h3{font-size:16px;margin:5px 0}
+.corolla-catalog .c-part p{font-size:13px;color:#c0cad8;margin:6px 0}
+.corolla-catalog .c-part .oem{font-size:12px;border:1px dashed #7b6234;padding:7px;border-radius:8px;color:#ffe0a0;margin:8px 0}
+.corolla-catalog .c-more{width:100%;padding:9px;border-radius:9px;border:1px solid #465468;background:#202938;color:#fff;margin-top:7px}
+.corolla-catalog .c-details{margin-top:9px;padding-top:8px;border-top:1px solid #303b4b}
+.corolla-catalog .c-details ul{padding-right:18px;margin:5px 0;color:#d1d9e4;font-size:13px}
+.corolla-catalog .fitment-warning{border-right:4px solid #f3b544;background:#201c14;padding:12px;border-radius:10px;font-size:13px;color:#f7e4bd}
+.corolla-catalog .mini-label{font-size:11px;color:#aeb9c8}
+@media(max-width:520px){.corolla-catalog .corolla-parts-grid{grid-template-columns:1fr}.corolla-catalog .catalog-tools{grid-template-columns:1fr}.corolla-catalog .stepbar{grid-template-columns:1fr}}
+
+
+/* Detailed part page layout */
+.corolla-catalog .c-part{padding:10px}
+.corolla-catalog .c-part .c-art{height:105px}
+.corolla-catalog .c-part .c-more{font-weight:700}
+.corolla-catalog .c-details{background:#0d1219;border:1px solid #303b4b;border-radius:11px;padding:12px;margin-top:10px}
+.corolla-catalog .detail-heading{font-size:14px;color:#f3b544;margin:10px 0 3px}
+.corolla-catalog .source-links{display:grid;grid-template-columns:1fr;gap:7px;margin-top:10px}
+.corolla-catalog .source-links a{display:block;text-decoration:none;color:#eaf2ff;background:#1a2533;border:1px solid #3a4a60;padding:9px 10px;border-radius:9px;font-size:13px}
+.corolla-catalog .source-links a:focus,.corolla-catalog .source-links a:hover{border-color:#f3b544}
+.corolla-catalog .part-status{font-size:12px;border:1px solid #6c5730;background:#241f14;color:#ffe2a1;border-radius:9px;padding:9px}
+.corolla-catalog .source-note{font-size:12px;color:#9eacbd;margin-top:7px}
+
+
+/* V8.1 visual refinement: monochrome technical illustrations, uncluttered cards */
+.part-illustration,.corolla-catalog .c-art{background:linear-gradient(145deg,#fff,#e9edf1)!important;border:1px solid #cbd2d9!important;box-shadow:inset 0 1px 0 #fff}
+.part-illustration svg,.corolla-catalog .c-art svg{filter:grayscale(1) contrast(1.12);max-height:190px}
+.part-illustration svg [fill]:not([fill="none"]),.corolla-catalog .c-art svg [fill]:not([fill="none"]){stroke:#3f4852}
+.vehicle-part,.corolla-catalog .c-part,.part-card{border:1px solid #cbd2d9!important;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+.vehicle-part h4,.corolla-catalog .c-part h3,.part-card h3{color:#111827}
+.visual-accuracy-note{border:1px solid #b8c0c8;background:#f5f6f7;color:#30363d;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.8;margin:10px 0}
+.oem-source-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.oem-source-list a{display:inline-block;border:1px solid #aeb7c0;background:#fff;color:#1f2937;padding:8px 10px;border-radius:8px;text-decoration:none;font-size:13px}
+.oem-source-list a:focus,.oem-source-list a:hover{background:#e9edf1;text-decoration:underline}
+
+</style>
+
+<style>
+.sensor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:12px;margin-top:14px}
+.sensor-card,.system-card,.system-part{background:var(--panel,#15181f);border:1px solid var(--line,#303744);border-radius:13px;padding:13px}
+.sensor-card h3,.system-card h3,.system-detail h3{margin:7px 0;color:var(--text,#f1f3f6)}
+.sensor-card p,.system-part p{font-size:13px;line-height:1.85;color:var(--muted,#b5beca)}
+.sensor-card .sensor-code{display:inline-block;border:1px solid #8d7444;background:#292316;color:#ffe0a0;border-radius:7px;padding:3px 8px;font-weight:700;direction:ltr}
+.system-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:16px 0}
+.system-card{cursor:pointer;text-align:right;color:inherit}
+.system-card[aria-pressed="true"]{border-color:#d4a84f;box-shadow:0 0 0 1px #d4a84f inset}
+.system-card p{font-size:12px;color:var(--muted,#b5beca);line-height:1.7;margin:5px 0}
+.system-detail{margin-top:16px;padding:15px;border:1px solid var(--line,#303744);border-radius:14px;background:#10151d}
+.system-parts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:12px}
+.system-part h4{margin:5px 0 8px}.system-part .part-meta{font-size:12px;color:#e5c47f}
+.system-detail .detail-note{padding:10px;border-right:3px solid #d3a64c;background:#211d15;border-radius:8px;font-size:13px;line-height:1.8}
+.sensor-card details{margin-top:8px}.sensor-card summary{cursor:pointer;color:#f1d08c;font-weight:700}
+@media(max-width:520px){.sensor-grid,.system-parts-grid{grid-template-columns:1fr}.system-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+
+
+<style>
+/* V9 Corolla parts atlas: compact, mobile-first */
+#corollaPartsAtlas{margin:18px 0;padding:16px;border:1px solid #344253;border-radius:18px;background:#111821;color:#eef3f8}
+#corollaPartsAtlas .atlas-head{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+#corollaPartsAtlas h2{margin:0 0 5px;font-size:21px}
+#corollaPartsAtlas .atlas-sub{margin:0;color:#b9c6d5;font-size:13px;line-height:1.8}
+#corollaPartsAtlas .atlas-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0}
+#corollaPartsAtlas label{display:block;font-size:12px;color:#c6d1df;margin-bottom:4px}
+#corollaPartsAtlas input,#corollaPartsAtlas select{width:100%;min-width:0;background:#0c121a;color:#f5f7fa;border:1px solid #3a4a5d;border-radius:9px;padding:10px}
+#corollaPartsAtlas .atlas-cats{display:flex;gap:7px;overflow:auto;padding:2px 0 10px}
+#corollaPartsAtlas .atlas-cats button{white-space:nowrap;background:#202c3a;color:#e8eef6;border:1px solid #40536a;border-radius:999px;padding:7px 11px;font-size:12px}
+#corollaPartsAtlas .atlas-cats button[aria-pressed=true]{background:#e8edf3;color:#101820}
+#corollaPartsAtlas .atlas-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#corollaPartsAtlas .part-card{background:#182331;border:1px solid #3a4b60;border-radius:13px;padding:12px;min-width:0}
+#corollaPartsAtlas .part-card h3{font-size:15px;margin:0 0 4px}
+#corollaPartsAtlas .part-card p{font-size:12px;color:#c3cfdd;line-height:1.7;margin:5px 0}
+#corollaPartsAtlas .part-meta{display:flex;gap:5px;flex-wrap:wrap;margin:7px 0}
+#corollaPartsAtlas .part-tag{font-size:10px;padding:3px 7px;border-radius:20px;background:#26384b;color:#dbe8f7}
+#corollaPartsAtlas .part-tag.pending{background:#3a2d19;color:#ffe0a4}
+#corollaPartsAtlas .part-card details{border-top:1px solid #354458;margin-top:8px;padding-top:7px}
+#corollaPartsAtlas summary{cursor:pointer;font-size:12px;color:#f0c875;font-weight:700}
+#corollaPartsAtlas .atlas-note{margin-top:12px;padding:11px;border-right:3px solid #e4b34e;background:#282216;border-radius:9px;color:#f4e7c9;font-size:12px;line-height:1.8}
+#corollaPartsAtlas .atlas-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+#corollaPartsAtlas .atlas-links a{color:#101820;background:#e5edf5;padding:9px 12px;border-radius:9px;text-decoration:none;font-size:12px;font-weight:700}
+#corollaPartsAtlas .atlas-links a.alt{background:#26384b;color:#edf4fc;border:1px solid #53677e}
+#corollaPartsAtlas .atlas-count{font-size:12px;color:#aebdce;margin:8px 0}
+@media(max-width:650px){#corollaPartsAtlas{padding:12px}#corollaPartsAtlas .atlas-controls{grid-template-columns:1fr 1fr}#corollaPartsAtlas .atlas-grid{grid-template-columns:1fr}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+ <div class="brand"><div class="logo">🔧</div><div><h1>مستشار أعطال السيارات</h1><p>تشخيص مبسّط لصاحب السيارة وتفاصيل فنية وكتالوج أنظمة للميكانيكي</p></div></div>
+ <span class="pill">الإصدار V8.9 • موسوعة تويوتا — صفحات الأنظمة والحساسات</span><div class="actions" style="margin-top:12px"><button type="button" class="btn" id="ownerModeBtn" aria-pressed="true">واجهة صاحب السيارة</button><button type="button" class="btn secondary" id="mechanicModeBtn" aria-pressed="false">وضع الميكانيكي والتفاصيل الكاملة</button></div>
+</header>
+<nav class="nav" aria-label="أقسام التطبيق">
+ <button class="tab active" data-tab="diagnosis">التشخيص الذكي</button>
+ <button class="tab mechanic-only" data-tab="codes">أكواد OBD2</button>
+ <button class="tab" data-tab="records">سجل الأعطال</button>
+ <button class="tab" data-tab="guide">دليل الفحص</button>
+ <button class="tab mechanic-only" data-tab="database">قاعدة المعرفة</button>
+ <button class="tab" data-tab="parts">قطع الغيار</button>
+ <button class="tab" data-tab="sensors">موسوعة الحساسات</button>
+ <button class="tab" data-tab="systems">أنظمة تويوتا</button>
+ <button class="tab mechanic-only" data-tab="assistant">المساعد الذكي</button>
+ <button class="tab mechanic-only" data-tab="backup">النسخ الاحتياطي</button>
+</nav>
+
+<section id="diagnosis" class="page">
+ <div class="panel">
+  <h2>١) معلومات السيارة</h2><p class="sub">أدخل المعلومات اللي تعرفها فقط. اختار المشكلة وجاوب عن الأسئلة البسيطة حتى تحصل على أسباب محتملة وخطوات آمنة. التشخيص إرشادي وليس تأكيداً نهائياً.</p>
+  <div class="grid">
+   <div class="field"><label for="make">الشركة</label><input id="make" placeholder="مثلاً: Toyota / Kia / Hyundai"></div>
+   <div class="field"><label for="model">الموديل</label><input id="model" placeholder="مثلاً: Camry / Seltos"></div>
+   <div class="field"><label for="year">سنة الصنع</label><input id="year" inputmode="numeric" placeholder="مثلاً: 2020"></div>
+   <div class="field"><label for="engine">المحرك ونوع الوقود</label><input id="engine" placeholder="مثلاً: 2.0 بنزين تيربو / ديزل / هايبرد"></div>
+   <div class="field"><label for="mileage">الممشى (اختياري)</label><input id="mileage" inputmode="numeric" placeholder="كم"></div>
+   <div class="field mechanic-only"><label for="engineCode">رمز المحرك</label><input id="engineCode" placeholder="مثلاً 2GR-FE / G4FJ"></div>
+   <div class="field mechanic-only"><label for="transmission">نوع القير</label><input id="transmission" placeholder="AT / CVT / DCT / MT / e-CVT"></div>
+   <div class="field mechanic-only"><label for="drivetrain">نظام الدفع</label><select id="drivetrain"><option value="">غير محدد</option><option>FWD أمامي</option><option>RWD خلفي</option><option>AWD دفع كلي</option><option>4WD رباعي</option></select></div>
+   <div class="field mechanic-only"><label for="fuelType">نوع الوقود / النظام</label><select id="fuelType"><option value="">غير محدد</option><option>بنزين</option><option>ديزل</option><option>هايبرد</option><option>كهربائي</option><option>غاز</option></select></div>
+   <div class="field mechanic-only"><label for="vin">رقم الهيكل VIN (اختياري)</label><input id="vin" dir="ltr" maxlength="17" placeholder="17 حرف/رقم — لا تشاركه علناً"></div>
+   <div class="field"><label>طريقة العرض الحالية</label><div id="modeLabel" class="notice" style="margin:0">شرح مبسّط لصاحب السيارة</div><input id="role" type="hidden" value="owner"></div>
+    <div class="field"><label>طريقة عرض النتائج</label><div id="modeHint" class="notice" style="margin:0">الوضع المبسّط: نشرح لك العطل بلغة واضحة، ونوضح متى تحتاج فني مختص.</div></div>
+  </div>
+ </div>
+ <div class="panel">
+  <h2>٢) شنو المشكلة بالسيارة؟</h2><p class="sub">اضغط على المشكلة حتى تتحدد، وبعدها اضغط «ابدأ الأسئلة».</p>
+  <div class="choices" id="symptomChoices">
+   <button class="choice" data-symptom="nostart">ما تشتغل / سلف يدور</button>
+   <button class="choice" data-symptom="nostarter">السلف ما يدور</button>
+   <button class="choice" data-symptom="stall">تطفي فجأة</button>
+   <button class="choice" data-symptom="misfire">تفتفة / رجّة / تقطيع</button>
+   <button class="choice" data-symptom="power">ضعف عزم / تأخير استجابة</button>
+   <button class="choice" data-symptom="rpm">RPM يتذبذب / يرتفع وينزل</button>
+   <button class="choice" data-symptom="overheat">حرارة مرتفعة</button>
+   <button class="choice" data-symptom="noise">صوت طقطقة / طرق</button>
+   <button class="choice" data-symptom="trans">القير يتأخر / ما يتحرك</button>
+   <button class="choice" data-symptom="brake">مشكلة فرامل</button>
+   <button class="choice" data-symptom="electrical">كهرباء / لمبات تحذير</button>
+   <button class="choice" data-symptom="fuel">صرفية وقود عالية / ريحة بنزين</button>
+  </div>
+  <p id="symptomStatus" class="small" aria-live="polite">اختار المشكلة من القائمة.</p>
+  <div class="field" style="margin-top:12px"><label for="details">تفاصيل إضافية / متى تظهر المشكلة؟</label><textarea id="details" placeholder="بارد أو حار، أثناء المشي أو الوقوف، بعد مطب، بعد تصليح..."></textarea></div>
+  <div class="field mechanic-only" style="margin-top:12px"><label for="dtc">كود العطل إن وجد (اختياري)</label><input id="dtc" placeholder="مثلاً P0302 أو P0335" dir="ltr"></div>
+  <div class="field mechanic-only" style="margin-top:12px"><label for="live">قراءات جهاز الفحص (اختياري)</label><textarea id="live" placeholder="مثلاً: RPM أثناء التدوير، ضغط الوقود، STFT/LTFT، حرارة المحرك، MAF..."></textarea></div>
+  <div class="actions"><button class="btn" id="startBtn" disabled>ابدأ الأسئلة</button><button class="btn secondary" id="clearBtn">مسح البيانات</button></div>
+  <div class="actions"><button class="btn secondary" id="whatsappQuickBtn">طلب مساعدة ميكانيكي عبر واتساب</button></div>
+ </div>
+ <div id="wizard" class="panel hidden">
+  <div class="stephead"><h2 id="stepTitle">سؤال الفحص</h2><span id="stepCount" class="tag"></span></div>
+  <div class="progress"><span id="progressBar"></span></div>
+  <p id="stepQuestion"></p>
+  <div class="choices" id="answerChoices"></div>
+  <div class="actions"><button class="btn secondary" id="backBtn">السؤال السابق</button><button class="btn" id="nextBtn" disabled>التالي</button><button class="btn secondary" id="finishBtn">اعرض الاحتمالات الحالية</button></div>
+ </div>
+ <div id="report" class="panel hidden">
+  <h2>نتيجة التشخيص الأولية</h2>
+  <div id="safetyBox"></div>
+  <p id="reportSummary"></p>
+  <div id="modeSummary" class="notice"></div><div id="rankedResults"></div>
+  <div class="notice">تنبيه: هذه أداة إرشادية وليست بديلاً عن دليل الصيانة الخاص بالموديل. لا تعتبر أي احتمال عطلًا مؤكداً إلا بعد قياس أو اختبار يؤكده. لا تبدّل قطعة اعتماداً على الكود وحده.</div>
+  <div class="actions"><button class="btn" id="saveReport">حفظ بالتاريخ</button><button class="btn secondary" id="whatsappBtn">إرسال التفاصيل للميكانيكي عبر واتساب</button><button class="btn secondary" id="askAiFromReport">تحليل هجين بالذكاء الاصطناعي</button><button class="btn secondary" id="restartWizard">إعادة الأسئلة</button></div>
+ </div>
+</section>
+
+<section id="codes" class="page hidden">
+ <div class="panel"><h2>باحث أكواد أعطال OBD2</h2><p class="sub">ابحث بالكود أو بكلمة من الوصف. القائمة تشمل أكواد شائعة فقط، وقد تختلف تفاصيل التشخيص حسب الشركة والموديل.</p>
+ <div class="grid"><div class="field"><label for="codeSearch">الكود أو الوصف</label><input id="codeSearch" placeholder="P0300 أو misfire" dir="auto"></div><div class="field"><label for="codeFilter">المجموعة</label><select id="codeFilter"><option value="all">الكل</option><option value="P">Powertrain / محرك وقير</option><option value="B">Body / هيكل</option><option value="C">Chassis / شاصي</option><option value="U">Network / اتصال</option></select></div></div>
+ <div id="codeResults" style="margin-top:12px"></div></div>
+</section>
+
+<section id="records" class="page hidden">
+ <div class="panel"><h2>سجل الأعطال المحفوظة</h2><p class="sub">يُحفظ السجل على نفس المتصفح والجهاز فقط، وليس على خادم أو حساب سحابي.</p><div class="actions"><button class="btn secondary" id="exportRecords">تصدير السجل JSON</button><button class="btn danger" id="deleteRecords">حذف كل السجل</button></div><div id="recordList"></div></div>
+</section>
+
+<section id="guide" class="page hidden">
+ <div class="panel"><h2>دليل فحص مختصر للورشة</h2><div class="notice red"><b>أوقف السيارة بأمان:</b> إذا ارتفعت الحرارة، أو صار فقدان فرامل، أو صوت طرق قوي، أو تسريب وقود/دخان، لا تواصل القيادة. أطفئ المحرك عندما يكون ذلك آمناً واطلب مساعدة مختصة.</div>
+ <h3>ترتيب عام يقلل تبديل القطع عشوائياً</h3><ol class="list"><li>أكد شكوى الزبون وظروف ظهور العطل، ولا تمسح الأكواد قبل حفظها وقراءة Freeze Frame.</li><li>افحص البطارية، الأقطاب، الفيوزات، الأرضي والتوصيلات بصرياً حسب مخطط السيارة.</li><li>اقرأ جميع وحدات التحكم والأكواد الحالية والمعلقة والتاريخية.</li><li>راقب البيانات الحية أثناء الحالة نفسها، وقارنها بمواصفات المصنع.</li><li>نفّذ اختباراً يؤكد أو يستبعد كل احتمال قبل استبدال أي قطعة.</li><li>بعد الإصلاح، امسح الأكواد عند الحاجة وأعد اختبار السيارة وتأكد من عدم رجوع العطل.</li></ol>
+ <h3>ملاحظات سلامة</h3><ul class="list"><li>لا تفتح غطاء نظام التبريد والمحرك حار.</li><li>لا تقيس أنظمة الهايبرد عالية الجهد إلا إذا كنت مدرباً ومجهزاً بمعدات الوقاية المناسبة.</li><li>لا تتجاوز قيمة الفيوز المحددة من المصنع ولا تجسر دوائر الحماية.</li><li>اختبارات ضغط الوقود والشرارة والرفع تحتاج إجراءات أمان وأدوات مناسبة.</li></ul>
+ <h3>ما الذي يجعل التشخيص أدق؟</h3><p>الشركة والموديل والسنة ورمز المحرك، الأكواد الكاملة، Freeze Frame، قراءات Live Data وقت ظهور العطل، نتائج اختبار الضغط/الشرارة/النبض، وأي إصلاحات سابقة. القيم الصحيحة تختلف بين المحركات، لذلك لا توجد قيمة واحدة مناسبة لكل السيارات.</p></div>
+</section>
+
+<section id="database" class="page hidden">
+ <div class="panel"><h2>قاعدة المعرفة الفنية المحلية</h2>
+ <p class="sub">هذه قاعدة إجراءات عامة تعمل بدون إنترنت وليست قاعدة بيانات مصنع كاملة. لا تعرض مواصفات ضغط أو مقاومة خاصة بمحرك إلا إذا كانت موثقة في دليل السيارة المحددة.</p>
+ <div class="grid"><div class="field"><label for="kbSearch">بحث حسب النظام أو العَرَض</label><input id="kbSearch" placeholder="مثلاً: ضغط الوقود، تفتفة، MAF"></div><div class="field"><label for="kbSystem">النظام</label><select id="kbSystem"><option value="all">كل الأنظمة</option><option value="engine">المحرك والوقود</option><option value="electrical">الكهرباء والتشغيل</option><option value="cooling">التبريد</option><option value="transmission">القير</option><option value="brakes">الفرامل</option><option value="hybrid">الهايبرد</option></select></div></div>
+ <div id="kbResults" style="margin-top:12px"></div>
+ <div class="notice">إضافة بيانات خاصة بالشركة والسنة والمحرك تحتاج مصادر موثوقة مثل دليل الصيانة أو معلومات الخدمة المدفوعة/المصرّح بها. لا نعتمد على التخمين في مواصفات المصنع.</div>
+ </div>
+</section>
+<section id="parts" class="page hidden">
+ <div class="panel"><h2>مستكشف المحرك التفاعلي ثلاثي الأبعاد</h2>
+ <p class="sub">نموذج تعليمي تفاعلي أولي: اختار جزءاً من الرسم لعرض وظيفته وأعراضه وفحوصاته. تنبيه: الرسم العام للتعلّم فقط وليس صورة مصنع أو مخطط مطابقاً لسيارة محددة. أما كتالوج القطع فيعرض رسماً توضيحياً لكل فئة؛ المطابقة الدقيقة تتطلب سنة الصنع ورمز المحرك ورقم الهيكل.</p>
+ <div class="grid"><div class="field"><label for="engineMakeSelect">الشركة</label><select id="engineMakeSelect"><option>تويوتا</option><option>هيونداي</option><option>كيا</option><option>نيسان</option><option>ميتسوبيشي</option><option>هوندا</option><option>شفروليه</option><option>فورد</option><option>جي إم سي</option><option>لكزس</option><option>مازدا</option><option>بي واي دي</option><option>مرسيدس بنز</option><option>بي إم دبليو</option><option>فولكسفاغن</option><option>سوزوكي</option></select></div><div class="field"><label for="engineModelSelect">الموديل (تحديد يدوي)</label><input id="engineModelSelect" placeholder="مثلاً كامري / كورولا / إلنترا"></div><div class="field"><label for="engineYearSelect">السنة</label><input id="engineYearSelect" inputmode="numeric" placeholder="مثلاً 2020"></div><div class="field"><label for="engineTypeSelect">المحرك / الرمز</label><input id="engineTypeSelect" placeholder="مثلاً 2.5 بنزين أو A25A-FKS"></div></div>
+ <div class="notice">حتى نعرض أرقام القطع والمواصفات الصحيحة، لازم نحدد المحرك بدقة. اختيار الشركة وحده لا يكفي، ولا تُعرض أرقام OEM أو قيم فحص مخمّنة.</div>
+ <div class="engine-explorer"><div><div class="engine-stage"><div class="engine-model" id="engineModel3d" aria-label="رسم تفاعلي توضيحي للمحرك">
+ <svg viewBox="0 0 640 400" role="img" aria-label="رسم تخطيطي تفاعلي لأجزاء المحرك">
+ <defs><linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dbe4ed"/><stop offset=".35" stop-color="#596a7c"/><stop offset=".7" stop-color="#263444"/><stop offset="1" stop-color="#9eacb9"/></linearGradient><linearGradient id="darkmetal" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#52677b"/><stop offset="1" stop-color="#121b27"/></linearGradient><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe19a"/><stop offset=".5" stop-color="#c88928"/><stop offset="1" stop-color="#754b18"/></linearGradient></defs>
+ <g class="engine-part" data-engine-part="block"><path d="M155 135 L420 105 L505 150 L480 280 L215 318 L130 260 Z" fill="url(#metal)" stroke="#b9c9d8" stroke-width="3"/><path d="M155 135 L420 105 L420 225 L155 265 Z" fill="url(#darkmetal)"/><path d="M420 105 L505 150 L480 280 L420 225 Z" fill="#263646" stroke="#7b8c9d" stroke-width="2"/><g fill="#101720" stroke="#a5b4c4" stroke-width="3"><ellipse cx="220" cy="155" rx="23" ry="13"/><ellipse cx="278" cy="148" rx="23" ry="13"/><ellipse cx="336" cy="140" rx="23" ry="13"/><ellipse cx="394" cy="132" rx="23" ry="13"/></g></g>
+ <g class="engine-part" data-engine-part="head"><path d="M142 108 L390 78 L465 115 L205 151 Z" fill="url(#metal)" stroke="#d5e1ec" stroke-width="3"/><path d="M205 151 L465 115 L457 145 L200 180 Z" fill="#435466" stroke="#9baaba" stroke-width="2"/><g stroke="#c4d0dc" stroke-width="5"><path d="M185 116 l205 -25"/><path d="M205 129 l205 -25"/></g></g>
+ <g class="engine-part" data-engine-part="intake"><path d="M280 80 C250 48 290 32 315 65 C340 20 380 40 370 76 C410 40 445 60 416 95 L360 112 Z" fill="#182c40" stroke="#74b9f7" stroke-width="5"/><path d="M293 82 C310 53 327 56 333 83 M340 85 C360 52 381 57 383 83 M386 91 C402 70 416 75 412 96" fill="none" stroke="#b4d9ff" stroke-width="7" stroke-linecap="round"/></g>
+ <g class="engine-part" data-engine-part="fuel"><path d="M176 183 L402 151 L430 171 L204 207 Z" fill="url(#gold)" stroke="#ffdb8c" stroke-width="2"/><g fill="#d6a348" stroke="#ffe1a1" stroke-width="2"><rect x="214" y="188" width="13" height="34" rx="4" transform="rotate(-8 214 188)"/><rect x="270" y="180" width="13" height="34" rx="4" transform="rotate(-8 270 180)"/><rect x="326" y="171" width="13" height="34" rx="4" transform="rotate(-8 326 171)"/><rect x="382" y="163" width="13" height="34" rx="4" transform="rotate(-8 382 163)"/></g></g>
+ <g class="engine-part" data-engine-part="timing"><circle cx="182" cy="274" r="34" fill="#17212d" stroke="#a8b8c7" stroke-width="8"/><circle cx="182" cy="274" r="12" fill="url(#gold)"/><circle cx="245" cy="287" r="24" fill="#111923" stroke="#d4dee8" stroke-width="7"/><path d="M182 240 L245 263 L245 311 L182 308 Z" fill="none" stroke="#e8b64e" stroke-width="5"/></g>
+ <g class="engine-part" data-engine-part="alternator"><circle cx="410" cy="260" r="35" fill="#1c2937" stroke="url(#metal)" stroke-width="10"/><circle cx="410" cy="260" r="19" fill="none" stroke="#a9bacb" stroke-width="4"/><circle cx="410" cy="260" r="7" fill="#f3b544"/></g>
+ <g class="engine-part" data-engine-part="cooling"><path d="M452 177 C490 190 493 214 470 228 L448 215" fill="none" stroke="#4fc8ef" stroke-width="12" stroke-linecap="round"/><circle cx="470" cy="203" r="13" fill="#153e55" stroke="#8be7ff" stroke-width="4"/></g>
+ <g class="engine-part" data-engine-part="sensor"><rect x="430" y="142" width="19" height="30" rx="5" fill="#f3b544" stroke="#ffe8b5" stroke-width="2"/><path d="M439 142 L455 128 L473 128" fill="none" stroke="#f3b544" stroke-width="3"/></g>
+ <g fill="#fff" font-size="12" font-weight="700"><text x="80" y="350">ENGINE • ILLUSTRATIVE MODEL</text></g>
+ <g class="engine-part" data-engine-part="exhaust"><path d="M170 218 C130 230 135 255 165 260 L200 246 C220 237 220 223 204 215" fill="none" stroke="#d47745" stroke-width="15" stroke-linecap="round"/><path d="M168 218 C130 230 135 255 165 260" fill="none" stroke="#ffb27c" stroke-width="3"/></g>
+ </svg></div></div><div class="engine-controls"><button type="button" id="engineRotateLeft">↶ تدوير</button><button type="button" id="engineRotateRight">تدوير ↷</button><button type="button" id="engineZoomIn">تكبير +</button><button type="button" id="engineZoomOut">تصغير −</button><button type="button" id="engineResetView">إعادة العرض</button></div><p class="engine-note">اضغط على أي جزء من الرسم أو اختر القطعة من القائمة. الرسم الحالي تفاعلي بأسلوب ثلاثي الأبعاد؛ استبداله بمجسم WebGL/CAD واقعي يحتاج ملفات نماذج ثلاثية الأبعاد أصلية.</p></div>
+ <div class="engine-detail" id="enginePartDetail" aria-live="polite"><h3>اختار قطعة من المحرك</h3><p>راح تظهر هنا وظيفتها والأعراض المحتملة وخطوات الفحص.</p></div></div>
+ <h3 style="margin-top:18px">أجزاء المحرك المتاحة للعرض</h3><div class="vehicle-chooser" id="enginePartButtons"></div>
+ </div>
+
+
+ <div class="panel corolla-catalog" id="corollaCatalog">
+  <h2>كتالوج تويوتا كورولا 1.6 — قسم تفصيلي تجريبي</h2>
+  <p class="sub">كتالوج مرتب حسب الأقسام. اضغط «افتح صفحة القطعة» لعرض التفاصيل ومصادر التحقق. الرسومات المضمّنة توضيحية وليست صور مصنع أصلية.</p>
+  <div class="stepbar" aria-label="خطوات اختيار السيارة">
+   <div class="step active"><b>1</b> السيارة: Corolla</div>
+   <div class="step active"><b>2</b> السنة: 2018–2022</div>
+   <div class="step active"><b>3</b> المحرك: 1.6 بنزين</div>
+  </div>
+  <div class="fitment-warning"><b>مهم قبل طلب القطعة:</b> سنة 2018–2022 قد تشمل أكثر من جيل/سوق ورمز محرك. كتالوج تويوتا الرسمي يطلب تحديد الفئة أو رقم الهيكل VIN حتى يؤكد التوافق. لذلك لن نعرض رقم OEM غير متحقق منه، ولن ندّعي أن كل قطعة أدناه تناسب كل سيارة ضمن الفترة.</div>
+  <div class="catalog-tools" style="margin-top:12px">
+   <input id="corollaSearch" type="search" placeholder="ابحث عن قطعة: فلتر، حساس، فرامل..." aria-label="البحث عن قطعة">
+   <select id="corollaCategory" aria-label="اختيار القسم">
+    <option value="all">كل الأقسام</option><option value="engine">المحرك والتوقيت</option><option value="airfuel">الهواء والوقود</option><option value="cooling">التبريد والتزييت</option><option value="electrical">الكهرباء والحساسات</option><option value="brakes">الفرامل والتعليق</option><option value="service">الصيانة الدورية</option>
+   </select>
+  </div>
+  <div class="category-row" id="corollaQuickCats">
+   <button type="button" class="cat-btn active" data-cat="all">الكل</button>
+   <button type="button" class="cat-btn" data-cat="engine">المحرك</button>
+   <button type="button" class="cat-btn" data-cat="airfuel">الهواء والوقود</button>
+   <button type="button" class="cat-btn" data-cat="cooling">التبريد</button>
+   <button type="button" class="cat-btn" data-cat="electrical">الكهرباء والحساسات</button>
+   <button type="button" class="cat-btn" data-cat="brakes">الفرامل والتعليق</button>
+   <button type="button" class="cat-btn" data-cat="service">الصيانة</button>
+  </div>
+  <div id="corollaCount" class="notice" style="margin:5px 0 12px">تحميل كتالوج البداية...</div>
+  <div id="corollaPartsGrid" class="corolla-parts-grid"></div>
+  <div class="notice" style="margin-top:12px"><b>حتى نوثّق أرقام OEM:</b> نحتاج سنة الصنع الدقيقة، نوع الهيكل (سيدان/هاتشباك)، السوق أو بلد الاستيراد، ورمز الهيكل/المحرك. رقم VIN يُستخدم للمطابقة في كتالوج المصنع؛ لا تكتب بياناته في مكان عام.</div>\n  <div class="notice" style="margin-top:12px"><b>الخطوة التالية:</b> عند توفر رقم الهيكل أو رمز المحرك المكتوب على السيارة، نربط القطع بمصدر كتالوج مناسب ونضيف أرقام OEM الموثقة وصور القطع الأصلية لكل رقم.</div>
+ </div>
+
+ <div class="panel vehicle-catalog">
+  <div class="visual-accuracy-note"><b>نطاق هذا الإصدار:</b> تويوتا فقط حالياً. الموديلات المدرجة نقطة بداية وليست تغطية لكل جيل أو محرك. الصور الحقيقية يجب مطابقتها مع رقم القطعة ومواصفات السيارة؛ لا توجد أرقام OEM مؤكدة تلقائياً في هذه النسخة.</div>
+  <h2>موسوعة تويوتا المترابطة للسيارات وقطع الغيار — V8.6</h2>
+  <p class="sub">قاعدة تويوتا فقط. أضيفت موديلات الركاب والـSUV والمركبات التجارية الظاهرة في تشكيلة تويوتا العراق، مع موديلات أقدم شائعة. اختار الموديل والسنة والمحرك والسوق. هذه قاعدة ربط أولية وليست كتالوج مصنع كامل؛ كل توافق وOEM يحتاج تحققاً حسب الجيل ورمز المحرك والسوق ورقم الهيكل.</p><div class="visual-accuracy-note"><b>مرجع نطاق موديلات تويوتا:</b> أُخذت أسماء الطرازات الحالية من صفحة تويوتا العراق الرسمية، مع إبقاء الأجيال السابقة ضمن قاعدة منفصلة للتوسعة. وجود الموديل في القائمة لا يعني أن كل محركاته أو قطعه موثقة بعد. <a href="https://www.toyota.iq/arabic/home" target="_blank" rel="noopener noreferrer">تشكيلة تويوتا العراق الرسمية</a> · <a href="https://www.sas.iq/index.php/ar/" target="_blank" rel="noopener noreferrer">شركة ساس — موديلات تويوتا في العراق</a></div><div class="visual-accuracy-note"><b>دقة الصور وأرقام OEM:</b> الشكل الخارجي قد يختلف حسب الجيل والمحرك والسوق. لن نضع رقم OEM على أنه مؤكد إلا بعد مطابقته مع كتالوج الشركة أو موزعها المعتمد. عند عدم توفر تحقق، يظهر بوضوح أنه يحتاج مطابقة.</div>
+  <div class="grid">
+   <div class="field"><label for="fitMake">الشركة</label><select id="fitMake"><option value="Toyota">تويوتا</option></select></div>
+   <div class="field"><label for="fitModel">الموديل</label><select id="fitModel"></select></div>
+   <div class="field"><label for="fitYear">سنة الصنع</label><select id="fitYear"></select></div>
+   <div class="field"><label for="fitEngine">عائلة المحرك المحتملة</label><select id="fitEngine"></select></div>
+   <div class="field"><label for="fitMarket">السوق / بلد الاستيراد</label><select id="fitMarket"><option value="IQ">العراق / الشرق الأوسط</option><option value="US">أمريكي</option><option value="GCC">الخليج</option><option value="EU">أوروبي</option><option value="JP">ياباني</option><option value="OTHER">غير محدد</option></select></div>
+   <div class="field"><label for="fitEngineCode">رمز المحرك (إذا تعرفه)</label><input id="fitEngineCode" placeholder="مثلاً: الرمز المكتوب على ملصق المحرك" maxlength="40"></div>
+  </div>
+  <div class="actions"><button type="button" class="btn" id="fitShowBtn">عرض قطع هذه السيارة</button><button type="button" class="btn secondary" id="fitResetBtn">إعادة الاختيار</button></div>
+  <div id="toyotaCatalogStats" class="notice" style="margin-top:12px">قاعدة تويوتا: جارٍ حساب الطرازات والمحركات المسجلة...</div><div id="fitSummary" class="notice" style="margin-top:12px">اختار السيارة والمحرك ثم اضغط عرض القطع.</div>
+  <div id="fitPartsResults"></div>
+ </div>
+ <div class="panel"><h2>قطع غيار السيارات والأنظمة</h2>
+ <p class="sub">كتالوج تعليمي عام للأنظمة والمكونات الشائعة. مو كتالوج مصنع كامل لكل رقم قطعة أو كل فئة؛ توافق القطع وأرقامها يحتاج الشركة والموديل والسنة ورمز المحرك ورقم الهيكل ومصدر قطع موثوق.</p>
+ <div class="grid"><div class="field"><label for="partSearch">ابحث عن قطعة أو وظيفة</label><input id="partSearch" placeholder="مثلاً: حساس كرنك، طرمبة، ABS، تيربو"></div><div class="field"><label for="partSystem">النظام</label><select id="partSystem"><option value="all">كل الأنظمة</option><option value="engine">المحرك والتوقيت</option><option value="fuel">الوقود والهواء</option><option value="ignition">الإشعال</option><option value="cooling">التبريد والتزييت</option><option value="electrical">الكهرباء والتشغيل</option><option value="transmission">القير والدفع</option><option value="brakes">الفرامل والثبات</option><option value="suspension">التعليق والتوجيه</option><option value="exhaust">العادم والانبعاثات</option><option value="hvac">التكييف</option><option value="hybrid">الهايبرد والكهرباء</option><option value="body">الهيكل والراحة</option></select></div></div>
+ <div class="visual-accuracy-note"><b>مهم بخصوص الصور:</b> الرسم داخل البطاقة توضيحي وليس صورة أصلية للقطعة. استخدم رابط «صور حقيقية» للبحث عن صور من الويب، ثم طابق الشكل ورقم القطعة مع السيارة والمحرك والسوق؛ نتائج الصور وحدها لا تثبت التوافق.</div><div id="partsResults" style="margin-top:12px"></div>
+ <div class="notice">تنبيه: أسماء القطع تختلف حسب البلد والشركة. لا تطلب قطعة ولا تستبدلها اعتماداً على الاسم وحده؛ طابق رقم القطعة والمواصفات مع كتالوج الشركة.</div>
+ </div>
+</section>
+
+<section id="sensors" class="page hidden">
+ <div class="panel">
+  <h2>موسوعة حساسات تويوتا — قسم مستقل</h2>
+  <p class="sub">الحساسات هنا منفصلة عن قطع الغيار العامة حتى تبقى الواجهة مرتبة. ابحث باسم الحساس أو رمزه أو وظيفته. الموقع ورقم القطعة يتحددان حسب رمز المحرك والجيل والسوق.</p>
+  <div class="grid"><div class="field"><label for="sensorSearch">بحث بالحساس أو الرمز</label><input id="sensorSearch" placeholder="CKP / CMP / MAF / MAP / ECT / O2"></div><div class="field"><label for="sensorGroup">مجموعة الحساس</label><select id="sensorGroup"><option value="all">كل الحساسات</option><option value="engine">حساسات المحرك والتوقيت</option><option value="air">حساسات الهواء والوقود</option><option value="exhaust">حساسات العادم والانبعاثات</option><option value="chassis">حساسات ABS والثبات</option><option value="body">حساسات الهيكل والمقصورة</option><option value="hybrid">حساسات وأنظمة الهايبرد</option></select></div></div>
+  <div id="sensorCount" class="notice">تحميل موسوعة الحساسات...</div><div id="sensorResults" class="sensor-grid"></div>
+  <div class="notice"><b>قاعدة تشخيص:</b> كود الحساس لا يثبت تلف الحساس. افحص التغذية والأرضي والإشارة والضفيرة والظروف الميكانيكية وبيانات Live Data قبل الاستبدال.</div>
+ </div>
+</section>
+
+<section id="systems" class="page hidden">
+ <div class="panel">
+  <h2>الكتالوج الفني — أنظمة تويوتا</h2>
+  <p class="sub">كل نظام له صفحة تفصيلية داخل هذه الموسوعة. اختر السيارة أولاً، ثم النظام، وبعدها افتح ملف أي قطعة لمعرفة وظيفتها وموقعها العام وخطة فحصها وحالة رقم OEM.</p>
+  <div class="grid"><div class="field"><label for="systemModel">موديل تويوتا</label><select id="systemModel"><option>Corolla</option><option>Camry</option><option>Hilux</option><option>Land Cruiser</option><option>Fortuner</option><option>RAV4</option><option>Yaris</option><option>Prado</option><option>Hiace</option><option>يارس / موديل آخر</option></select></div><div class="field"><label for="systemYear">السنة</label><input id="systemYear" inputmode="numeric" placeholder="مثلاً 2020"></div><div class="field"><label for="systemEngine">رمز المحرك / السعة</label><input id="systemEngine" placeholder="مثلاً 2ZR-FE أو A25A-FKS"></div><div class="field"><label for="systemMarket">السوق</label><select id="systemMarket"><option value="IQ">العراق / عام</option><option value="GCC">الخليج</option><option value="JP">اليابان</option><option value="US">أمريكا</option><option value="EU">أوروبا</option><option value="unknown">غير معروف</option></select></div></div>
+  <div class="fitment-warning">الموديل والسنة وحدهما لا يكفيان لإثبات توافق القطع. عند عدم إدخال رمز المحرك أو رقم الهيكل تبقى مواقع القطع وأرقام OEM بحالة «تحتاج مطابقة» ولا نعرض أرقاماً مخمّنة.</div>
+  <div class="system-grid" id="toyotaSystemGrid"></div>
+  <div id="systemDetail" class="system-detail"><h3>اختار نظاماً من الأعلى</h3><p>راح تظهر صفحة النظام والقطع المرتبطة به.</p></div>
+ </div>
+</section>
+
+<section id="assistant" class="page hidden">
+ <div class="panel"><h2>المساعد الذكي الهجين</h2>
+ <p class="sub">يستخدم نتائج القواعد المحلية كمدخل، ثم يطلب من الذكاء الاصطناعي ترتيب خطوات الفحص عند توفر خادم واتصال. لا تضع أي مفتاح API هنا.</p>
+ <div id="aiStatus" class="notice">الحالة: لم يتم فحص الاتصال بعد. التشخيص المحلي يبقى متاحاً حتى بدون إنترنت.</div><div class="notice">عند استخدام المساعد المتصل، تُرسل بيانات الحالة التي أدخلتها إلى خادم التطبيق ومزوّد الذكاء الاصطناعي لمعالجتها. لا ترسل معلومات شخصية أو بيانات زبائن غير ضرورية.</div>
+ <div class="field"><label for="aiQuestion">سؤال فني إضافي أو معلومات الفحص</label><textarea id="aiQuestion" placeholder="اكتب الأعراض، الأكواد، Freeze Frame أو القراءات التي تريد تحليلها..."></textarea></div>
+ <div class="actions"><button class="btn" id="aiAskBtn">حلّل الحالة عبر الذكاء الاصطناعي</button><button class="btn secondary" id="aiHealthBtn">فحص الاتصال</button></div>
+ <div id="aiResult" class="result hidden" style="white-space:pre-wrap"></div>
+ <div class="notice red"><b>مهم:</b> الذكاء الاصطناعي قد يخطئ. لا تنفّذ اختباراً خطراً ولا تبدّل قطعة اعتماداً على الرد وحده؛ قارن النتائج بدليل المصنع والقياسات الفعلية.</div>
+ </div>
+</section>
+<section id="backup" class="page hidden">
+ <div class="panel"><h2>النسخ الاحتياطي والاستعادة</h2><p class="sub">النسخ الاحتياطي يجمع سجل الأعطال وإعداداتك المحلية. خزّن الملف بمكان آمن ولا تشاركه إذا يحتوي معلومات زبائن.</p>
+ <div class="actions"><button class="btn" id="backupAllBtn">تنزيل نسخة احتياطية كاملة</button><button class="btn secondary" id="exportRecordsV5Btn">تصدير سجل الأعطال فقط</button></div>
+ <div class="field" style="margin-top:14px"><label for="restoreFile">استعادة نسخة JSON</label><input id="restoreFile" type="file" accept="application/json,.json"></div>
+ <div class="actions"><button class="btn danger" id="restoreBtn">استعادة ودمج السجلات</button></div><div id="backupStatus" class="small" style="margin-top:10px"></div>
+ </div>
+ <div class="panel"><h3>حدود النسخة الحالية</h3><ul class="list"><li>التشخيص بالقواعد والسجل يعملان محلياً.</li><li>الذكاء الاصطناعي يحتاج خادماً خارجياً ومفتاح API محفوظاً على الخادم.</li><li>لا توجد حالياً قاعدة مصنع شاملة أو اتصال مباشر بجهاز OBD من الهاتف.</li><li>حفظ السجلات المحلي مرتبط بالمتصفح والجهاز؛ صدّر نسخة احتياطية دورياً.</li></ul></div>
+</section>
+
+
+<section id="corollaPartsAtlas" aria-labelledby="corollaAtlasTitle">
+ <div class="atlas-head">
+  <div><h2 id="corollaAtlasTitle">موسوعة قطع كورولا — فهرس منظم V9</h2>
+  <p class="atlas-sub">E170 ثم E210 • الأولوية لنسخ العراق • بحث وتصنيف مستقل لكل منظومة</p></div>
+  <span class="part-tag">قاعدة قيد التحقق</span>
+ </div>
+ <div class="atlas-controls">
+  <div><label for="atlasGen">الجيل</label><select id="atlasGen"><option value="all">كل الأجيال</option><option value="E170">E170 / E180</option><option value="E210">E210</option></select></div>
+  <div><label for="atlasEngine">المحرك / المجموعة</label><select id="atlasEngine"><option value="all">كل المحركات</option><option value="petrol">بنزين</option><option value="hybrid">هايبرد</option><option value="engine-specific">يتطلب تحديد رمز المحرك</option></select></div>
+  <div><label for="atlasSearch">ابحث عن قطعة</label><input id="atlasSearch" placeholder="اسم القطعة أو الرمز"></div>
+ </div>
+ <div class="atlas-cats" id="atlasCats" aria-label="تصنيف القطع">
+  <button type="button" data-cat="all" aria-pressed="true">الكل</button>
+  <button type="button" data-cat="engine">المحرك</button>
+  <button type="button" data-cat="timing">التوقيت</button>
+  <button type="button" data-cat="cooling">التبريد</button>
+  <button type="button" data-cat="lubrication">التزييت</button>
+  <button type="button" data-cat="fuel">الوقود والهواء</button>
+  <button type="button" data-cat="electrical">الكهرباء</button>
+  <button type="button" data-cat="sensors">الحساسات</button>
+  <button type="button" data-cat="transmission">القير</button>
+  <button type="button" data-cat="chassis">التعليق والفرامل</button>
+  <button type="button" data-cat="body">الهيكل والتكييف</button>
+ </div>
+ <div class="atlas-count" id="atlasCount" aria-live="polite"></div>
+ <div class="atlas-grid" id="atlasGrid"></div>
+ <div class="atlas-note"><b>ضبط الجودة:</b> أسماء القطع ووظائفها هنا فهرس تعريفي أولي. لا يوجد رقم OEM معتمد في هذه الدفعة؛ الرقم والتوافق لا يظهران كحقائق إلا بعد مطابقة رقم الهيكل/Frame، رمز المحرك، السوق، تاريخ الإنتاج وناقل الحركة عند الحاجة. الرسومات التفصيلية تُفتح من كتالوج المصدر ولا نستبدلها برسوم عامة مضللة.</div>
+ <div class="atlas-links">
+  <a href="https://toyotaepc.com/toyota/corolla" target="_blank" rel="noopener noreferrer">فتح فهرس قطع كورولا</a>
+  <a class="alt" href="https://partsouq.com/" target="_blank" rel="noopener noreferrer">مطابقة رقم الهيكل وقطع الغيار</a>
+  <a class="alt" href="https://7zap.com/ar/catalog/cars/toyota/" target="_blank" rel="noopener noreferrer">رسومات وفهارس تويوتا</a>
+ </div>
+</section>
+<script>
+(function(){
+ const parts=[
+  ["بلوك المحرك","Engine cylinder block","engine","engine-specific","قاعدة تثبيت الأسطوانات ومجاري الزيت وسائل التبريد.","يختلف حسب رمز المحرك وسعة الأسطوانات."],
+  ["رأس المحرك","Cylinder head","engine","engine-specific","يضم غرف الاحتراق ومجاري السحب والعادم ومجموعة الصمامات.","يجب مطابقة رمز المحرك ورقم الصب."],
+  ["جوان رأس المحرك","Cylinder head gasket","engine","engine-specific","يحقق الإحكام بين البلوك ورأس المحرك.","السماكة والتصميم ليسا موحدين لكل المحركات."],
+  ["المكابس","Pistons","engine","engine-specific","تتحرك داخل الأسطوانات وتنقل ضغط الاحتراق إلى أذرع التوصيل.","القطر والمقاس حسب المحرك وإصلاحه."],
+  ["أذرع التوصيل","Connecting rods","engine","engine-specific","تربط المكابس بعمود الكرنك.","مطابقة رقم المحرك والمقاسات ضرورية."],
+  ["عمود الكرنك","Crankshaft","engine","engine-specific","يحوّل الحركة الترددية للمكابس إلى دوران.","لا يعتمد رقم دون رمز المحرك."],
+  ["عمود الكامات","Camshaft","timing","engine-specific","يتحكم بتوقيت فتح وغلق الصمامات.","قد يختلف عدد الأعمدة وتصميمها حسب المحرك."],
+  ["سلسلة التوقيت","Timing chain","timing","engine-specific","تنقل حركة عمود الكرنك إلى عمود/أعمدة الكامات.","ليست كل نسخ كورولا تستخدم نفس المجموعة."],
+  ["شداد سلسلة التوقيت","Timing chain tensioner","timing","engine-specific","يحافظ على شد السلسلة ضمن مجال التصميم.","يتحقق من رقم المحرك ومراجعة التحديثات."],
+  ["مرشدات سلسلة التوقيت","Timing chain guides","timing","engine-specific","توجه السلسلة وتقلل الاهتزاز والاحتكاك.","الشكل والعدد حسب المحرك."],
+  ["صمام التحكم VVT","Oil control valve (OCV)","timing","engine-specific","ينظم تدفق الزيت إلى آلية توقيت الصمامات المتغير.","الموقع والعدد والفيشة حسب المحرك."],
+  ["مضخة الزيت","Oil pump","lubrication","engine-specific","تولد ضغط وتدفق الزيت لتزييت المحرك.","تتطلب مواصفة ضغط المصنع ورمز المحرك."],
+  ["فلتر الزيت","Oil filter","lubrication","engine-specific","يحجز الملوثات من زيت المحرك.","نوع الفلتر والقاعدة يختلفان بين المحركات."],
+  ["حوض الزيت","Oil pan","lubrication","engine-specific","يخزن زيت المحرك في أسفل المحرك.","قد يختلف مع القير أو تصميم الهيكل."],
+  ["مضخة الماء","Water pump","cooling","engine-specific","تدوّر سائل التبريد داخل منظومة المحرك.","نوع التشغيل ومكانها حسب المحرك."],
+  ["الثرموستات","Thermostat","cooling","engine-specific","ينظم مرور سائل التبريد للمحافظة على حرارة التشغيل.","درجة الفتح ومبيت الثرموستات حسب المحرك."],
+  ["الرديتر","Radiator","cooling","all","ينقل حرارة سائل التبريد إلى الهواء.","الأبعاد والمنافذ تختلف حسب المحرك والسوق."],
+  ["مروحة التبريد","Cooling fan assembly","cooling","all","تسحب/تدفع الهواء عبر الرديتر والمكثف.","عدد المراوح والتحكم يختلف حسب التجهيز."],
+  ["قربة التمدد","Coolant reservoir","cooling","all","تستقبل تمدد سائل التبريد وتساعد بمراقبة مستواه.","الشكل والغطاء حسب الهيكل والسوق."],
+  ["مضخة الوقود","Fuel pump module","fuel","all","تغذي منظومة الوقود بالضغط والتدفق المطلوبين.","ضغط النظام والوحدة يختلفان حسب نسخة الوقود."],
+  ["بخاخ الوقود","Fuel injector","fuel","engine-specific","يقيس ويرش الوقود وفق تحكم وحدة المحرك.","نوع الحقن والموصل والمعايرة حسب المحرك."],
+  ["بوابة الهواء","Throttle body","fuel","engine-specific","تتحكم بكمية الهواء الداخلة للمحرك.","الإلكترونية والتهيئة تختلف حسب النسخة."],
+  ["حساس تدفق الهواء","MAF sensor","sensors","engine-specific","يقيس كتلة الهواء الداخلة في الأنظمة المجهزة به.","بعض المحركات تستخدم استراتيجية/حساسات مختلفة."],
+  ["حساس ضغط مجمع السحب","MAP sensor","sensors","engine-specific","يقيس ضغط مجمع السحب في الأنظمة التي تستخدمه.","قد يكون مدمجاً أو يختلف موضعه."],
+  ["حساس موضع الكرنك","Crankshaft position sensor (CKP)","sensors","engine-specific","يوفر إشارة سرعة وموضع عمود الكرنك لوحدة التحكم.","الموقع والإشارة والقطعة حسب رمز المحرك."],
+  ["حساس موضع الكامة","Camshaft position sensor (CMP)","sensors","engine-specific","يساعد على تحديد موضع عمود الكامات وتزامن المحرك.","العدد والموقع حسب المحرك."],
+  ["حساس حرارة سائل التبريد","Engine coolant temperature sensor (ECT)","sensors","engine-specific","يقيس حرارة سائل التبريد لوحدة التحكم.","نوع الحساس ومنحنى المقاومة حسب التطبيق."],
+  ["حساس الأوكسجين / A/F","Oxygen or air-fuel ratio sensor","sensors","engine-specific","يراقب الأوكسجين/نسبة الهواء والوقود ضمن نظام العادم.","الموضع والعدد والنوع حسب السوق والانبعاثات."],
+  ["ملف الإشعال","Ignition coil","electrical","engine-specific","يوفر الجهد اللازم لشرارة شمعة الإشعال.","الموصل والمواصفة حسب المحرك."],
+  ["شمعات الإشعال","Spark plugs","electrical","engine-specific","تولد الشرارة داخل غرفة الاحتراق.","رقم الشمعة والفجوة حسب مواصفة المصنع."],
+  ["مولد الشحن","Alternator","electrical","all","يشحن البطارية ويغذي الأحمال في نسخ البنزين المناسبة.","قد تختلف المنظومة في الهايبرد."],
+  ["بادئ الحركة","Starter motor","electrical","all","يدير المحرك عند بدء التشغيل في النسخ المجهزة به.","منظومة الهايبرد قد تختلف ولا تستخدم سلفاً تقليدياً."],
+  ["علبة القير","Transmission assembly","transmission","engine-specific","تنقل عزم المحرك إلى منظومة الدفع.","نوع القير ورقمه يعتمد على المحرك والسوق."],
+  ["فلتر القير","Transmission fluid filter","transmission","engine-specific","يرشح سائل ناقل الحركة وفق تصميم القير.","ليس لكل ناقل حركة فلتر خدمة خارجي قابل للاستبدال."],
+  ["ممتص الصدمات","Shock absorber","chassis","all","يسيطر على حركة التعليق واهتزاز الهيكل.","الأمام/الخلف والتجهيز يغيران رقم القطعة."],
+  ["ذراع التعليق","Control arm","chassis","all","يربط مجموعة العجلة بالهيكل ويسمح بحركة التعليق المصممة.","الجهة والفئة ونوع الهيكل عوامل توافق."],
+  ["قرص الفرامل","Brake disc","chassis","all","يوفر سطح احتكاك مع بطانات الفرامل.","القطر والسماكة حسب الفئة والمحور."],
+  ["كليبر الفرامل","Brake caliper","chassis","all","يضغط بطانات الفرامل على القرص.","الجهة والقطر ونظام الفرامل حسب التجهيز."],
+  ["ضاغط المكيف","A/C compressor","body","all","يضغط وسيط التبريد في دائرة التكييف.","نوع الضاغط يختلف وقد تكون الهايبرد كهربائية."],
+  ["مكثف المكيف","A/C condenser","body","all","يطرد الحرارة من وسيط التبريد.","يختلف حسب المحرك والتجهيز والسوق."]
+ ];
+ const names={engine:"المحرك",timing:"التوقيت",cooling:"التبريد",lubrication:"التزييت",fuel:"الوقود والهواء",electrical:"الكهرباء",sensors:"الحساسات",transmission:"القير",chassis:"التعليق والفرامل",body:"الهيكل والتكييف"};
+ let cat="all";
+ const $=id=>document.getElementById(id);
+ function render(){
+  const gen=$("atlasGen").value, eng=$("atlasEngine").value, q=$("atlasSearch").value.trim().toLowerCase();
+  const list=parts.filter(p=>(cat==="all"||p[2]===cat)&&(!q||(p[0]+" "+p[1]+" "+p[4]).toLowerCase().includes(q))&&
+   (eng==="all"||(eng==="hybrid" ? p[3]==="all" : eng==="petrol" ? p[3]!=="hybrid" : p[3]==="engine-specific")) );
+  $("atlasCount").textContent="عدد العناصر الظاهرة: "+list.length+" من "+parts.length+" بنداً تعريفياً";
+  $("atlasGrid").innerHTML=list.map((p,i)=>'<article class="part-card"><h3>'+p[0]+'</h3><div class="part-meta"><span class="part-tag">'+names[p[2]]+'</span><span class="part-tag pending">التوافق يحتاج مطابقة</span></div><p><bdi>'+p[1]+'</bdi></p><p>'+p[4]+'</p><details><summary>تفاصيل التوثيق</summary><p><b>ملاحظة توافق:</b> '+p[5]+'</p><p><b>رقم OEM:</b> غير معتمد بعد — لا تخمين.</p><p><b>الرسم الفني:</b> افتح كتالوج المصدر واختر رقم الهيكل/المحرك قبل اعتماد الرسم.</p><p><b>حالة الصورة:</b> لا توجد صورة OEM مثبتة لهذه المطابقة في هذا السجل.</p></details></article>').join("")||'<div class="part-card">لا توجد نتائج مطابقة. جرّب كلمة بحث أخرى أو اختر «الكل».</div>';
+ }
+ $("atlasCats").addEventListener("click",e=>{const b=e.target.closest("button[data-cat]");if(!b)return;cat=b.dataset.cat;document.querySelectorAll("#atlasCats button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render();});
+ ["atlasGen","atlasEngine","atlasSearch"].forEach(id=>$(id).addEventListener(id==="atlasSearch"?"input":"change",render));
+ render();
+})();
+</script>
+
+<footer class="footer">مستشار أعطال السيارات V8.9 • موسوعة تويوتا قيد التوثيق • أرقام OEM لا تعتمد قبل مطابقة رقم الهيكل والمحرك والسوق</footer>
+</div>
+
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+let selectedSymptom="", answers={}, stepIndex=0, currentSteps=[], currentReport=null;
+const symptomNames={nostart:"ما تشتغل والسلف يدور",nostarter:"السلف ما يدور",stall:"تطفي فجأة",misfire:"تفتفة / رجّة",power:"ضعف عزم",rpm:"تذبذب RPM",overheat:"حرارة مرتفعة",noise:"صوت طقطقة / طرق",trans:"مشكلة قير",brake:"مشكلة فرامل",electrical:"مشكلة كهرباء",fuel:"صرفية وقود عالية"};
+const stepSets={
+nostart:[
+{id:"crank",q:"أثناء محاولة التشغيل، شنو يصير؟",a:[["normal","السلف يدور بسرعة طبيعية"],["slow","السلف بطيء"],["click","طقطقة فقط"],["silent","ماكو صوت"]] },
+{id:"spark",q:"هل تم التأكد من وجود شرارة حسب إجراء المصنع؟",a:[["yes","نعم، موجودة"],["no","لا توجد"],["unknown","بعد ما فحصت"]] },
+{id:"fuel",q:"هل تم قياس ضغط الوقود بالمواصفة أثناء التدوير؟",a:[["good","نعم، ضمن المواصفة"],["low","الضغط منخفض/غير موجود"],["unknown","ما تم قياسه"]] },
+{id:"rpm",q:"هل جهاز الفحص يقرأ RPM أثناء تدوير السلف؟",a:[["yes","نعم، توجد قراءة RPM"],["zero","صفر RPM"],["unknown","ما أعرف / ما فحصت"]] },
+{id:"injector",q:"هل تأكدت من نبضة البخاخات أو أمر الحقن؟",a:[["yes","نعم، موجودة"],["no","ماكو نبضة"],["unknown","لم أفحص"]] }
+],
+nostarter:[
+{id:"battery",q:"شنو حالة البطارية والأقطاب؟",a:[["good","فحص البطارية والأقطاب سليم"],["weak","البطارية ضعيفة"],["unknown","لم أفحص"]] },
+{id:"click",q:"عند التشغيل، شنو تسمع؟",a:[["click","طقطقة"],["silent","صمت تام"],["cranks","السلف يدور أحياناً"]] },
+{id:"power",q:"هل توصل تغذية وأرضي للسلف حسب المخطط وقت الأمر بالتشغيل؟",a:[["yes","نعم، سليم"],["no","لا، يوجد فقد"],["unknown","لم أقس"]] }
+],
+stall:[
+{id:"condition",q:"متى تطفي السيارة غالباً؟",a:[["hot","بعد ما تحمى"],["bump","بعد مطب/اهتزاز"],["idle","بالوقوف أو الخمول"],["drive","أثناء السير"]] },
+{id:"restart",q:"بعد ما تطفي، هل ترجع تشتغل مباشرة؟",a:[["yes","نعم مباشرة"],["wait","بعد انتظار/تبريد"],["no","ما تشتغل"]] },
+{id:"rpm",q:"قبل ما تطفي، شنو يصير بالـRPM؟",a:[["drops","ينزل فجأة"],["hunt","يتذبذب"],["normal","يبقى طبيعي ثم تطفي"],["unknown","ما لاحظت"]] },
+{id:"codes",q:"هل فحصت الأكواد والبيانات وقت العطل؟",a:[["codes","نعم، عندي أكواد/بيانات"],["none","ماكو أكواد ظاهرة"],["unknown","لم أفحص"]] }
+],
+misfire:[
+{id:"when",q:"متى تظهر التفتفة؟",a:[["cold","بارد فقط"],["hot","بعد ما يحمى"],["load","تحت الحمل/التسارع"],["idle","بالخمول"]] },
+{id:"cyl",q:"هل جهاز الفحص يحدد سلندر معيّن؟",a:[["one","نعم، سلندر محدد"],["multi","أكثر من سلندر / P0300"],["none","لا يوجد كود"],["unknown","لم أفحص"]] },
+{id:"ignition",q:"هل فُحصت البلكات والكويلات بطريقة مقارنة/اختبار؟",a:[["yes","نعم"],["no","بعد ما فحصت"],["fault","وجدت خللاً واضحاً"]] },
+{id:"fueltrim",q:"هل قرأت Fuel Trims وبيانات الهواء/الوقود؟",a:[["lean","تصحيح موجب/خليط فقير"],["rich","تصحيح سالب/خليط غني"],["normal","قريبة من الطبيعي حسب المواصفة"],["unknown","لم أفحص"]] }
+],
+power:[
+{id:"load",q:"متى يضعف العزم؟",a:[["accel","عند التسارع"],["highway","سرعات عالية/حمل"],["always","طوال الوقت"],["limp","السيارة تدخل وضع حماية"]] },
+{id:"codes",q:"هل توجد أكواد أو لمبة Check Engine؟",a:[["yes","نعم"],["no","لا"],["unknown","لم أفحص"]] },
+{id:"air",q:"هل تمت مقارنة قراءات MAF/MAP والضغط/البوست بالمواصفات؟",a:[["yes","نعم"],["no","لم أفحص"],["abnormal","القراءات غير طبيعية"]] }
+],
+rpm:[
+{id:"when",q:"متى يتذبذب الـRPM؟",a:[["cold","أول تشغيل بارد"],["hot","بعد التسخين"],["ac","عند تشغيل المكيف"],["all","دائماً"]] },
+{id:"throttle",q:"هل نُظف الثروتل أو فُصلت البطارية مؤخراً؟",a:[["yes","نعم"],["no","لا"],["unknown","لا أعرف"]] },
+{id:"airleak",q:"هل تم فحص تهريب الهواء/الفاكيوم وقراءات Fuel Trim؟",a:[["yes","سليم بالفحص"],["leak","يوجد تهريب"],["unknown","لم أفحص"]] }
+],
+overheat:[
+{id:"severity",q:"هل مؤشر الحرارة داخل المنطقة الحمراء أو يوجد بخار/تحذير؟",a:[["yes","نعم، خطر/تحذير"],["no","مرتفعة لكن دون الأحمر"],["unknown","غير متأكد"]] },
+{id:"coolant",q:"هل مستوى سائل التبريد والتسريب مفحوص والمحرك بارد؟",a:[["low","المستوى منخفض/تسريب"],["ok","المستوى طبيعي"],["unknown","لم أفحص"]] },
+{id:"fan",q:"هل تعمل المراوح حسب أمر التشغيل ودرجة الحرارة؟",a:[["yes","تعمل"],["no","لا تعمل"],["unknown","لم أفحص"]] }
+],
+noise:[
+{id:"noiseType",q:"متى يظهر الصوت؟",a:[["cold","عند التشغيل البارد"],["rpm","يزيد مع RPM"],["load","تحت الحمل"],["bottom","من أسفل المحرك"]] },
+{id:"oil",q:"هل مستوى الزيت وضغطه والتحذيرات مفحوصة؟",a:[["ok","المستوى/الضغط سليم حسب الفحص"],["low","الزيت منخفض أو لمبة ضغط"],["unknown","لم أفحص"]] }
+],
+trans:[
+{id:"gear",q:"شنو العَرَض؟",a:[["noMove","المحرك يرتفع والسيارة ما تتحرك"],["delay","تأخير بالتعشيق"],["shift","ضربات/تبديل غير طبيعي"],["warning","لمبة قير/وضع حماية"]] },
+{id:"fluid",q:"هل مستوى/حالة زيت القير فُحصت بالطريقة ودرجة الحرارة المحددة للموديل؟",a:[["yes","نعم"],["no","لم أفحص"],["low","ناقص أو فيه تسريب"]] },
+{id:"codes",q:"هل قرأت أكواد TCM وبياناته؟",a:[["yes","نعم"],["no","لم أفحص"]] }
+],
+brake:[
+{id:"brakefeel",q:"شنو المشكلة بالفرامل؟",a:[["soft","دعسة إسفنجية/تنزل"],["noise","صوت/اهتزاز"],["pull","تسحب جهة"],["warning","لمبة تحذير"]] },
+{id:"leak",q:"هل توجد علامة تسريب أو نقص سائل؟",a:[["yes","نعم"],["no","لا يظهر"],["unknown","لم أفحص"]] }
+],
+electrical:[
+{id:"scope",q:"العطل كهربائي بأي شكل؟",a:[["multiple","أكثر من نظام يفصل"],["one","نظام واحد"],["battery","ضعف تشغيل/بطارية"],["warning","لمبات تحذير متعددة"]] },
+{id:"voltage",q:"هل فُحص جهد البطارية والشحن والأرضي تحت الحمل؟",a:[["yes","نعم"],["no","لم أفحص"],["bad","القراءة غير طبيعية"]] }
+],
+fuel:[
+{id:"smell",q:"هل توجد رائحة وقود قوية أو تسريب ظاهر؟",a:[["yes","نعم"],["no","لا"],["unknown","غير متأكد"]] },
+{id:"trim",q:"هل قرأت Fuel Trims وحرارة المحرك وحساسات الهواء؟",a:[["rich","خليط غني حسب البيانات"],["lean","خليط فقير"],["normal","طبيعي حسب المواصفة"],["unknown","لم أفحص"]] }
+]};
+const advice={
+nostart:[
+["تغذية/بطارية/أرضي أو سرعة تدوير غير كافية","قِس جهد البطارية أثناء التدوير، هبوط الجهد، وسرعة التدوير حسب مواصفة المصنع."],
+["إشارة كرنك/كام أو تزامن المحرك","راقب RPM أثناء التدوير، إشارة CKP/CMP والتزامن بالأوسيلوسكوب/جهاز الفحص عند توفره."],
+["ضغط الوقود أو تغذية المضخة","قِس الضغط والتدفق تحت ظروف العطل وافحص التغذية والأرضي؛ لا تعتمد على صوت المضخة فقط."],
+["شرارة أو تغذية نظام الإشعال","اختبر الشرارة بأداة آمنة وافحص التغذية والتحكم وفق دليل الصيانة."],
+["نبضة البخاخات/مانع التشغيل/تغذية ECU","تحقق من نبضة الحقن، حالة مانع التشغيل، الفيوزات والتغذيات والأرضي حسب المخطط."]
+],
+nostarter:[
+["بطارية أو أطراف/أرضي","اختبر البطارية تحت الحمل ونظافة الأطراف وهبوط الجهد أثناء محاولة التشغيل."],
+["دائرة أمر السلف أو ريليه/فيوز/سويتش أمان","افحص إشارة أمر التشغيل ومداخل/مخارج الريليه حسب مخطط السيارة."],
+["السلف أو الكابل الرئيسي","إذا التغذية والأرضي وأمر التشغيل سليمة، اختبر السلف والكابل تحت الحمل."]
+],
+stall:[
+["فقدان متقطع في التغذية أو الأرضي أو فيوز/قاعدة","اختبر هبوط الجهد وحرّك الضفيرة/الفيش بحذر أثناء المراقبة؛ افحص آثار حرارة أو ارتخاء. لا تكبّر قيمة الفيوز."],
+["ضغط وقود يتقطع","راقب ضغط الوقود وقت العطل، وتحقق من كهرباء المضخة والريليه/الفيوز."],
+["إشارة CKP/CMP أو تزامن","راقب RPM والإشارات وقت الانطفاء، خصوصاً إذا لا تعود للعمل إلا بعد انتظار."],
+["هواء/ثروتل/تحكم بالخمول","افحص تسريب الهواء وموضع الثروتل والتعلّم المطلوب وبيانات الحساسات."],
+["سبب كهربائي/وحدة تحكم أو شبكة","افحص كل الوحدات والأكواد والجهود والأرضي قبل اتهام الكمبيوتر."]
+],
+misfire:[
+["إشعال: بلك/كويل/تغذية","حدد السلندر ثم نفّذ اختبار مقارنة مناسب؛ لا تبدّل الكويلات عشوائياً."],
+["بخاخ أو ضغط/توازن الوقود","نفّذ اختبار توازن البخاخات/الضغط حسب النظام، وافحص التغذية."],
+["تهريب هواء أو خليط غير صحيح","قارن Fuel Trims وMAF/MAP وافحص مجرى السحب والفاكيوم."],
+["ضغط ميكانيكي/توقيت صمامات","إذا بقي الخلل في نفس السلندر بعد فحوصات الإشعال والوقود، قِس الضغط/Leak-down وافحص التوقيت."]
+],
+power:[
+["هواء/بوست/تهريب سحب","قارن MAF/MAP والبوست المطلوب والفعلي وافحص التسريبات."],
+["وقود أو ضغط تحت الحمل","سجّل ضغط الوقود/الريل أثناء الحمل بأمان وبحسب المواصفة."],
+["وضع حماية بسبب كود أو حرارة","اقرأ جميع الوحدات وبيانات Freeze Frame وحدد سبب الحماية قبل مسح الكود."],
+["انسداد عادم أو مشكلة ميكانيكية","اختبر ضغط العادم/الضغط الميكانيكي عند وجود دلائل داعمة."]
+],
+rpm:[
+["تهريب هواء/فاكيوم أو PCV","افحص تسريب السحب بطريقة مناسبة وراقب Fuel Trims."],
+["ثروتل/تعلّم الخمول","قارن زاوية الثروتل المطلوبة والفعلية ونفّذ إجراء التعلّم الخاص بالموديل عند الحاجة."],
+["حساسات الهواء/حرارة أو تغذية","قارن MAF/MAP وIAT/ECT بالقيم المنطقية والمحرك بارد وحار."],
+["حمل إضافي/مكيف أو نظام شحن","راقب أمر المكيف والحمل وجهد الشحن وRPM المطلوب/الفعلي."]
+],
+overheat:[
+["خطر ارتفاع حرارة فعلي","أوقف القيادة بأمان واترك المحرك يبرد؛ لا تفتح غطاء التبريد وهو حار."],
+["نقص سائل/تسريب أو هواء بالنظام","افحص النظام وهو بارد واختبر الضغط والتسريب وفق إجراءات السلامة."],
+["مروحة/ثرموستات/مضخة ماء/راديتر","تحقق من أمر المروحة وتدفق التبريد وفرق درجات الحرارة حسب مواصفات المصنع."]
+],
+noise:[
+["زيت/ضغط تزييت منخفض","إذا لمبة ضغط الزيت مضاءة أو الصوت قوي، أطفئ المحرك ولا تواصل تشغيله قبل فحص الضغط."],
+["توقيت/شداد/ملحقات أو أجزاء داخلية","حدد مصدر الصوت بأداة مناسبة وافحص الضغط والتوقيت والملحقات قبل فك أجزاء."],
+["احتراق غير طبيعي تحت الحمل","تحقق من الوقود المناسب والتوقيت وبيانات الطرق/الاشتعال حسب نظام المحرك."]
+],
+trans:[
+["مستوى/نوع/حالة زيت القير أو تسريب","افحص بالطريقة ودرجة الحرارة المحددة للموديل، ولا تضف زيتاً عشوائياً."],
+["أكواد/تحكم TCM أو حساسات السرعة","اقرأ وحدة القير والبيانات الحية قبل أي قرار."],
+["خلل هيدروليكي/ميكانيكي داخلي","إذا بيانات التحكم والسائل سليمة، يلزم اختبار ضغط/تشخيص متخصص؛ لا تكرر الدعس إذا السيارة لا تتحرك."]
+],
+brake:[
+["خلل هيدروليكي أو تسريب","إذا الدعسة تنزل أو الفرامل ضعيفة، لا تقد السيارة؛ اطلب سحبها وفحصها."],
+["تآكل/اعوجاج أو مشكلة كاليبر","افحص الأقراص والبطانات والكاليبر والعجلات على رافعة آمنة."],
+["إطار/تعليق أو اختلاف فرملة جهة","افحص ضغط الإطارات والتعليق ومكونات الفرامل؛ لا تفترض أن السبب ميزان فقط."]
+],
+electrical:[
+["بطارية/شحن/أرضي","اختبر البطارية والشحن وهبوط الجهد تحت الحمل."],
+["فيوز/ريليه/فيشة/ضفيرة متقطعة","قِس الجهد قبل وبعد الدائرة وافحص التوصيلات والآثار الحرارية."],
+["شبكة CAN أو وحدة تحكم","اقرأ جميع الوحدات وافحص التغذية والأرضي والاتصال قبل استبدال وحدة."]
+],
+fuel:[
+["تسريب وقود أو أبخرة","إذا يوجد تسريب أو رائحة قوية، أطفئ المحرك وابتعد عن مصادر الشرر واطلب فحصاً آمناً."],
+["خليط غني/حساس أو بخاخ","قارن Fuel Trims وECT وقراءات الهواء واختبر البخاخات حسب المواصفة."],
+["خليط فقير/تهريب أو ضغط وقود","افحص تهريب الهواء وضغط الوقود وقراءات الحساسات قبل تبديلها."]
+]};
+const dtcs=[
+["P0100","دائرة حساس MAF","افحص التغذية والأرضي والإشارة والضفيرة والهواء الداخل قبل استبدال الحساس."],
+["P0101","مدى/أداء MAF","قارن القراءة مع الحمل وRPM وافحص فلتر الهواء والتسريب وبيانات MAP."],
+["P0115","دائرة حساس حرارة سائل التبريد","افحص الفيشة والضفيرة وقراءة ECT والمحرك بارد."],
+["P0128","حرارة المحرك أقل من المتوقّع","تحقق من ECT والثرموستات وظروف التشغيل؛ لا تبدّل دون مقارنة الحرارة الفعلية."],
+["P0171","خليط فقير بنك 1","افحص تهريب الهواء وFuel Trims وضغط الوقود وMAF/PCV."],
+["P0172","خليط غني بنك 1","افحص ضغط الوقود والبخاخات وECT وMAF وقراءات Fuel Trim."],
+["P0201","دائرة بخاخ السلندر 1","افحص الفيشة والضفيرة والتغذية/التحكم حسب النظام، وليس البخاخ وحده."],
+["P0300","تقطيع احتراق عشوائي/متعدد","حدد ظروف Freeze Frame، وعدّادات misfire، والإشعال والوقود والهواء والضغط."],
+["P0301","تقطيع احتراق سلندر 1","اختبر البلك/الكويل/البخاخ والضغط بطريقة مقارنة."],
+["P0302","تقطيع احتراق سلندر 2","اختبر البلك/الكويل/البخاخ والضغط بطريقة مقارنة."],
+["P0303","تقطيع احتراق سلندر 3","اختبر البلك/الكويل/البخاخ والضغط بطريقة مقارنة."],
+["P0304","تقطيع احتراق سلندر 4","اختبر البلك/الكويل/البخاخ والضغط بطريقة مقارنة."],
+["P0335","دائرة حساس موضع الكرنك","تحقق من التغذية/الإشارة/الضفيرة وRPM أثناء التدوير؛ الكود لا يثبت وحده أن الحساس تالف."],
+["P0340","دائرة حساس موضع الكام","افحص الإشارة والتغذية والضفيرة والتزامن الميكانيكي حسب المحرك."],
+["P0420","كفاءة المحول الحفاز أقل من العتبة","افحص misfire والتسريبات وقراءات حساسات الأكسجين قبل الحكم على المحول."],
+["P0442","تسريب صغير بنظام EVAP","افحص غطاء الخزان والخراطيم وصمام purge واختبار الدخان عند توفره."],
+["P0455","تسريب كبير بنظام EVAP","افحص الغطاء والخراطيم ووصلات النظام باختبار مناسب."],
+["P0505","نظام التحكم بالخمول","افحص الثروتل/صمام الخمول حسب التصميم وتهريب الهواء والتعلّم."],
+["P0562","جهد النظام منخفض","اختبر البطارية والشحن والكابلات والأرضي."],
+["P0700","طلب إضاءة عطل من وحدة القير","اقرأ الأكواد من TCM مباشرة؛ هذا الكود وحده لا يحدد سبب عطل القير."],
+["P0715","دائرة حساس سرعة دخل القير","افحص الحساس والضفيرة والموصل وبيانات السرعة في TCM."],
+["P0741","أداء/تعليق قابض محول العزم","يتطلب قراءة بيانات القير وفحوصات هيدروليكية حسب المصنع."],
+["P0087","ضغط سكة الوقود منخفض","قارن الضغط المطلوب والفعلي واختبر التغذية/المضخة/المنظم حسب النظام."],
+["P0191","مدى/أداء حساس ضغط سكة الوقود","قارن الضغط المطلوب والفعلي وافحص التوصيلات قبل استبدال الحساس."],
+["P0299","ضغط شحن منخفض","افحص التسريبات والتحكم بالتيربو والبوست المطلوب/الفعلي وصمام wastegate."],
+["P0401","تدفق EGR غير كافٍ","افحص مسارات EGR والصمام والقراءات وفق تصميم المحرك."],
+["P2002","كفاءة DPF أقل من العتبة (غالباً ديزل)","اقرأ فرق الضغط وحرارة العادم وحالة التجديد؛ لا تفرض regeneration دون شروط الأمان."],
+["U0100","فقد اتصال مع ECM/PCM","افحص تغذية وأرضي الوحدات والشبكة والفيش حسب مخطط المصنع."],
+["C0035","دائرة حساس سرعة العجلة (قد يختلف حسب الشركة)","راجع تعريف الشركة الدقيق وافحص بيانات سرعة العجلة والضفيرة والحساس."],
+["B0020","كود هيكل يختلف حسب الشركة","استخرج وصف الشركة من جهاز الفحص؛ لا تعتمد على وصف عام لهذا الرمز."]
+];
+const escapeText=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function vehicleText(){return ["الشركة: "+$("make").value,"الموديل: "+$("model").value,"السنة: "+$("year").value,"المحرك/الوقود: "+$("engine").value,"الممشى: "+$("mileage").value,"رمز المحرك: "+($("engineCode")?.value||""),"القير: "+($("transmission")?.value||""),"الدفع: "+($("drivetrain")?.value||""),"نوع الوقود: "+($("fuelType")?.value||"")].filter(x=>x.split(": ")[1]).join(" | ")}
+
+function isOwnerMode(){return $("role").value==="owner"}
+function setAppMode(mode){
+ const owner=mode==="owner";
+ $("role").value=owner?"owner":"mechanic";
+ document.body.classList.toggle("mechanic-mode",!owner);
+ $("ownerModeBtn").classList.toggle("secondary",!owner);
+ $("mechanicModeBtn").classList.toggle("secondary",owner);
+ $("ownerModeBtn").setAttribute("aria-pressed",String(owner));
+ $("mechanicModeBtn").setAttribute("aria-pressed",String(!owner));
+ $("modeLabel").textContent=owner?"شرح مبسّط لصاحب السيارة":"وضع فني: أكواد OBD2 وقراءات الفحص وقاعدة المعرفة والمساعد والنسخ الاحتياطي";
+ $("modeHint").textContent=owner
+ ? "الوضع المبسّط: شرح أوضح لصاحب السيارة، مع توضيح متى يلزم فني مختص."
+ : "وضع الميكانيكي: استخدم أكواد الأعطال وقراءات جهاز الفحص والتفاصيل الفنية لتضييق الاحتمالات؛ النتيجة إرشادية وتحتاج تحققاً عملياً.";
+ if(owner && document.querySelector('.tab.active.mechanic-only')) document.querySelector('[data-tab="diagnosis"]').click();
+}
+$("ownerModeBtn").addEventListener("click",()=>setAppMode("owner"));
+$("mechanicModeBtn").addEventListener("click",()=>setAppMode("mechanic"));
+setAppMode("owner");
+function ownerFriendlyTest(test){
+ const replacements=[
+  [/قِس جهد البطارية أثناء التدوير، هبوط الجهد، وسرعة التدوير حسب مواصفة المصنع\./i,"خلّي الفني يفحص قوة البطارية والتوصيلات أثناء محاولة التشغيل."],
+  [/راقب RPM أثناء التدوير، إشارة CKP\/CMP والتزامن بالأوسيلوسكوب\/جهاز الفحص عند توفره\./i,"يحتاج الفني يتأكد أن كمبيوتر السيارة يستلم إشارة دوران المحرك بشكل صحيح."],
+  [/قِس الضغط والتدفق تحت ظروف العطل وافحص التغذية والأرضي؛ لا تعتمد على صوت المضخة فقط\./i,"يجب قياس ضغط الوقود وفحص كهرباء المضخة؛ صوت المضخة وحده ما يكفي."],
+  [/اختبر الشرارة بأداة آمنة وافحص التغذية والتحكم وفق دليل الصيانة\./i,"يحتاج الفني يفحص الشرارة ونظام الإشعال بأداة مناسبة."],
+  [/تحقق من نبضة الحقن، حالة مانع التشغيل، الفيوزات والتغذيات والأرضي حسب المخطط\./i,"يُفحص وصول أمر الحقن والتغذية والفيوزات ومانع التشغيل."],
+  [/أوقف القيادة بأمان واترك المحرك يبرد؛ لا تفتح غطاء التبريد وهو حار\./i,"إذا الحرارة عالية، أوقف السيارة بمكان آمن واترك المحرك يبرد. لا تفتح غطاء التبريد وهو حار."],
+  [/إذا لمبة ضغط الزيت مضاءة أو الصوت قوي، أطفئ المحرك ولا تواصل تشغيله قبل فحص الضغط\./i,"إذا لمبة ضغط الزيت مضاءة أو صوت المحرك قوي، أطفئ المحرك واطلب فحصاً قبل تشغيله مرة ثانية."],
+  [/إذا الدعسة تنزل أو الفرامل ضعيفة، لا تقد السيارة؛ اطلب سحبها وفحصها\./i,"إذا دعسة الفرامل تنزل أو الفرامل ضعيفة، لا تسوق السيارة؛ اطلب سحبها للورشة."],
+  [/إذا يوجد تسريب أو رائحة قوية، أطفئ المحرك وابتعد عن مصادر الشرر واطلب فحصاً آمناً\./i,"إذا توجد رائحة وقود قوية أو تسريب، أطفئ المحرك إذا كان ذلك آمناً وابتعد عن أي مصدر شرر واطلب مساعدة مختصة."],
+  [/قارن Fuel Trims وMAF\/MAP وافحص مجرى السحب والفاكيوم\./i,"يحتاج الفني يفحص دخول الهواء وقراءات الحساسات لمعرفة إذا الخليط مضبوط."]
+ ];
+ let out=test;
+ for(const [pattern,replacement] of replacements) out=out.replace(pattern,replacement);
+ return out;
+}
+
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".page").forEach(x=>x.classList.toggle("hidden",x.id!==b.dataset.tab));if(b.dataset.tab==="codes")renderCodes();if(b.dataset.tab==="records")renderRecords()}));
+document.querySelectorAll("[data-symptom]").forEach(b=>b.addEventListener("click",()=>{selectedSymptom=b.dataset.symptom;document.querySelectorAll("[data-symptom]").forEach(x=>{x.classList.toggle("selected",x===b);x.setAttribute("aria-pressed",x===b?"true":"false")});const start=$("startBtn");start.disabled=false;start.removeAttribute("disabled");$("wizard").classList.add("hidden");$("report").classList.add("hidden");const note=$("symptomStatus");if(note)note.textContent="تم اختيار: "+(symptomNames[selectedSymptom]||"المشكلة");}));
+$("clearBtn").addEventListener("click",()=>{["make","model","year","engine","mileage","engineCode","transmission","drivetrain","fuelType","vin","details","dtc","live"].forEach(id=>$(id).value="");selectedSymptom="";answers={};document.querySelectorAll("[data-symptom]").forEach(x=>x.classList.remove("selected"));$("startBtn").disabled=true;$("wizard").classList.add("hidden");$("report").classList.add("hidden")});
+$("startBtn").addEventListener("click",()=>{if(!selectedSymptom){const note=$("symptomStatus");if(note)note.textContent="اختار المشكلة أولاً من القائمة أعلاه.";document.querySelector("#symptomChoices")?.scrollIntoView({behavior:"smooth",block:"center"});return;}answers={};stepIndex=0;currentSteps=stepSets[selectedSymptom]||[];$("report").classList.add("hidden");$("wizard").classList.remove("hidden");if(!currentSteps.length){makeReport();return;}renderStep();$("wizard").scrollIntoView({behavior:"smooth",block:"start"})});
+function renderStep(){const s=currentSteps[stepIndex];if(!s){makeReport();return}$("stepTitle").textContent="فحص رقم "+(stepIndex+1);$("stepCount").textContent=(stepIndex+1)+" / "+currentSteps.length;$("progressBar").style.width=((stepIndex+1)/currentSteps.length*100)+"%";$("stepQuestion").textContent=s.q;$("answerChoices").innerHTML="";s.a.forEach(([v,t])=>{const b=document.createElement("button");b.className="choice"+(answers[s.id]===v?" selected":"");b.textContent=t;b.addEventListener("click",()=>{answers[s.id]=v;renderStep()});$("answerChoices").appendChild(b)});$("backBtn").disabled=stepIndex===0;$("nextBtn").disabled=!answers[s.id];$("nextBtn").textContent=stepIndex===currentSteps.length-1?"عرض النتيجة":"التالي";$("finishBtn").textContent="اعرض الاحتمالات الحالية"}
+$("backBtn").addEventListener("click",()=>{if(stepIndex>0){stepIndex--;renderStep()}});
+$("nextBtn").addEventListener("click",()=>{if(stepIndex<currentSteps.length-1){stepIndex++;renderStep()}else makeReport()});
+$("finishBtn").addEventListener("click",makeReport);
+function makeReport(){
+ const list=advice[selectedSymptom]||[];let scores=list.map((x,i)=>({name:x[0],test:x[1],score:1}));
+ const a=answers;
+ const bump=(i,n)=>{if(scores[i])scores[i].score+=n};
+ if(selectedSymptom==="nostart"){if(a.crank==="slow"||a.crank==="click"||a.crank==="silent")bump(0,3);if(a.rpm==="zero")bump(1,4);if(a.fuel==="low")bump(2,4);if(a.spark==="no")bump(3,4);if(a.injector==="no")bump(4,3)}
+ if(selectedSymptom==="nostarter"){if(a.battery==="weak")bump(0,4);if(a.click==="click"||a.click==="silent")bump(1,2);if(a.power==="no")bump(1,4);if(a.power==="yes")bump(2,3)}
+ if(selectedSymptom==="stall"){if(a.condition==="bump")bump(0,4);if(a.restart==="wait")bump(2,3);if(a.rpm==="hunt"||a.rpm==="drops")bump(3,2);if(a.condition==="hot"&&a.restart==="wait")bump(2,2)}
+ if(selectedSymptom==="misfire"){if(a.ignition==="fault")bump(0,4);if(a.cyl==="one")bump(0,2);if(a.fueltrim==="lean")bump(2,3);if(a.fueltrim==="rich")bump(1,2)}
+ if(selectedSymptom==="power"){if(a.air==="abnormal")bump(0,4);if(a.load==="accel"||a.load==="highway")bump(1,2);if(a.load==="limp")bump(2,3)}
+ if(selectedSymptom==="rpm"){if(a.airleak==="leak")bump(0,4);if(a.throttle==="yes")bump(1,3);if(a.when==="ac")bump(3,3)}
+ if(selectedSymptom==="overheat"){if(a.severity==="yes")bump(0,8);if(a.coolant==="low")bump(1,4);if(a.fan==="no")bump(2,4)}
+ if(selectedSymptom==="noise"){if(a.oil==="low")bump(0,8);if(a.noiseType==="bottom")bump(1,3);if(a.noiseType==="rpm")bump(1,2)}
+ if(selectedSymptom==="trans"){if(a.fluid==="low")bump(0,4);if(a.codes==="yes")bump(1,3);if(a.gear==="noMove")bump(2,3)}
+ if(selectedSymptom==="brake"){if(a.leak==="yes"||a.brakefeel==="soft")bump(0,8);if(a.brakefeel==="noise")bump(1,3)}
+ if(selectedSymptom==="electrical"){if(a.voltage==="bad")bump(0,4);if(a.scope==="multiple"||a.scope==="warning")bump(1,3)}
+ if(selectedSymptom==="fuel"){if(a.smell==="yes")bump(0,8);if(a.trim==="rich")bump(1,3);if(a.trim==="lean")bump(2,3)}
+ scores.sort((x,y)=>y.score-x.score);
+ const urgent=(selectedSymptom==="overheat"&&(a.severity==="yes"||a.coolant==="low"))||(selectedSymptom==="brake"&&(a.brakefeel==="soft"||a.leak==="yes"))||(selectedSymptom==="noise"&&a.oil==="low")||(selectedSymptom==="fuel"&&a.smell==="yes");
+ $("safetyBox").innerHTML=urgent?'<div class="notice red"><b>تنبيه سلامة مهم:</b> لا تواصل القيادة أو التشغيل إذا الحالة خطرة. أوقف السيارة بأمان واتبع إجراء السلامة المناسب واطلب فحصاً مختصاً.</div>':'<div class="notice green">ابدأ بالفحوصات المقترحة بالترتيب، وسجّل النتيجة قبل الانتقال للخطوة التالية.</div>';
+ $("reportSummary").textContent="العَرَض: "+symptomNames[selectedSymptom]+". "+(vehicleText()||"لم تُدخل معلومات السيارة.")+" النتائج ترتيب إرشادي مبني على إجاباتك، وليست تأكيداً نهائياً.";
+ $("modeSummary").textContent=isOwnerMode()
+  ? "شرح مبسّط لصاحب السيارة: هذه احتمالات أولية وليست حكماً نهائياً. اطلب من الفني إجراء الفحص المذكور قبل تبديل أي قطعة."
+  : "خطة للورشة: ابدأ بالاحتمال الأعلى أولوية، وثّق نتيجة كل اختبار، ولا تستبدل أي قطعة قبل إثبات الخلل بالقياس.";
+  $("rankedResults").innerHTML=scores.map((x,i)=>'<div class="result"><div class="rank">'+(isOwnerMode()?'الخطوة المقترحة ':'أولوية الفحص ') +(i+1)+'</div><h3>'+escapeText(x.name)+'</h3><p>'+escapeText(isOwnerMode()?ownerFriendlyTest(x.test):x.test)+'</p><p class="small">'+(isOwnerMode()?'إذا ما عندك أدوات الفحص، خلي فني مختص ينفذ الاختبار.':'سجّل نتيجة الاختبار وقارنها بمواصفات المصنع؛ هذا الاحتمال غير مؤكد قبل القياس.')+'</p></div>').join("");
+ currentReport={date:new Date().toLocaleString("ar-IQ"),vehicle:vehicleText(),symptom:symptomNames[selectedSymptom],details:$("details").value,dtc:$("dtc").value,live:$("live").value,answers:{...answers},results:scores.map(x=>({name:x.name,test:x.test,score:x.score}))};
+ $("wizard").classList.add("hidden");$("report").classList.remove("hidden");$("report").scrollIntoView({behavior:"smooth",block:"start"});
+}
+$("restartWizard").addEventListener("click",()=>{answers={};stepIndex=0;currentSteps=stepSets[selectedSymptom]||[];$("wizard").classList.remove("hidden");$("report").classList.add("hidden");renderStep();$("wizard").scrollIntoView({behavior:"smooth"})});
+function sendWhatsAppRequest(){const r=currentReport||{};const symptom=(r.symptom||symptomNames[selectedSymptom]||"لم يتم تحديد العطل بعد");const message=encodeURIComponent("طلب مساعدة تشخيص سيارة\nالسيارة: "+(r.vehicle||vehicleText())+"\nالعَرَض: "+symptom+"\nالتفاصيل: "+(r.details||$("details").value||"لم تُذكر")+"\nالكود: "+(r.dtc||$("dtc").value||"غير متوفر")+"\nالبيانات الحية: "+(r.live||$("live").value||"غير متوفرة")+"\nإجابات الفحص: "+JSON.stringify(r.answers||answers||{})+"\nالاحتمالات: "+((r.results||[]).map(x=>x.name+" — "+x.test).join("\n")||"لم يكتمل التشخيص بعد")+"\nملاحظة: المعلومات أولية وتحتاج تأكيد بالفحص.");window.location.href="https://wa.me/9647701200901?text="+message;}
+$("whatsappBtn").addEventListener("click",sendWhatsAppRequest);
+$("whatsappQuickBtn").addEventListener("click",sendWhatsAppRequest);
+function readRecords(){try{return JSON.parse(localStorage.getItem("cfa_records")||"[]")}catch(e){return []}}
+function renderRecords(){const records=readRecords();$("recordList").innerHTML=records.length?records.map((r,i)=>'<div class="record"><h3>'+escapeText(r.symptom||"عطل")+'</h3><div class="small">'+escapeText(r.date||"")+'</div><p>'+escapeText(r.vehicle||"بيانات سيارة غير متوفرة")+'</p><p>'+escapeText(r.details||"")+'</p><details><summary>عرض نتائج الفحص</summary><pre style="white-space:pre-wrap;direction:rtl">'+escapeText(JSON.stringify(r,null,2))+'</pre></details><div class="actions"><button class="btn danger" data-delete="'+i+'">حذف السجل</button></div></div>').join(""):'<div class="empty">ماكو أعطال محفوظة لحد الآن.</div>';document.querySelectorAll("[data-delete]").forEach(b=>b.addEventListener("click",()=>{const a=readRecords();a.splice(Number(b.dataset.delete),1);localStorage.setItem("cfa_records",JSON.stringify(a));renderRecords()}))}
+$("saveReport").addEventListener("click",()=>{if(!currentReport)return;const a=readRecords();a.unshift(currentReport);try{localStorage.setItem("cfa_records",JSON.stringify(a));alert("انحفظ تقرير العطل على هذا الجهاز.");}catch(e){alert("تعذر الحفظ. قد تكون مساحة المتصفح ممتلئة.");} });
+$("deleteRecords").addEventListener("click",()=>{if(confirm("متأكد تريد حذف كل سجل الأعطال من هذا المتصفح؟")){localStorage.removeItem("cfa_records");renderRecords()}});
+$("exportRecords").addEventListener("click",()=>{const blob=new Blob([JSON.stringify(readRecords(),null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="car-fault-records.json";a.click();URL.revokeObjectURL(url)});
+function renderCodes(){const q=$("codeSearch").value.trim().toLowerCase(),f=$("codeFilter").value;const list=dtcs.filter(c=>(f==="all"||c[0].startsWith(f))&&(!q||c.join(" ").toLowerCase().includes(q)));$("codeResults").innerHTML=list.length?list.map(c=>'<div class="result"><h3 class="code">'+escapeText(c[0])+'</h3><b>'+escapeText(c[1])+'</b><p>'+escapeText(c[2])+'</p></div>').join(""):'<div class="empty">ما لكيت هذا الكود بالقائمة المحلية. راجع وصف الشركة بجهاز الفحص أو دليل الصيانة.</div>'}
+$("codeSearch").addEventListener("input",renderCodes);$("codeFilter").addEventListener("change",renderCodes);renderCodes();renderRecords();
+
+
+// V5: local knowledge base, optional online AI bridge, and backup/restore.
+const kbItems = [
+ {system:'engine',title:'المحرك لا يشتغل والسلف يدور',keywords:'no start crank rpm fuel spark injector',steps:['احفظ الأكواد وFreeze Frame قبل مسحها.','راقب RPM أثناء التدوير وتحقق من تزامن الكرنك والكام حسب دليل المحرك.','اختبر ضغط الوقود الفعلي وفق إجراء المصنع، لا تعتمد على صوت المضخة.','تحقق من الشرارة وأمر الحقن بطريقة آمنة وبالأدوات المناسبة.','إذا كانت الأساسيات سليمة، انتقل لاختبار الضغط الميكانيكي والتوقيت.']},
+ {system:'engine',title:'تفتفة أو Misfire',keywords:'misfire p0300 p0301 spark coil injector compression',steps:['اقرأ الأكواد الحالية والمعلقة وعدّادات التقطيع وظروف حدوثه.','حدد هل التقطيع في سلندر واحد أم عدة سلندرات.','قارن البلك والكويل والبخاخ باختبارات معتمدة، ثم افحص الضغط إذا لزم.','افحص تسريب الهواء وFuel Trims والضغط الوقودي قبل تبديل القطع.']},
+ {system:'engine',title:'ضعف العزم أو ضغط تيربو منخفض',keywords:'power turbo boost maf map intake fuel',steps:['قارن ضغط الشحن المطلوب والفعلي في ظروف اختبار آمنة.','افحص خراطيم السحب والإنتركولر والتسريبات بصرياً وباختبار مناسب.','افحص تحكم التيربو وMAF/MAP والأسلاك وفق مخطط السيارة.','قارن ضغط الوقود تحت الحمل بمواصفات المحرك.']},
+ {system:'engine',title:'تذبذب RPM / خمول غير مستقر',keywords:'rpm idle throttle maf vacuum air leak',steps:['افحص الأكواد والبيانات الحية قبل إعادة التعلم أو مسح القيم.','افحص مجرى السحب وPCV وخراطيم الفاكيوم والتسريبات.','قارن MAF/MAP وFuel Trims وECT وموضع الثروتل.','نفّذ إجراء تعلّم الثروتل فقط إذا كان مطلوباً لهذا الموديل.']},
+ {system:'electrical',title:'توقف مفاجئ أو انقطاع كهرباء متقطع',keywords:'stall fuse relay ground crank sensor power intermittent',steps:['افحص الفيوزات وقواعدها والريليهات والأرضي والتغذية تحت الحمل.','سجّل البيانات وقت العطل؛ فقدان الاتصال أو RPM قد يساعد في تحديد الدائرة.','اختبر هبوط الجهد واستمرارية الدائرة أثناء تحريك الضفيرة بحذر.','لا تكبّر قيمة الفيوز ولا تجسر دائرة الحماية؛ استخدم قيمة المصنع.']},
+ {system:'cooling',title:'ارتفاع حرارة المحرك',keywords:'overheat coolant fan thermostat radiator',steps:['إذا الحرارة عالية، أوقف السيارة بأمان ولا تفتح غطاء التبريد وهو حار.','بعد أن يبرد المحرك، افحص مستوى السائل والتسريب وحالة السير حسب التصميم.','تحقق من عمل المراوح وقراءة ECT والثرموستات والراديتر.','اختبر ضغط النظام أو غازات الاحتراق فقط بالأدوات والإجراءات المناسبة.']},
+ {system:'transmission',title:'القير يتأخر أو السيارة لا تتحرك',keywords:'transmission tcm fluid pressure gear no move',steps:['اقرأ أكواد TCM والبيانات الحية قبل مسحها.','تحقق من مستوى ونوع السائل بالطريقة ودرجة الحرارة المحددتين لهذا القير.','قارن أوامر التعشيق وسرعات الدخل/الخروج والضغط حسب بيانات المصنع.','إذا لا تتحرك السيارة أو يوجد انزلاق شديد، تجنب القيادة واطلب فحصاً مختصاً.']},
+ {system:'brakes',title:'دعسة فرامل إسفنجية أو تسريب',keywords:'brake soft pedal fluid leak abs',steps:['لا تقد السيارة إذا الدعسة تهبط أو يوجد تسريب أو ضعف واضح بالفرامل.','تحقق من مستوى السائل والتسريب بصرياً دون تعريضه للجلد أو الطلاء.','فحص ABS والهواء بالنظام وإجراءات النزف يجب أن تتبع دليل السيارة.']},
+ {system:'hybrid',title:'فحص سيارة هايبرد',keywords:'hybrid high voltage inverter battery safety',steps:['لا تلمس كابلات الجهد العالي أو أطراف البطارية البرتقالية.','اقرأ أكواد جميع الوحدات بما فيها Hybrid/EV وBattery ECU.','لا تنفذ فحص مقاومة العزل أو فصل الخدمة إلا إذا كنت مدرباً وتتبع دليل المصنع ومعدات الوقاية.']}
+];
+const partsCatalog=[
+{system:'engine',name:'كتلة المحرك (Engine Block)',aliases:'بلوك مكينة سلندر block',function:'تحتوي الأسطوانات وممرات الزيت وسائل التبريد وتدعم الأجزاء الداخلية.',checks:'فحص تسريب الزيت/الماء، ضغط الزيت، وفحص ميكانيكي عند وجود دليل على تلف داخلي.'},
+{system:'engine',name:'رأس المحرك (Cylinder Head)',aliases:'راس مكينة head',function:'يحمل الصمامات ومجاري السحب والعادم، وقد يحتوي أعمدة الكامات.',checks:'افحص أعراض اختلاط السوائل أو فقد الضغط وفق اختبارات المصنع.'},
+{system:'engine',name:'عمود المرفق CKP / Crankshaft',aliases:'حساس كرنك crank sensor',function:'حساس CKP يقرأ سرعة وموضع عمود المرفق لوحدة التحكم.',checks:'اقرأ RPM أثناء التدوير، افحص التغذية/الإشارة/الضفيرة والمخطط قبل استبداله.'},
+{system:'engine',name:'حساس عمود الكامات CMP',aliases:'camshaft sensor كامة',function:'يساعد على تحديد طور الكامات والتزامن مع عمود المرفق.',checks:'قارن أكواد CKP/CMP وإشارات التزامن ومخطط الأسلاك.'},
+{system:'engine',name:'سلسلة أو سير التوقيت',aliases:'timing chain belt جنزير تايمن',function:'يحافظ على توقيت الصمامات بالنسبة لحركة المكابس.',checks:'تحقق من علامات التوقيت وإجراءات المصنع؛ خطأ التوقيت قد يسبب ضرراً بالمحرك.'},
+{system:'engine',name:'شداد ومرشدات التوقيت',aliases:'tensioner guides',function:'تحافظ على شد السلسلة ومسارها.',checks:'صوت جهة التوقيت وحده لا يؤكد العطل؛ افحص الضغط/التزييت والتوقيت حسب التصميم.'},
+{system:'engine',name:'أعمدة الكامات VVT',aliases:'camshaft vvt actuator solenoid',function:'تتحكم بتوقيت الصمامات في المحركات المزودة بتغيير التوقيت.',checks:'افحص الزيت ومستواه ومواصفته، الأكواد، أمر/زاوية الكامة وصمام التحكم.'},
+{system:'engine',name:'الصمامات واليايات والروكرات',aliases:'valves springs rocker lifter tappet',function:'تتحكم بتدفق الهواء والعادم وإغلاق غرف الاحتراق.',checks:'استمع للصوت وحدد مكانه، ثم افحص الخلوص/الرفع والضغط حسب مواصفات المحرك.'},
+{system:'engine',name:'المكابس والشنابر',aliases:'piston rings',function:'تساعد على إحكام الضغط والتحكم بالزيت داخل الأسطوانة.',checks:'اختبار ضغط أو تسريب الأسطوانات وقياس استهلاك الزيت قبل الحكم.'},
+{system:'engine',name:'حشية رأس المحرك',aliases:'head gasket جوان راس',function:'تحكم الإحكام بين الرأس والبلوك وممرات الزيت والتبريد.',checks:'لا تعتمد على عرض واحد؛ استخدم اختبارات ضغط/غازات التبريد حسب الإجراء.'},
+{system:'fuel',name:'طرمبة الوقود',aliases:'fuel pump مضخة بنزين',function:'توفر الوقود بالضغط والتدفق المطلوبين لنظام الحقن.',checks:'قِس الضغط والتدفق تحت ظروف العطل وافحص التغذية والأرضي؛ الصوت لا يكفي.'},
+{system:'fuel',name:'فلتر الوقود',aliases:'fuel filter مصفي بنزين',function:'يقلل الملوثات التي تصل إلى نظام الوقود.',checks:'تحقق من موقعه وفترة الصيانة ومواصفة القطعة حسب السيارة.'},
+{system:'fuel',name:'بخاخات الوقود',aliases:'injectors رشاشات جويترات',function:'تتحكم بكمية وتوقيت رش الوقود.',checks:'اختبر التوازن/النبض/التسريب بمعدات مناسبة، ولا تفك نظام الضغط العالي دون تدريب.'},
+{system:'fuel',name:'منظم ضغط الوقود',aliases:'fuel pressure regulator',function:'يحافظ على ضغط الوقود وفق تصميم النظام.',checks:'قارن الضغط المطلوب والفعلي بمواصفات المصنع، فقد يكون مدمجاً بالمضخة أو السكة.'},
+{system:'fuel',name:'حساس ضغط سكة الوقود',aliases:'fuel rail pressure sensor',function:'يرسل قراءة ضغط الوقود لوحدة التحكم.',checks:'قارن القراءة مع مقياس معتمد إذا كان الإجراء يسمح، وافحص الأسلاك والمرجع.'},
+{system:'fuel',name:'حساس MAF لقياس الهواء',aliases:'mass air flow maf',function:'يقيس كتلة الهواء الداخل في الأنظمة التي تستخدمه.',checks:'افحص البيانات الحية والتوصيلات وتسريب السحب؛ لا تنظفه إلا بمادة مناسبة.'},
+{system:'fuel',name:'حساس MAP ضغط المانيفولد',aliases:'manifold absolute pressure boost',function:'يقيس ضغط مجرى السحب أو ضغط الشحن حسب النظام.',checks:'قارن القراءة مع الضغط الجوي والمحرك متوقفاً ثم ظروف التشغيل حسب المواصفة.'},
+{system:'fuel',name:'حساس حرارة هواء السحب IAT',aliases:'intake air temperature',function:'يقيس حرارة الهواء لمساعدة حساب الوقود والإشعال.',checks:'قارن القراءة بحرارة الجو/المحرك البارد وافحص الدائرة حسب المخطط.'},
+{system:'fuel',name:'بوابة الهواء / الثروتل',aliases:'throttle body electronic throttle',function:'تنظم كمية الهواء الداخل للمحرك.',checks:'افحص الترسبات وبيانات الزاوية وإجراء التعلم المحدد للموديل.'},
+{system:'fuel',name:'صمام PCV وتهوية الكارتير',aliases:'positive crankcase ventilation vacuum',function:'ينظم أبخرة الكارتير إلى مجرى السحب.',checks:'افحص الخراطيم والصمام وتسرب الهواء حسب تصميم المحرك.'},
+{system:'fuel',name:'صمام EVAP purge',aliases:'purge valve بخار التانكي',function:'يتحكم بمرور أبخرة الوقود من علبة الفحم إلى المحرك.',checks:'افحص الأكواد والتفعيل والتسريب وفق الإجراء؛ لا تستبدله لمجرد وجود رائحة دون اختبار.'},
+{system:'fuel',name:'علبة الفحم وخطوط EVAP',aliases:'charcoal canister fuel vapor',function:'تخزن أبخرة الوقود مؤقتاً وتعيدها للاحتراق.',checks:'افحص الخطوط والصمامات وتهوية الخزان وفق مخطط السيارة.'},
+{system:'ignition',name:'شمعات الإشعال (البواجي)',aliases:'spark plugs بلكات',function:'تولد الشرارة في محركات البنزين.',checks:'تحقق من النوع والفجوة وحالة البواجي وفق مواصفات المحرك.'},
+{system:'ignition',name:'كويلات الإشعال',aliases:'ignition coil coil pack',function:'ترفع الجهد اللازم لتوليد الشرارة.',checks:'قارن التقطيع بين الأسطوانات واختبر الدائرة بطريقة آمنة؛ لا تلمس دائرة الجهد العالي أثناء التشغيل.'},
+{system:'ignition',name:'وحدة التحكم ECM / ECU',aliases:'كمبيوتر المحرك عقل',function:'تعالج إشارات الحساسات وتتحكم بالمشغلات.',checks:'تحقق من التغذية والأرضي والاتصال والشبكة قبل اتهام الكمبيوتر.'},
+{system:'cooling',name:'الراديتر',aliases:'radiator مبرد',function:'يساعد على طرح حرارة سائل التبريد.',checks:'افحص التسريب والانسداد وتدفق الهواء واختبر الضغط بعد برودة المحرك.'},
+{system:'cooling',name:'ثرموستات التبريد',aliases:'thermostat بلف حرارة',function:'ينظم تدفق سائل التبريد حسب درجة الحرارة.',checks:'راقب حرارة المحرك وتدرج سخونة الخراطيم وفق إجراء آمن ومواصفات السيارة.'},
+{system:'cooling',name:'مروحة التبريد وريليها',aliases:'cooling fan relay',function:'توفر تدفق هواء للراديتر والمكثف عند الحاجة.',checks:'راقب أمر التشغيل وحرارة ECT وافحص الفيوز والريليه والمحرك الكهربائي.'},
+{system:'cooling',name:'مضخة الماء',aliases:'water pump طرمبة ماء',function:'تدير سائل التبريد في الدائرة.',checks:'افحص التسريب والضجيج والدوران وفق نوع المضخة، وبعض المضخات كهربائية.'},
+{system:'cooling',name:'حساس حرارة سائل التبريد ECT',aliases:'coolant temperature sensor',function:'يبلغ وحدة التحكم بدرجة حرارة المحرك.',checks:'قارن القراءة والمحرك بارد ثم بعد التسخين، وافحص الدائرة.'},
+{system:'cooling',name:'زيت المحرك وفلتر الزيت',aliases:'engine oil oil filter',function:'يقلل الاحتكاك وينقل الحرارة ويحمل الملوثات للفلتر.',checks:'استخدم اللزوجة والمواصفة الصحيحة وافحص الضغط إذا ظهرت لمبة الزيت.'},
+{system:'electrical',name:'البطارية',aliases:'battery 12v 48v',function:'توفر الطاقة للتشغيل وتدعم الشبكة الكهربائية.',checks:'اختبر الشحن والحالة وهبوط الجهد أثناء التدوير حسب مواصفة السيارة.'},
+{system:'electrical',name:'الدينمو / المولد',aliases:'alternator generator charging',function:'يشحن البطارية ويغذي الأحمال في الأنظمة التقليدية.',checks:'افحص جهد/تيار الشحن والتموج والتوصيلات؛ الهايبرد قد يستخدم نظاماً مختلفاً.'},
+{system:'electrical',name:'السلف / بادئ الحركة',aliases:'starter motor solenoid',function:'يدير المحرك عند بدء التشغيل.',checks:'حدد هل توجد نقرة أو تدوير بطيء أو لا استجابة، ثم افحص البطارية والدائرة وهبوط الجهد.'},
+{system:'electrical',name:'الفيوزات والريليهات',aliases:'fuse relay صندوق فيوزات',function:'تحمي الدوائر وتتحكم بتغذية أحمال كهربائية.',checks:'افحص قيمة الفيوز وقاعدته والتغذية تحت الحمل؛ لا ترفع قيمة الفيوز أو تجسر الحماية.'},
+{system:'electrical',name:'الأرضي والضفيرة والموصلات',aliases:'ground wiring harness connector',function:'توصل الطاقة والإشارات بين المكونات ووحدات التحكم.',checks:'افحص التآكل والارتخاء وهبوط الجهد والاستمرارية وفق مخطط الأسلاك.'},
+{system:'electrical',name:'حساس دواسة الوقود APP',aliases:'accelerator pedal position',function:'يرسل طلب السائق للتسارع في أنظمة التحكم الإلكترونية.',checks:'قارن مسارات الحساس المتعددة وبيانات الدواسة والأكواد.'},
+{system:'transmission',name:'وحدة التحكم بالقير TCM',aliases:'transmission control module',function:'تدير تبديل النسب وضغط التعشيق في القير الإلكتروني.',checks:'اقرأ أكواد TCM والبيانات الحية والتغذية والاتصال قبل استبدال الوحدة.'},
+{system:'transmission',name:'زيت القير وفلتره',aliases:'ATF CVT DCT transmission fluid',function:'يزيّت ويبرّد وينقل الضغط حسب تصميم القير.',checks:'نوع الزيت ومستوى القياس وحرارته تختلف حسب القير؛ اتبع إجراء المصنع فقط.'},
+{system:'transmission',name:'محول العزم / Torque Converter',aliases:'torque converter lockup',function:'ينقل العزم بين المحرك والقير الأوتوماتيكي التقليدي.',checks:'قارن سرعة الانزلاق وأوامر القفل والأكواد قبل الحكم.'},
+{system:'transmission',name:'حساسات سرعة القير',aliases:'input output speed sensor',function:'تقيس سرعة عمود الدخل أو الخرج لمراقبة النسبة والتبديل.',checks:'قارن قراءات السرعة أثناء اختبار آمن وافحص الدائرة والترس المستهدف.'},
+{system:'transmission',name:'عمود نقل الحركة والدفرنس',aliases:'driveshaft differential axle',function:'ينقل العزم إلى العجلات ويقسمه حسب منظومة الدفع.',checks:'افحص الاهتزاز والتسريب والخلوص والتثبيت على رافعة آمنة.'},
+{system:'brakes',name:'فحمات وأقراص الفرامل',aliases:'brake pads rotors discs',function:'تولد الاحتكاك اللازم لإبطاء العجلة.',checks:'افحص السماكة والتشققات والتلوث والتفاوت وفق مواصفات الصانع.'},
+{system:'brakes',name:'ماستر الفرامل وسيرفو',aliases:'master cylinder brake booster',function:'يولد ضغط الفرامل ويساعد قوة الدعسة.',checks:'أي هبوط بالدعسة أو فقد فرامل يستوجب عدم القيادة وفحصاً فورياً.'},
+{system:'brakes',name:'وحدة ABS وحساسات العجلات',aliases:'wheel speed sensor abs module',function:'تراقب سرعة العجلات وتدير منع انغلاق الفرامل.',checks:'اقرأ أكواد ABS وقارن سرعات العجلات وافحص الأسلاك والحلقات.'},
+{system:'suspension',name:'مساعدات / ممتصات الصدمات',aliases:'shock absorber strut',function:'تتحكم بحركة الهيكل والعجلات وتحسن الثبات.',checks:'افحص التسريب والتأرجح والتآكل مع فحص باقي مكونات التعليق.'},
+{system:'suspension',name:'أذرعة وجلب ومفاصل التعليق',aliases:'control arm bushings ball joint',function:'تحدد حركة العجلة وتربطها بالهيكل.',checks:'افحص الخلوص والتشققات على رافعة وبطريقة آمنة.'},
+{system:'suspension',name:'علبة الدركسون ومساعد التوجيه',aliases:'steering rack electric power steering EPS',function:'تحول حركة المقود إلى توجيه للعجلات وقد تتضمن مساعدة كهربائية/هيدروليكية.',checks:'افحص أكواد EPS والجهد والخلوص والزوايا والمفاصل قبل إدانة المحرك.'},
+{system:'exhaust',name:'حساس الأوكسجين / Lambda',aliases:'oxygen sensor o2 afr',function:'يقيس الأوكسجين بالعادم للمساعدة في ضبط الخليط ومراقبة الانبعاثات.',checks:'قارن الإشارة وFuel Trims والتسريبات قبل تبديله.'},
+{system:'exhaust',name:'المحول الحفاز Catalytic Converter',aliases:'catalyst cat converter',function:'يقلل ملوثات العادم.',checks:'لا تحكم بالانسداد من كود فقط؛ قارن الضغط الخلفي والحرارة والبيانات حسب الإجراء.'},
+{system:'exhaust',name:'صمام EGR',aliases:'exhaust gas recirculation',function:'يعيد كمية محسوبة من غاز العادم في محركات مزودة به.',checks:'افحص أمر الصمام وموقعه والتدفق والترسبات وفق مواصفات المحرك.'},
+{system:'exhaust',name:'التيربو والبوابة Wastegate',aliases:'turbocharger actuator boost',function:'يرفع ضغط هواء السحب في المحركات المزودة بشاحن توربيني.',checks:'قارن ضغط الشحن المطلوب والفعلي وافحص الخراطيم والتحكم والتزييت.'},
+{system:'hvac',name:'كمبروسر المكيف',aliases:'AC compressor clutch electric compressor',function:'يضغط وسيط التبريد؛ نوعه يختلف في الهايبرد والكهربائي.',checks:'افحص الضغوط وأمر التشغيل والحساسات والتسريب بأجهزة معتمدة.'},
+{system:'hvac',name:'مروحة ومقاومة/وحدة النفخ',aliases:'blower motor resistor HVAC',function:'تحرك الهواء داخل المقصورة.',checks:'اختبر سرعات المروحة والتغذية والوحدة والفيوز.'},
+{system:'hvac',name:'حساسات وخلط الهواء بالمكيف',aliases:'blend door actuator cabin filter',function:'تتحكم بحرارة الهواء واتجاهه وجودته.',checks:'افحص الفلاتر والأبواب والمشغلات والأكواد حسب النظام.'},
+{system:'hybrid',name:'بطارية الهايبرد عالية الجهد',aliases:'hybrid traction battery HV',function:'تخزن الطاقة لدفع المركبة أو دعم المحرك الكهربائي.',checks:'فحصها للمتخصصين فقط بإجراءات فصل ووقاية المصنع؛ لا تفتحها بنفسك.'},
+{system:'hybrid',name:'الإنفرتر / محول القدرة',aliases:'inverter converter hybrid',function:'يتحكم بالطاقة بين البطارية والمحركات الكهربائية وأنظمة الجهد.',checks:'اقرأ وحدات الهايبرد وافحص التبريد والأكواد؛ لا تلمس الجهد العالي.'},
+{system:'hybrid',name:'محرك/مولد كهربائي MG',aliases:'motor generator hybrid',function:'يوفر الدفع أو توليد الطاقة حسب تصميم النظام.',checks:'تحليل متخصص عبر بيانات المصنع وأكواد وحدات الهايبرد.'},
+{system:'hybrid',name:'محول DC-DC',aliases:'dc dc converter 12v',function:'يحوّل جهد النظام العالي لتغذية شبكة 12 فولت في كثير من الهايبرد/الكهربائي.',checks:'افحص نظام الشحن والأكواد بإجراءات الجهد العالي المناسبة.'},
+{system:'body',name:'وحدات الأبواب والزجاج والقفل',aliases:'door module window lock',function:'تدير وظائف الراحة والهيكل حسب تجهيز السيارة.',checks:'افحص الفيوزات والأوامر والاتصال وحالة الأسلاك عند المفصلات.'},
+{system:'body',name:'حساسات الرجوع والكاميرا',aliases:'parking sensor reverse camera',function:'تساعد على الرؤية والتنبيه أثناء المناورة.',checks:'افحص التغذية والأكواد والتنظيف والمحاذاة وإعدادات الوحدة.'},
+{system:'body',name:'وحدة الوسائد الهوائية SRS',aliases:'airbag restraint control module',function:'تدير أنظمة الحماية الإضافية.',checks:'لا تختبر دوائر الوسائد بمقياس أوم عادي؛ اتبع إجراءات السلامة ومعدات الشركة.'}
+,{system:'engine',name:'حساس الطرق Knock Sensor',aliases:'knock detonation sensor حساس صفعة',function:'يرصد الاهتزازات المرتبطة بالطرق حتى تعدّل وحدة التحكم توقيت الإشعال.',checks:'افحص الأكواد والتوصيلات وطريقة تثبيت الحساس، واستبعد الوقود غير المناسب ومشاكل الاحتراق قبل التبديل.'}
+,{system:'engine',name:'مانيفولد السحب Intake Manifold',aliases:'intake manifold مجمع السحب',function:'يوزع الهواء على أسطوانات المحرك.',checks:'افحص التشققات وتسريب الهواء والجوانات ومشغلات مجاري السحب إن وجدت.'}
+,{system:'engine',name:'مانيفولد العادم Exhaust Manifold',aliases:'exhaust manifold مجمع العادم',function:'يجمع غازات العادم الخارجة من الأسطوانات.',checks:'افحص صوت التسريب والسخام والشقوق وشدادات التثبيت بعد برودة المحرك.'}
+,{system:'engine',name:'جوان غطاء البلوف',aliases:'valve cover gasket rocker cover seal',function:'يمنع تسرب الزيت من غطاء رأس المحرك.',checks:'نظف المنطقة وحدد مصدر التسريب؛ افحص تهوية الكارتير قبل استبدال الجوان.'}
+,{system:'engine',name:'قواعد المحرك والقير',aliases:'engine mount transmission mount قواعد مكينة',function:'تثبت مجموعة المحرك والقير وتخفف الاهتزاز.',checks:'افحص التشقق والهبوط وحركة المجموعة تحت اختبار آمن، واستبعد التقطيع الداخلي.'}
+,{system:'engine',name:'حساس ضغط الزيت',aliases:'oil pressure switch sensor',function:'يراقب ضغط زيت المحرك أو يشغل تحذير الضغط.',checks:'إذا ظهرت لمبة ضغط الزيت أوقف المحرك عند الاشتباه بضغط منخفض، وتحقق بمقياس ميكانيكي حسب الدليل.'}
+,{system:'engine',name:'مضخة الزيت',aliases:'oil pump طرمبة زيت',function:'تدفع الزيت إلى مجاري التزييت.',checks:'لا تحكم عليها من الصوت وحده؛ قِس ضغط الزيت بالمواصفة وافحص مستوى الزيت والفلتر والخلوصات.'}
+,{system:'engine',name:'التيربو ومشغل ضغط الشحن',aliases:'turbocharger wastegate actuator boost',function:'يرفع كمية الهواء الداخلة للمحرك في المحركات المزودة بشاحن توربيني.',checks:'افحص خراطيم الشحن والتسريب وأوامر المشغل والضغط المطلوب والفعلي، ولا تلمس أجزاء ساخنة.'}
+,{system:'engine',name:'مبرد هواء الشحن Intercooler',aliases:'intercooler charge air cooler',function:'يخفض حرارة الهواء المضغوط قبل دخوله للمحرك.',checks:'افحص تسريب الهواء والانسداد الخارجي وآثار الزيت مع مقارنة بيانات ضغط الشحن.'}
+,{system:'fuel',name:'حساس الأكسجين / لامبدا',aliases:'oxygen sensor o2 lambda afr',function:'يقيس الأكسجين بالعادم للمساعدة في ضبط خليط الوقود.',checks:'راجع بيانات الحساس وتصحيح الوقود والتسريب بالعادم والأسلاك؛ نوع الحساس يختلف حسب الموقع والنظام.'}
+,{system:'fuel',name:'حساس نسبة الهواء والوقود A/F',aliases:'air fuel ratio sensor wideband',function:'يقيس نسبة الهواء والوقود في الأنظمة التي تستخدم حساساً واسع النطاق.',checks:'استخدم بيانات الفحص ومواصفة المصنع، ولا تخلط بينه وبين كل أنواع حساسات O2.'}
+,{system:'fuel',name:'مضخة الضغط العالي GDI',aliases:'high pressure fuel pump direct injection',function:'ترفع ضغط الوقود في أنظمة الحقن المباشر.',checks:'قارن الضغط المطلوب والفعلي وأوامر التحكم؛ لا تفك خطوط الضغط العالي والمحرك يعمل أو قبل اتباع إجراء التفريغ.'}
+,{system:'fuel',name:'سكة الوقود Fuel Rail',aliases:'fuel rail injector rail',function:'توزع الوقود على البخاخات وتحمل الحساسات أو المنظم حسب النظام.',checks:'افحص التسريب والضغط والتثبيت وفق تعليمات السلامة الخاصة بالنظام.'}
+,{system:'fuel',name:'صمام EGR',aliases:'exhaust gas recirculation valve',function:'يعيد جزءاً من غاز العادم إلى السحب لتقليل الانبعاثات في الأنظمة المجهزة به.',checks:'راقب الأمر والموضع والبيانات الحية وافحص الممرات والتوصيلات قبل استبداله.'}
+,{system:'fuel',name:'حساس ضغط التيربو / Boost Sensor',aliases:'boost pressure sensor turbo map',function:'يراقب ضغط الهواء في مجرى الشحن.',checks:'قارن القراءة والمحرك متوقفاً بالضغط الجوي، ثم راقب المطلوب والفعلي أثناء اختبار مناسب.'}
+,{system:'ignition',name:'حساس موضع عمود الكامات / VVT',aliases:'cam position sensor camshaft timing',function:'يرسل موضع الكامة ويساعد على التحكم بالتوقيت المتغير.',checks:'افحص الإشارة والتزامن وأكواد CKP/CMP ومستوى الزيت قبل استبداله.'}
+,{system:'cooling',name:'غطاء الراديتر / غطاء الضغط',aliases:'radiator cap pressure cap',function:'يحافظ على ضغط دائرة التبريد ضمن قيمة محددة ويساعد على التحكم بالرجوع للخزان.',checks:'اختبر الغطاء بجهاز مناسب والمحرك بارد؛ لا تفتح نظام تبريد ساخن.'}
+,{system:'cooling',name:'خزان التمدد وخراطيم التبريد',aliases:'coolant reservoir hose radiator hose',function:'يسمح بتمدد سائل التبريد وينقل السائل بين أجزاء الدائرة.',checks:'افحص المستوى والتشققات والانتفاخات والتسريب بعد برودة المحرك.'}
+,{system:'cooling',name:'مبرد زيت المحرك',aliases:'engine oil cooler',function:'ينقل حرارة الزيت إلى سائل التبريد أو الهواء حسب التصميم.',checks:'افحص اختلاط السوائل والتسريب واختبر الضغط حسب الدليل قبل تقرير الاستبدال.'}
+,{system:'electrical',name:'مفتاح التشغيل / زر التشغيل',aliases:'ignition switch start stop button',function:'يطلب وضع التشغيل أو بدء التدوير ويرسل الإشارة إلى وحدات التحكم.',checks:'افحص حالة المفتاح والجهد والأكواد وبيانات طلب التشغيل ونظام مانع السرقة.'}
+,{system:'electrical',name:'حساسات ABS سرعة العجلات',aliases:'wheel speed sensor abs sensor',function:'تقيس سرعة كل عجلة لنظام ABS والثبات.',checks:'اقرأ بيانات سرعة العجلات وقارنها، وافحص الأسلاك والحلقة المغناطيسية/المسننة.'}
+,{system:'electrical',name:'وحدة ABS / مضخة الهيدروليك',aliases:'abs module hydraulic pump esc',function:'تتحكم بضغط الفرامل أثناء تدخل ABS والثبات.',checks:'اقرأ أكواد الوحدة وافحص التغذية والبيانات وإجراءات نزف المصنع؛ لا تستبدلها من لمبة التحذير وحدها.'}
+,{system:'electrical',name:'حساس زاوية المقود',aliases:'steering angle sensor sas',function:'يبلغ نظام الثبات باتجاه وزاوية المقود.',checks:'قارن البيانات والأكواد والمعايرة المطلوبة بعد إصلاحات التوجيه أو ضبط الزوايا.'}
+,{system:'transmission',name:'جسم البلوف Valve Body',aliases:'transmission valve body mechatronic',function:'يوجه ضغط الزيت داخل القير للتحكم بالتعشيق حسب التصميم.',checks:'راجع الأكواد والضغط والبيانات وجودة الزيت وإجراءات المصنع قبل الفك أو الاستبدال.'}
+,{system:'transmission',name:'سولونويدات القير',aliases:'shift solenoid pressure control solenoid',function:'تتحكم بتدفق الزيت والضغط أو تبديل النسب في القير الإلكتروني.',checks:'اختبر الدائرة والمقاومة والتفعيل والضغط وفق مواصفات القير؛ بعض الأنواع مدمجة بجسم البلوف.'}
+,{system:'transmission',name:'حساس حرارة زيت القير',aliases:'transmission fluid temperature TFT',function:'يقيس حرارة زيت القير لتعديل التحكم والتشخيص.',checks:'قارن القراءة بحرارة الجو عند البرودة ثم راقبها أثناء التشغيل وافحص الدائرة.'}
+,{system:'transmission',name:'كلتشات القير / حزم الاحتكاك',aliases:'clutch packs friction plates automatic transmission',function:'تنقل العزم داخل القير الأوتوماتيكي حسب النسبة المطلوبة.',checks:'حلل الانزلاق والضغط والأكواد وحالة الزيت؛ التشخيص الداخلي يحتاج إجراءات ومقاييس متخصصة.'}
+,{system:'brakes',name:'فحمات الفرامل',aliases:'brake pads brake linings',function:'تضغط على القرص أو الطبل لتوليد الاحتكاك وإبطاء السيارة.',checks:'افحص السماكة والتآكل غير المتساوي والتلوث وحالة القرص، واستبدل وفق تعليمات المحور.'}
+,{system:'brakes',name:'أقراص الفرامل',aliases:'brake discs rotors هوبات',function:'سطح الاحتكاك الذي تضغط عليه الفحمات.',checks:'قِس السماكة والانحراف وقارن بحدود المصنع، وافحص التشققات والحرارة الزائدة.'}
+,{system:'brakes',name:'ماستر الفرامل',aliases:'brake master cylinder',function:'يحوّل قوة الدعسة إلى ضغط هيدروليكي في دائرة الفرامل.',checks:'افحص هبوط الدعسة والتسريب ومستوى السائل؛ لا تقد السيارة إذا كان أداء الفرامل غير آمن.'}
+,{system:'brakes',name:'كليبر الفرامل',aliases:'brake caliper piston slide pins',function:'يضغط الفحمات على قرص الفرامل.',checks:'افحص حركة المكبس والمسامير المنزلقة والتسريب والتآكل غير المتساوي.'}
+,{system:'suspension',name:'مساعدات / ممتصات الصدمات',aliases:'shock absorber strut',function:'تتحكم بحركة التعليق وتحافظ على تماس الإطار مع الطريق.',checks:'افحص التسريب والارتداد والتآكل غير المتساوي للإطارات وبقية أجزاء التعليق.'}
+,{system:'suspension',name:'مقصات وبوشات التعليق',aliases:'control arm bushings ball joint',function:'تحدد حركة العجلة وتربطها بالهيكل مع السماح بالحركة المصممة.',checks:'افحص الخلوص والتشققات تحت دعم آمن وبطريقة المصنع؛ لا تدخل تحت سيارة غير مؤمنة.'}
+,{system:'suspension',name:'رؤوس الدركسون وعلبة التوجيه',aliases:'tie rod end steering rack',function:'تنقل حركة المقود إلى العجلات الأمامية.',checks:'افحص الخلوص والتسريب والتثبيت ثم تحقق من زوايا العجلات بعد الإصلاح.'}
+,{system:'exhaust',name:'المحول الحفاز Catalytic Converter',aliases:'catalyst cat converter',function:'يقلل الملوثات في غازات العادم.',checks:'تحقق من الأكواد وحرارة/ضغط العادم وأسباب الخليط الغني أو التقطيع قبل استبداله.'}
+,{system:'exhaust',name:'حساس فرق ضغط DPF',aliases:'dpf differential pressure sensor',function:'يقيس فرق الضغط حول فلتر الجسيمات في سيارات الديزل المجهزة به.',checks:'افحص الخراطيم والانسداد والقراءات والأكواد وفق دليل السيارة؛ لا تبدأ تجديداً قسرياً دون تحقق.'}
+,{system:'exhaust',name:'صمام EGR ديزل ومبرده',aliases:'diesel egr cooler',function:'يدير إعادة غاز العادم ويبرده في بعض محركات الديزل.',checks:'افحص التسريب والتراكمات وأوامر الصمام وأسباب السخام وفق إجراء المصنع.'}
+,{system:'hvac',name:'كمبريسر التكييف',aliases:'ac compressor air conditioning',function:'يضغط وسيط التبريد في دورة التكييف.',checks:'افحص الضغوط وطلب التشغيل والمراوح والتسريب بجهاز مناسب؛ لا تفرغ وسيط التبريد للجو.'}
+,{system:'hvac',name:'صمام التمدد / أوريفس',aliases:'expansion valve orifice tube',function:'ينظم تدفق وسيط التبريد إلى المبخر.',checks:'قارن ضغوط ودرجات حرارة الدورة وتأكد من الشحنة وتدفق الهواء قبل التشخيص.'}
+,{system:'hvac',name:'مروحة داخلية ومقاومتها',aliases:'blower motor resistor blower control module',function:'تدفع الهواء عبر المبخر أو المدفأة وتتحكم بسرعات النفخ.',checks:'اختبر السرعات والتغذية والأرضي ووحدة التحكم حسب نوع النظام.'}
+,{system:'hybrid',name:'بطارية الهايبرد عالية الجهد',aliases:'hybrid traction battery HV battery',function:'تخزن الطاقة الكهربائية لدفع السيارة ومساندة المحرك.',checks:'تُفحص ببيانات الوحدة وإجراءات المصنع فقط؛ لا تفتح البطارية أو تلمس أطراف الجهد العالي دون تدريب ومعدات معتمدة.'}
+,{system:'hybrid',name:'الإنفرتر / العاكس',aliases:'inverter converter hybrid',function:'يدير تحويل الطاقة الكهربائية بين البطارية والمحركات الكهربائية حسب التصميم.',checks:'اقرأ أكواد نظام الهايبرد وبيانات التبريد والتغذية؛ الجهد العالي خطر ويحتاج فني مؤهل.'}
+,{system:'hybrid',name:'محول DC-DC',aliases:'dc dc converter hybrid 12v',function:'يخفض جهد بطارية الدفع لشحن شبكة 12 فولت في كثير من السيارات الهجينة.',checks:'افحص أكواد النظام وجهد شبكة 12 فولت وفق إجراءات الهايبرد، ولا تفصل الموصلات عالية الجهد عشوائياً.'}
+,{system:'body',name:'حساسات الاصطفاف والكاميرا',aliases:'parking sensor reverse camera',function:'تساعد السائق على رؤية العوائق أو تقدير المسافة.',checks:'افحص التنظيف والتغذية والموصلات والأكواد ومعايرة النظام إن تطلبت.'}
+,{system:'body',name:'منظومة القفل المركزي',aliases:'door lock actuator central locking',function:'تتحكم بفتح وإغلاق الأبواب كهربائياً.',checks:'حدد الباب المتأثر وافحص الفيوز والتغذية والأسلاك داخل مفصل الباب والمشغل.'}
+
+];
+const partSystemNames={engine:'المحرك والتوقيت',fuel:'الوقود والهواء',ignition:'الإشعال',cooling:'التبريد والتزييت',electrical:'الكهرباء والتشغيل',transmission:'القير والدفع',brakes:'الفرامل والثبات',suspension:'التعليق والتوجيه',exhaust:'العادم والانبعاثات',hvac:'التكييف',hybrid:'الهايبرد والكهرباء',body:'الهيكل والراحة'};
+
+// V8: interactive illustrated engine explorer; details adapt to owner/mechanic mode.
+const enginePartsV8={
+ block:{name:'كتلة المحرك (Engine Block)',function:'الهيكل الرئيسي الذي يحتوي الأسطوانات وممرات الزيت وسائل التبريد.',owner:'قد ترتبط المشكلة بتسريب أو ارتفاع حرارة أو صوت داخلي، لكن الأعراض وحدها لا تثبت تلف البلوك.',mechanic:'افحص التسريب وضغط نظام التبريد وضغط الزيت، ثم اختبارات الضغط/التسريب أو فحص الاستواء وفق دليل المحرك عند وجود مؤشرات.',symptoms:'تسريب سائل أو زيت، حرارة، نقص سوائل أو أصوات داخلية (ليست أدلة منفردة).',tests:'فحص بصري بعد التبريد، اختبار ضغط نظام التبريد، قياس ضغط الزيت أو اختبارات ميكانيكية حسب دليل المصنع.',safety:'لا تفتح نظام التبريد والمحرك حار.'},
+ head:{name:'رأس المحرك (Cylinder Head)',function:'يحمل الصمامات ومجاري السحب والعادم، وقد يضم أعمدة الكامات.',owner:'خلل الرأس أو حشية الرأس احتمال واحد عند وجود حرارة أو نقص سائل أو اختلاط سوائل؛ يلزم فحص لتأكيد السبب.',mechanic:'تحقق من آثار التسريب، اختبر نظام التبريد وغازات الاحتراق عند اللزوم، ثم افحص الضغط واستواء الرأس وفق دليل المحرك.',symptoms:'ارتفاع حرارة، نقص سائل تبريد، دخان غير طبيعي أو اختلال ضغط؛ لا يكفي أي عرض وحده.',tests:'اختبار ضغط التبريد، اختبار غازات الاحتراق المناسب، Compression/Leak-down وفحص الاستواء حسب المواصفات.',safety:'أوقف القيادة عند ارتفاع الحرارة أو فقدان سائل واضح.'},
+ intake:{name:'مجمع السحب (Intake Manifold)',function:'يوزع الهواء على الأسطوانات؛ وقد يتضمن مجاري متغيرة حسب التصميم.',owner:'تسريب هواء قد يسبب خمولاً غير مستقر أو ضعفاً، لكن افحص الخراطيم والحساسات أيضاً.',mechanic:'افحص التسريب بطريقة مناسبة، PCV وFuel Trims وMAF/MAP، وتحقق من مشغل مجاري السحب إن وجد.',symptoms:'تذبذب خمول، صفير، ضعف عزم أو خليط غير طبيعي.',tests:'فحص بصري واختبار تسريب آمن، قراءة Fuel Trims وMAF/MAP ومقارنة بيانات المصنع.',safety:'تجنب رش مواد قابلة للاشتعال على محرك يعمل.'},
+ fuel:{name:'منظومة الوقود والبخاخات',function:'توصل الوقود وتقيسه وفق أوامر وحدة التحكم ونوع نظام الحقن.',owner:'التفتفة أو صعوبة التشغيل لا تعني تلقائياً أن البخاخ تالف؛ يلزم فحص الضغط والأوامر.',mechanic:'اقرأ الأكواد والبيانات، قارن ضغط الوقود المطلوب والفعلي، واختبر توازن/تسريب البخاخات بإجراء المصنع.',symptoms:'صعوبة تشغيل، تقطيع، صرفية أو رائحة وقود؛ قد تكون لها أسباب أخرى.',tests:'ضغط الوقود حسب مواصفات المحرك، أوامر الحقن، عدادات التقطيع وفحص البخاخ بأدوات مناسبة.',safety:'أنظمة الوقود قد تكون عالية الضغط؛ لا تفك خطوطها دون إجراء المصنع.'},
+ timing:{name:'منظومة التوقيت والسير/السلسلة',function:'تحافظ على تزامن عمود المرفق مع أعمدة الكامات.',owner:'صوت جهة التوقيت أو ضعف التشغيل يحتاج تشخيصاً؛ لا تغيّر السلسلة اعتماداً على الصوت فقط.',mechanic:'تحقق من الأكواد والتزامن الفعلي وعلامات التوقيت وشد السلسلة/السير وفق دليل المحرك.',symptoms:'صوت جهة التوقيت، صعوبة تشغيل، ضعف أو أكواد تزامن.',tests:'قراءة CKP/CMP correlation، فحص العلامات والشداد وإجراءات التوقيت الخاصة بالمحرك.',safety:'خطأ التوقيت قد يسبب ضرراً داخلياً؛ لا تدوّر المحرك عشوائياً بعد الاشتباه.'},
+ alternator:{name:'المولد (Alternator)',function:'يشحن شبكة 12 فولت أثناء عمل المحرك في السيارات التقليدية.',owner:'لمبة البطارية أو ضعف الكهرباء قد ينتج عن المولد أو البطارية أو الأسلاك.',mechanic:'قِس جهد الشحن وهبوط الجهد والتيار وفق نظام الشحن المحدد؛ بعض الأنظمة الذكية تغيّر الجهد حسب الحمل.',symptoms:'لمبة شحن، بطارية تفرغ أو أعطال كهربائية متعددة.',tests:'اختبار البطارية والمولد تحت الحمل، فحص السير والتوصيلات والأرضي حسب مواصفات السيارة.',safety:'أبعد اليد والملابس عن السيور والأجزاء الدوارة.'},
+ cooling:{name:'مضخة الماء وممرات التبريد',function:'تدوّر سائل التبريد عبر المحرك والراديتر بحسب تصميم النظام.',owner:'الحرارة أو التسريب قد يرتبطان بالمضخة أو الثرموستات أو المروحة أو الراديتر.',mechanic:'تحقق من التسريب وتدفق التبريد وECT والمراوح والثرموستات، ثم اختبر الضغط حسب دليل السيارة.',symptoms:'ارتفاع حرارة، تسريب أو ضعف تدفئة المقصورة في بعض الحالات.',tests:'فحص ضغط النظام بعد البرودة، مقارنة حرارة الخراطيم والقراءات وفق إجراء المصنع.',safety:'لا تفتح غطاء الرديتر أو القربة المضغوطة وهي حارة.'},
+ sensor:{name:'حساسات المحرك (CKP/CMP/MAF/MAP وغيرها)',function:'ترسل قياسات أو إشارات إلى وحدة التحكم؛ يختلف النوع والموقع حسب المحرك.',owner:'ظهور كود حساس لا يثبت أن الحساس نفسه تالف؛ قد يكون السبب سلكاً أو تغذية أو مشكلة ميكانيكية.',mechanic:'راجع تعريف الكود وFreeze Frame، افحص التغذية والأرضي والإشارة والضفيرة بمخطط السيارة.',symptoms:'لمبة محرك، توقف أو صعوبة تشغيل أو ضعف، حسب الحساس.',tests:'قراءات حية واختبار دائرة وإشارة حسب نوع الحساس ودليل المصنع.',safety:'لا تثقب العزل ولا تقصر أطراف الدوائر الإلكترونية.'},
+ exhaust:{name:'مجمع العادم',function:'يجمع غازات الاحتراق ويوجهها إلى منظومة العادم والمعالجة.',owner:'صوت نفخ أو رائحة عادم قد يشير إلى تسريب، ويحتاج فحصاً سريعاً.',mechanic:'افحص التسريب والتثبيت والأكواد وحالة المحول الحفاز؛ ابحث عن سبب التقطيع أو الخليط الغني قبل تبديل القطع.',symptoms:'صوت أعلى، رائحة عادم، ضعف أداء أو أكواد انبعاثات.',tests:'فحص بصري عند البرودة، بيانات الحساسات واختبارات ضغط/حرارة العادم المعتمدة.',safety:'العادم ساخن وقد يحتوي غازات خطرة؛ وفّر تهوية جيدة.'}
+};
+let engineView={x:-12,z:1,part:'block'};
+function renderEngineDetail(key){const p=enginePartsV8[key];if(!p)return;engineView.part=key;document.querySelectorAll('[data-engine-part]').forEach(el=>el.classList.toggle('selected',el.dataset.enginePart===key));document.querySelectorAll('[data-engine-choice]').forEach(el=>el.classList.toggle('active',el.dataset.engineChoice===key));const mechanic=document.body.classList.contains('mechanic-mode');$('enginePartDetail').innerHTML='<h3>'+escapeText(p.name)+'</h3><p><span class="detail-label">الوظيفة:</span> '+escapeText(p.function)+'</p><p><span class="detail-label">الأعراض المحتملة:</span> '+escapeText(p.symptoms)+'</p><p><span class="detail-label">'+(mechanic?'خطة فحص فنية:':'شنو يعني هذا لصاحب السيارة؟')+'</span> '+escapeText(mechanic?p.mechanic:p.owner)+'</p>'+(mechanic?'<p><span class="detail-label">اختبارات مناسبة:</span> '+escapeText(p.tests)+'</p>':'')+'<p class="small"><b>سلامة:</b> '+escapeText(p.safety)+'</p><p class="engine-note">المعلومات عامة؛ المواصفات الدقيقة تتطلب تحديد السيارة ورمز المحرك ودليل المصنع.</p>';}
+function initEngineExplorer(){const holder=$('enginePartButtons');if(!holder)return;holder.innerHTML=Object.entries(enginePartsV8).map(([k,p])=>'<button type="button" data-engine-choice="'+k+'">'+escapeText(p.name)+'</button>').join('');holder.querySelectorAll('[data-engine-choice]').forEach(b=>b.addEventListener('click',()=>renderEngineDetail(b.dataset.engineChoice)));document.querySelectorAll('[data-engine-part]').forEach(el=>{el.setAttribute('tabindex','0');el.setAttribute('role','button');el.addEventListener('click',()=>renderEngineDetail(el.dataset.enginePart));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();renderEngineDetail(el.dataset.enginePart)}})});const update=()=>{$('engineModel3d').style.transform='rotateX(7deg) rotateY('+engineView.x+'deg) scale('+engineView.z+')'};$('engineRotateLeft').addEventListener('click',()=>{engineView.x-=15;update()});$('engineRotateRight').addEventListener('click',()=>{engineView.x+=15;update()});$('engineZoomIn').addEventListener('click',()=>{engineView.z=Math.min(1.45,engineView.z+.1);update()});$('engineZoomOut').addEventListener('click',()=>{engineView.z=Math.max(.7,engineView.z-.1);update()});$('engineResetView').addEventListener('click',()=>{engineView={x:-12,z:1,part:engineView.part};update()});renderEngineDetail('block');}
+initEngineExplorer();
+$("ownerModeBtn").addEventListener("click",()=>{if(engineView?.part)renderEngineDetail(engineView.part)});
+$("mechanicModeBtn").addEventListener("click",()=>{if(engineView?.part)renderEngineDetail(engineView.part)});
+document.addEventListener('click',e=>{const choice=e.target.closest('[data-engine-choice]');if(choice){renderEngineDetail(choice.dataset.engineChoice);return}const part=e.target.closest('[data-engine-part]');if(part)renderEngineDetail(part.dataset.enginePart)});
+
+
+// V8.6 Toyota-only vehicle-linked parts starter database. No unverified OEM numbers are supplied.
+const fitmentDB = {
+ Toyota: {
+  'كورولا': {
+   years:['2014–2018','2019–2023','2024+'],
+   engines:[
+    {label:'1.6 بنزين (تحقق من رمز المحرك)',parts:['فلتر زيت المحرك','فلتر هواء المحرك','بواجي الإشعال','كويلات الإشعال','حساس الكرنك CKP','حساس الكامات CMP','ثرموستات ونظام التبريد','سير الملحقات']},
+    {label:'1.8 بنزين / هايبرد (حسب الفئة)',parts:['فلتر زيت المحرك','فلتر هواء المحرك','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','مضخة ماء التبريد','فلتر هواء الهايبرد إن وجد','مكونات الهايبرد حسب دليل المصنع']}
+   ]
+  },
+  'كامري': {years:['2012–2017','2018–2024','2025+'],engines:[
+   {label:'2.5 بنزين (تحقق من الرمز)',parts:['فلتر زيت المحرك','فلتر هواء المحرك','بواجي الإشعال','كويلات الإشعال','حساس CKP','حساس CMP','صمام VVT وزيت المحرك','مضخة ماء التبريد']},
+   {label:'3.5 V6 بنزين (حسب الفئة)',parts:['فلاتر المحرك','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','مكونات التوقيت حسب رمز المحرك','مضخة ماء التبريد','حساسات الهواء والوقود']}
+  ]},
+  'لاندكروزر': {years:['2008–2021','2022+'],engines:[
+   {label:'4.0 V6 بنزين (حسب السوق)',parts:['فلاتر الزيت والهواء','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','مكونات التبريد','مكونات التوقيت حسب الرمز']},
+   {label:'4.6 / 5.7 V8 بنزين (حسب السنة والسوق)',parts:['فلاتر الزيت والهواء','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','صمامات VVT حسب المحرك','مكونات التبريد والتوقيت']},
+   {label:'3.3 V6 توين تيربو (حسب الفئة)',parts:['فلاتر المحرك','بواجي الإشعال','كويلات الإشعال','حساسات ضغط الشحن','خراطيم التيربو والإنتركولر','مكونات التبريد حسب دليل المحرك']}
+  ]},
+  'هايلوكس': {years:['2016–2024','2025+'],engines:[
+   {label:'2.7 بنزين (حسب الفئة)',parts:['فلاتر المحرك','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','مكونات التبريد']},
+   {label:'2.4 / 2.8 ديزل (حسب السوق)',parts:['فلتر ديزل','فلتر هواء','حساس ضغط الوقود','حساسات CKP/CMP','مكونات التيربو وEGR حسب المحرك','فلتر DPF إذا كانت السيارة مجهزة به']}
+  ]},
+  'فورتشنر': {years:['2016–2024','2025+'],engines:[{label:'2.7 بنزين (حسب السوق)',parts:['فلاتر المحرك','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','مكونات التبريد']},{label:'2.4 / 2.8 ديزل (حسب السوق)',parts:['فلتر ديزل','فلتر هواء','حساس ضغط الوقود','مكونات التيربو وEGR حسب الرمز','مكونات التبريد']}]},
+  'راف4': {years:['2013–2018','2019–2025'],engines:[{label:'2.0 / 2.5 بنزين أو هايبرد (حسب السوق)',parts:['فلاتر المحرك','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','مكونات التبريد','مكونات الهايبرد حسب الفئة']}]},
+  'يارس': {years:['2012–2020','2021+'],engines:[{label:'1.3 / 1.5 بنزين (حسب السوق)',parts:['فلاتر المحرك','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','ثروتل وحساسات الهواء','مكونات التبريد']}]},
+  'هايس': {years:['2013–2018','2019+'],engines:[{label:'2.7 بنزين أو 2.8 ديزل (حسب السوق)',parts:['فلاتر المحرك','فلاتر الوقود حسب النوع','حساسات CKP/CMP','مكونات التبريد','مكونات الحقن حسب رمز المحرك']}]},
+
+  'برادو': {years:['2010–2017','2018–2023','2024+'],engines:[{label:'2.7 بنزين (حسب السوق)',parts:['فلاتر الزيت والهواء','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','مكونات التبريد','مكونات التوقيت حسب رمز المحرك']},{label:'4.0 V6 بنزين (حسب السوق)',parts:['فلاتر المحرك','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','صمامات VVT حسب المحرك','مكونات التبريد']},{label:'2.8 ديزل (حسب السوق)',parts:['فلتر ديزل','فلتر هواء','حساس ضغط الوقود','حساسات CKP/CMP','مكونات التيربو وEGR حسب المحرك','DPF إذا كانت النسخة مجهزة به']}]},
+  'أفالون': {years:['2013–2018','2019–2022'],engines:[{label:'3.5 V6 بنزين (حسب السوق)',parts:['فلاتر المحرك','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','مكونات VVT والتوقيت حسب الرمز','مكونات التبريد']},{label:'هايبرد (حسب الفئة)',parts:['فلاتر المحرك','بواجي الإشعال حسب المحرك','مكونات تبريد الهايبرد','مكونات الجهد العالي حسب دليل المصنع']}]},
+  'بريوس': {years:['2010–2015','2016–2022'],engines:[{label:'1.8 هايبرد (حسب الجيل)',parts:['فلاتر المحرك','بواجي الإشعال','مكونات تبريد المحرك والإنفرتر','مضخة تبريد حسب النسخة','بطارية الهايبرد ومكوناتها حسب دليل المصنع','حساسات المحرك']}]},
+  'راش': {years:['2018–2024','2025+'],engines:[{label:'1.5 بنزين (حسب السوق)',parts:['فلاتر المحرك','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','ثروتل وحساسات الهواء','مكونات التبريد']}]},
+  'رايز': {years:['2020+'],engines:[{label:'1.0 تيربو أو 1.2 بنزين (حسب السوق)',parts:['فلاتر المحرك','بواجي الإشعال حسب المحرك','كويلات الإشعال','حساسات ضغط الشحن إن وجدت','خراطيم التيربو إن وجدت','مكونات التبريد']}]},
+  'FJ كروزر': {years:['2007–2022'],engines:[{label:'4.0 V6 بنزين (حسب السوق)',parts:['فلاتر المحرك','بواجي الإشعال','كويلات الإشعال','حساسات CKP/CMP','مكونات التوقيت وVVT حسب الرمز','مكونات التبريد']}]},
+  'تندرا': {years:['2007–2021','2022+'],engines:[{label:'4.6 / 5.7 V8 أو 3.4 V6 توين تيربو حسب الجيل',parts:['فلاتر المحرك','بواجي الإشعال حسب رمز المحرك','كويلات الإشعال','حساسات CKP/CMP','حساسات ضغط الشحن للنسخ التيربو','مكونات التبريد والتوقيت حسب الرمز']}]},
+  'تاكوما': {years:['2016–2023','2024+'],engines:[{label:'2.7 / 3.5 بنزين أو 2.4 تيربو حسب الجيل والسوق',parts:['فلاتر المحرك','بواجي الإشعال حسب المحرك','كويلات الإشعال','حساسات CKP/CMP','حساسات ضغط الشحن إن وجدت','مكونات التبريد']}]},
+  'أوربان كروزر': {years:['2020+'],engines:[{label:'بنزين / هايبرد حسب الجيل والسوق — يلزم رمز المحرك',parts:['فلاتر المحرك والمقصورة','نظام الإشعال إذا كان بنزين','حساسات CKP/CMP حسب المحرك','حساسات الهواء والضغط حسب التجهيز','مكونات التبريد','مكونات الهايبرد إذا كانت النسخة مجهزة']}]},
+  'كورولا كروس': {years:['2020+'],engines:[{label:'1.8 / 2.0 بنزين أو هايبرد حسب السوق والجيل — تحقق من الرمز',parts:['فلاتر المحرك والمقصورة','بواجي وكويلات حسب المحرك','حساسات CKP/CMP','حساسات الهواء والضغط','مكونات تبريد المحرك والإنفرتر للهايبرد','مكونات نظام الفرامل والتعليق']}]},
+  'هايلاندر': {years:['2014+'],engines:[{label:'2.5 هايبرد أو 3.5 بنزين حسب الجيل والسوق — تحقق من الرمز',parts:['فلاتر المحرك والمقصورة','بواجي وكويلات حسب المحرك','حساسات CKP/CMP','مكونات التبريد','مكونات الهايبرد والإنفرتر إذا كانت مجهزة','مكونات AWD إذا كانت مجهزة']}]},
+  'كراون': {years:['2013+'],engines:[{label:'بنزين / هايبرد حسب الجيل والسوق — يلزم رمز المحرك',parts:['فلاتر المحرك والمقصورة','نظام الإشعال حسب المحرك','حساسات المحرك والهواء','مكونات تبريد المحرك والهايبرد','مكونات ناقل الحركة حسب النسخة','أنظمة الفرامل والثبات']}]},
+  'كوستر': {years:['2007+'],engines:[{label:'ديزل أو بنزين حسب الجيل والسوق — لا تعتمد السعة دون لوحة البيانات',parts:['فلاتر الزيت والهواء والوقود حسب المحرك','مكونات الحقن حسب نظام الوقود','حساسات CKP/CMP حسب المحرك','مكونات التبريد','مكونات الشحن التوربيني إن وجدت','مكونات الفرامل والهواء حسب التجهيز']}]},
+  'غرانفيا': {years:['2019+'],engines:[{label:'بنزين أو ديزل حسب السوق والجيل — تحقق من رمز المحرك',parts:['فلاتر المحرك والمقصورة','مكونات الإشعال أو الوقود حسب المحرك','حساسات CKP/CMP','مكونات التبريد','مكونات ناقل الحركة','مكونات الأبواب الكهربائية والتكييف حسب التجهيز']}]},
+  'إنوفا': {years:['2015+'],engines:[{label:'بنزين أو ديزل / هايبرد حسب الجيل والسوق — تحقق من الرمز',parts:['فلاتر المحرك والوقود حسب النوع','نظام الإشعال إذا كان بنزين','حساسات CKP/CMP','مكونات الحقن حسب المحرك','مكونات التبريد','مكونات ناقل الحركة']}]},
+  'لاند كروزر 70': {years:['2007+'],engines:[{label:'بنزين أو ديزل حسب الهيكل والسوق — يلزم رمز المحرك',parts:['فلاتر المحرك والوقود حسب النوع','نظام الإشعال إذا كان بنزين','حساسات CKP/CMP حسب المحرك','مكونات الحقن والوقود','مكونات التبريد','مكونات الدفع الرباعي والمحاور']}]},
+  'لاند كروزر 300': {years:['2022+'],engines:[{label:'3.5 V6 توين تيربو أو 3.3 V6 ديزل حسب السوق — تحقق من الرمز',parts:['فلاتر المحرك والوقود حسب النوع','حساسات ضغط الشحن والهواء','مكونات التيربو والإنتركولر','حساسات CKP/CMP','مكونات التبريد','مكونات ناقل الحركة والدفع الرباعي']}]},
+  'لاند كروزر هايبرد': {years:['2024+'],engines:[{label:'هايبرد — تحقق من رمز المحرك ونوع النظام من بيانات السيارة',parts:['فلاتر المحرك والمقصورة','مكونات محرك البنزين حسب الفئة','مكونات تبريد المحرك والإنفرتر','حساسات وأنظمة إدارة الهايبرد','مكونات الجهد العالي وفق دليل المصنع فقط','مكونات الفرامل التجديدية']}]},
+  'لاند كروزر FJ': {years:['2026+'],engines:[{label:'حسب مواصفات السوق العراقي ورقم الهيكل — لا تفترض رمز المحرك',parts:['فلاتر المحرك','مكونات الإشعال أو الوقود حسب المحرك','حساسات المحرك والهواء','مكونات التبريد','مكونات ناقل الحركة والدفع الرباعي','مكونات الفرامل والتعليق']}]},
+  'GR يارس': {years:['2020+'],engines:[{label:'محرك GR خاص — يلزم رمز المحرك والسوق',parts:['فلاتر المحرك','بواجي وكويلات بالمواصفة المعتمدة','حساسات ضغط وحرارة الهواء حسب التجهيز','مكونات التيربو إذا كانت النسخة مجهزة','مكونات التبريد','مكونات الدفع وناقل الحركة']}]},
+  'GR86': {years:['2012+'],engines:[{label:'محرك بوكسر — تحقق من الجيل ورمز المحرك',parts:['فلاتر المحرك','بواجي وكويلات حسب الجيل','حساسات CKP/CMP','حساسات الهواء والوقود','مكونات التبريد والتزييت','مكونات ناقل الحركة والدفع']}]}
+ },
+};
+const fitMakeNames={Toyota:'تويوتا'};
+function fitFill(select,values){select.innerHTML=values.map(v=>'<option value="'+escapeText(v)+'">'+escapeText(v)+'</option>').join('')}
+function fitYearValues(ranges){const years=new Set();(ranges||[]).forEach(r=>{const nums=(String(r).match(/20?\d{2}/g)||[]).map(Number);if(!nums.length)return;const start=nums[0], end=nums.length>1?nums[1]:new Date().getFullYear()+1;for(let y=start;y<=Math.min(end,new Date().getFullYear()+1);y++)years.add(String(y));});return [...years].sort((a,b)=>Number(b)-Number(a))}
+function fitUpdateModels(){const make=$('fitMake').value, models=Object.keys(fitmentDB[make]||{});fitFill($('fitModel'),models);fitUpdateYears()}
+function fitUpdateYears(){const make=$('fitMake').value, model=$('fitModel').value, data=fitmentDB[make]?.[model];fitFill($('fitYear'),fitYearValues(data?.years).length?fitYearValues(data?.years):['السنة غير محددة']);fitUpdateEngines()}
+function fitUpdateEngines(){const make=$('fitMake').value, model=$('fitModel').value, data=fitmentDB[make]?.[model];const labels=(data?.engines||[]).map(e=>e.label);fitFill($('fitEngine'),labels.length?labels:['عائلة المحرك غير مسجلة'])}
+function partKnowledge(partName){
+ const t=String(partName||'').toLowerCase();
+ if(/حساس الكرنك|ckp/.test(t)) return {system:'إدارة المحرك / توقيت دوران العمود المرفقي',fn:'يرسل إشارة سرعة وموضع عمود الكرنك لوحدة التحكم لتحديد توقيت الشرارة والحقن.',sym:'تقطيع أو توقف مفاجئ أو عدم تشغيل، وقد يظهر كود؛ الأعراض وحدها لا تثبت تلف الحساس.',checks:['قراءة الأكواد وبيانات Freeze Frame.','فحص الفيشة والأسلاك والتغذية حسب مخطط السيارة.','مراقبة إشارة RPM أثناء التدوير وقياس الإشارة بمعدة مناسبة.'],warning:'لا تستبدله قبل استبعاد الأسلاك والتغذية ومشاكل التوقيت.'};
+ if(/حساس الكامات|cmp/.test(t)) return {system:'إدارة المحرك / تزامن الكامات',fn:'يساعد وحدة التحكم على معرفة موضع عمود الكامات ومزامنة الحقن والإشعال.',sym:'صعوبة تشغيل أو ضعف أداء أو كود تزامن؛ وقد يكون السبب التوقيت أو الأسلاك.',checks:['قراءة الأكواد المتزامنة وبياناتها.','فحص الفيشة والضفيرة والتغذية.','مقارنة إشارات CKP وCMP ومراجعة التوقيت الميكانيكي حسب الدليل.'],warning:'الكود لا يعني دائماً أن الحساس نفسه تالف.'};
+ if(/maf|حساس الهواء|حساس كتلة الهواء/.test(t)) return {system:'قياس الهواء الداخل',fn:'يقيس كتلة الهواء الداخل للمحرك حتى تضبط وحدة التحكم الوقود.',sym:'ضعف عزم أو صرفية مرتفعة أو تذبذب دوران؛ قد يكون السبب تهريب هواء أو فلتر أو أسلاك.',checks:['فحص مجرى السحب بعد الحساس بحثاً عن تهريب.','مراجعة القراءة الحية حسب مواصفات المحرك.','فحص التغذية والأرضي والأسلاك قبل التنظيف أو الاستبدال.'],warning:'لا تعتمد على قراءة عامة؛ القيم تختلف باختلاف المحرك والظروف.'};
+ if(/حساس.*أكسجين|اكسجين|o2|af sensor|لامبدا/.test(t)) return {system:'العادم والتحكم بنسبة الهواء والوقود',fn:'يراقب الأكسجين في العادم أو نسبة الهواء والوقود حسب نوع الحساس.',sym:'صرفية أو انبعاثات مرتفعة أو كود خليط؛ قد تكون المشكلة تهريب عادم أو خليطاً غير صحيح.',checks:['قراءة بيانات الحساس وتصحيح الوقود.','فحص تهريب العادم والتوصيلات.','تقييم الاستجابة وفق دليل المصنع وأداة الفحص.'],warning:'لا تغيّر الحساس قبل معالجة سبب الخليط أو التهريب.'};
+ if(/فلتر زيت/.test(t)) return {system:'التزييت والصيانة الدورية',fn:'يحجز الشوائب من زيت المحرك للمساعدة في حماية الأجزاء المتحركة.',sym:'الفلتر الخاطئ أو المسدود قد يؤثر في تدفق الزيت؛ لمبة ضغط الزيت تستلزم إيقاف المحرك بأمان والتحقق فوراً.',checks:['مطابقة رقم الفلتر حسب رمز المحرك والسوق.','فحص التسريب وجلدة الفلتر بعد التركيب.','استخدام الزيت والإجراء المحددين في دليل المصنع.'],warning:'لا تقد السيارة مع تحذير ضغط الزيت.'};
+ if(/فلتر هواء/.test(t)) return {system:'سحب الهواء',fn:'يقلل دخول الغبار والجزيئات إلى المحرك.',sym:'اتساخ شديد قد يقيّد الهواء ويؤثر في الأداء؛ لا يثبت وحده وجود عطل بالمحرك.',checks:['فحص حالة الفلتر والعلبة والإحكام.','التأكد من عدم وجود انسداد أو تهريب بعد الفلتر.','استخدام النوع والمقاس المطابقين.'],warning:'لا تنظف الفلاتر الورقية بطريقة قد تتلفها.'};
+ if(/بواجي|شمعات الإشعال/.test(t)) return {system:'الإشعال',fn:'تولّد الشرارة اللازمة لاحتراق خليط الهواء والوقود بمحركات البنزين.',sym:'تفتفة أو صعوبة تشغيل أو ضعف؛ قد تكون الأسباب كويل أو بخاخ أو ضغط أسطوانة أيضاً.',checks:['فحص الأكواد وعدادات misfire.','فحص حالة البواجي والفجوة حسب مواصفات المحرك.','اختبار الكويلات والوقود والضغط عند الحاجة.'],warning:'عزم الربط والفجوة يختلفان حسب المحرك.'};
+ if(/كويل/.test(t)) return {system:'الإشعال',fn:'يرفع الجهد لتوليد الشرارة في شمعة الإشعال.',sym:'تقطيع تحت الحمل أو misfire؛ لا يكفي العرض وحده لإدانة الكويل.',checks:['قراءة كود الأسطوانة وبيانات misfire.','فحص الفيشة والتغذية والعزل.','اتباع اختبار المصنع وعدم تبديل القطع عشوائياً.'],warning:'انتبه للجهد العالي ولا تفصل الكويلات والمحرك يعمل.'};
+ if(/مضخة ماء|طرمبة ماء|نظام التبريد|راديتر|مبرد/.test(t)) return {system:'التبريد',fn:'يساعد على تدوير سائل التبريد ونقل الحرارة والمحافظة على حرارة التشغيل.',sym:'ارتفاع الحرارة أو تسريب أو صوت؛ قد تكون الأسباب ثرموستات أو مروحة أو غطاء أو هواء بالنظام.',checks:['لا تفتح غطاء نظام ساخن.','فحص مستوى السائل والتسريبات بعد أن يبرد المحرك.','اختبار ضغط النظام والمروحة والثرموستات وفق الدليل.'],warning:'إذا ارتفعت الحرارة، توقف بمكان آمن وأطفئ المحرك.'};
+ if(/بطارية/.test(t)) return {system:'التشغيل والكهرباء',fn:'توفر الطاقة الكهربائية لبدء التشغيل وتغذية الأنظمة عند الحاجة.',sym:'تدوير بطيء أو انطفاء الأنظمة؛ قد تكون المشكلة شحن الدينمو أو أقطاباً أو استهلاكاً كهربائياً.',checks:['فحص الأقطاب والتثبيت.','اختبار البطارية والشحن بجهاز مناسب.','فحص هبوط الجهد والتسريب الكهربائي حسب الإجراء.'],warning:'لا تقصر أقطاب البطارية بأداة معدنية.'};
+ if(/دينمو|مولد/.test(t)) return {system:'نظام الشحن',fn:'يشحن البطارية ويغذي الأحمال الكهربائية أثناء تشغيل المحرك.',sym:'لمبة شحن أو ضعف بطارية؛ قد يكون السبب سيراً أو أسلاكاً أو بطارية.',checks:['فحص السير والتوصيلات.','قياس نظام الشحن وفق مواصفات السيارة.','فحص هبوط الجهد والأكواد عند وجودها.'],warning:'لا تفصل البطارية والمحرك يعمل لاختبار الدينمو.'};
+ if(/بخاخ|رشاش/.test(t)) return {system:'الوقود',fn:'يوصل الوقود بكمية وتوقيت محددين وفق تصميم نظام الحقن.',sym:'تفتفة أو صعوبة تشغيل أو صرفية؛ الأسباب المحتملة تشمل الضغط والكهرباء والانسداد.',checks:['قراءة الأكواد وعدادات misfire.','قياس ضغط الوقود حسب الدليل.','اختبار توازن البخاخات وأوامر التحكم بمعدات مناسبة.'],warning:'أنظمة الوقود قد تعمل بضغط عالٍ؛ اتبع إجراءات التفريغ والسلامة.'};
+ return {system:'يحتاج تصنيفاً فنياً أدق',fn:'هذه قطعة ضمن قائمة استكشافية؛ أضف وصفها ومواصفاتها بعد تحديد رقمها ومصدرها.',sym:'لا يمكن ربط أعراض محددة بهذه القطعة من الاسم العام وحده.',checks:['حدد الاسم الدقيق ورقم القطعة من كتالوج المصنع.','راجع دليل الصيانة الخاص بالجيل ورمز المحرك.','سجّل مصدر المعلومة وتاريخ مراجعتها.'],warning:'التوافق والأعراض غير مؤكدة حتى التحقق.'};
+}
+function fitShowParts(){
+ const make=$('fitMake').value, model=$('fitModel').value, year=$('fitYear').value, engine=$('fitEngine').value, market=$('fitMarket').value, engineCode=$('fitEngineCode').value.trim();
+ const record=fitmentDB[make]?.[model], eng=record?.engines?.find(e=>e.label===engine), box=$('fitPartsResults'), summary=$('fitSummary');
+ if(!eng){summary.textContent='ماكو بيانات كافية لهذا الاختيار بعد. راجع بطاقة السيارة أو دليل الشركة.';box.innerHTML='';return}
+ const marketName={IQ:'العراق / الشرق الأوسط',US:'أمريكي',GCC:'الخليج',EU:'أوروبي',JP:'ياباني',OTHER:'غير محدد'}[market];
+ summary.textContent='اختيارك: '+fitMakeNames[make]+' '+model+' • سنة '+year+' • '+engine+' • السوق: '+marketName+' • رمز المحرك: '+(engineCode||'لم يُدخل')+'. قاعدة استكشافية: تفاصيل الفحص عامة، والتوافق ورقم OEM غير مؤكدين حتى المطابقة مع مصدر المصنع.';
+ const queryBase=[fitMakeNames[make],model,year,engine,marketName];
+ box.innerHTML='<div class="visual-accuracy-note"><b>حالة المطابقة: تحتاج تحققاً</b><p>المعلومات الفنية أدناه تعليمية عامة، وليست دليلاً على توافق القطعة. لا يوجد رقم OEM معتمد لهذه النتيجة. رابط الصور يفتح بحثاً عن صور حقيقية، ويجب مطابقة الصورة مع رقم القطعة ومصدرها قبل اعتمادها.</p></div>'+eng.parts.map((p,i)=>{const k=partKnowledge(p);const q=[...queryBase,p,'genuine part'].join(' ');const photoUrl='https://www.google.com/search?tbm=isch&q='+encodeURIComponent(q);return '<article class="vehicle-part" data-part-id="'+escapeText(make+'-'+model+'-'+year+'-'+i).replace(/\s+/g,'-')+'" data-make="'+escapeText(make)+'" data-model="'+escapeText(model)+'" data-year="'+escapeText(year)+'" data-engine-family="'+escapeText(engine)+'" data-market="'+escapeText(market)+'"><div class="small">معرّف سجل استكشافي: '+escapeText(make+' / '+model+' / '+year+' / '+(engineCode||'رمز غير مدخل'))+'</div><h4>'+escapeText(p)+'</h4><div class="tag">'+escapeText(k.system)+'</div><p><b>الوظيفة:</b> '+escapeText(k.fn)+'</p><p><b>أعراض محتملة:</b> '+escapeText(k.sym)+'</p><p><b>خطوات الفحص الأولية:</b></p><ul class="list">'+k.checks.map(x=>'<li>'+escapeText(x)+'</li>').join('')+'</ul><div class="notice red"><b>تنبيه:</b> '+escapeText(k.warning)+'</div><p><b>التوافق:</b> غير مؤكد لهذه السنة والسوق ورمز المحرك.</p><p class="small"><b>حالة OEM:</b> غير موثق — لا يوجد رقم تخميني معروض.</p><div class="oem-source-list"><a href="'+photoUrl+'" target="_blank" rel="noopener noreferrer">ابحث عن صور حقيقية للقطعة</a><a href="https://partsouq.com/" target="_blank" rel="noopener noreferrer">تحقق من كتالوج القطع</a></div><p class="small">الصورة من نتائج البحث قد تخص نسخة أخرى؛ لا تعتمدها قبل مطابقة رقم القطعة.</p></article>'}).join('')+'<div class="visual-accuracy-note"><b>خطوة التحقق التالية</b><p>طابق رقم القطعة عبر كتالوج المصنع أو موزع معتمد باستخدام بيانات السيارة ورقم الهيكل بشكل خاص. لا تنشر رقم VIN في الصفحة العامة.</p><div class="oem-source-list"><a href="https://www.toyota.iq/english/toyota-geniune-parts" target="_blank" rel="noopener noreferrer">تويوتا العراق — القطع الأصلية</a><a href="https://techinfo.toyota.com/" target="_blank" rel="noopener noreferrer">Toyota TIS — أدلة الإصلاح والمخططات حسب التوفر</a><a href="https://partsouq.com/" target="_blank" rel="noopener noreferrer">PartSouq — تحقق من رقم القطعة والنسخة</a></div></div>';
+}
+$('fitMake')?.addEventListener('change',fitUpdateModels);
+$('fitModel')?.addEventListener('change',fitUpdateYears);
+$('fitYear')?.addEventListener('change',fitUpdateEngines);
+$('fitShowBtn')?.addEventListener('click',fitShowParts);
+$('fitResetBtn')?.addEventListener('click',()=>{ $('fitMake').value='Toyota';$('fitMarket').value='IQ';$('fitEngineCode').value='';fitUpdateModels();$('fitSummary').textContent='اختار السيارة والسنة وعائلة المحرك والسوق. أرقام OEM لا تظهر إلا بعد التحقق.';$('fitPartsResults').innerHTML='';});
+fitUpdateModels();
+(function showToyotaCoverage(){
+ const data=fitmentDB.Toyota||{};
+ const names=Object.keys(data);
+ const engineGroups=names.reduce((n,k)=>n+(data[k].engines||[]).length,0);
+ const partGroups=names.reduce((n,k)=>n+(data[k].engines||[]).reduce((m,e)=>m+(e.parts||[]).length,0),0);
+ const el=$('toyotaCatalogStats');
+ if(el)el.textContent='تغطية قاعدة تويوتا الحالية: '+names.length+' طرازاً مسجلاً • '+engineGroups+' مجموعات محركات استكشافية • '+partGroups+' عناصر قطع أولية. هذه أرقام تغطية للبيانات المدخلة وليست دليلاً على اكتمال كل جيل أو كل قطعة؛ التوافق وOEM يحتاجان تحققاً مستقلاً.';
+})();
+
+function partIllustrationSVG(label,system='engine'){
+ const t=String(label||'').toLowerCase();let art='';
+ if(/بلوك|كتلة المحرك|engine block/.test(t)) art='<path d="M38 34 L135 22 L166 42 L158 95 L58 108 L28 83 Z" fill="#65798c" stroke="#d2deea" stroke-width="3"/><path d="M38 34 L135 22 L135 75 L38 88Z" fill="#26394b"/><g fill="#111a25" stroke="#b7c7d7" stroke-width="3"><ellipse cx="62" cy="42" rx="10" ry="6"/><ellipse cx="84" cy="39" rx="10" ry="6"/><ellipse cx="106" cy="36" rx="10" ry="6"/><ellipse cx="126" cy="33" rx="8" ry="5"/></g>';
+ else if(/راس المحرك|رأس المحرك|cylinder head/.test(t)) art='<path d="M25 54 L133 34 L165 51 L57 72 Z" fill="#9aaaba" stroke="#e1e8ef" stroke-width="3"/><path d="M57 72 L165 51 L160 72 L54 94Z" fill="#40566a" stroke="#b7c5d3" stroke-width="2"/><g stroke="#27394b" stroke-width="5"><path d="M50 55l17 10m6-14l17 10m6-14l17 10m6-14l17 10"/></g>';
+ else if(/حساس|sensor|maf|map|ckp|cmp|iat/.test(t)) art='<rect x="60" y="30" width="48" height="48" rx="8" fill="#283b4f" stroke="#9fb3c8" stroke-width="4"/><rect x="72" y="41" width="24" height="25" rx="4" fill="#dba43c" stroke="#ffe1a0" stroke-width="2"/><path d="M84 30V15H120" fill="none" stroke="#f1c15b" stroke-width="5"/><path d="M120 15l10 0m-10 0l0 12" stroke="#f1c15b" stroke-width="4"/><path d="M65 78l-9 16h-14" fill="none" stroke="#8aa3bb" stroke-width="4"/>';
+ else if(/طرمبة|مضخة|pump/.test(t)) art='<rect x="55" y="25" width="62" height="75" rx="18" fill="#66798b" stroke="#d8e1e9" stroke-width="3"/><rect x="67" y="16" width="38" height="18" rx="5" fill="#d8a444" stroke="#ffe1a0" stroke-width="2"/><circle cx="86" cy="60" r="17" fill="#172331" stroke="#b6c6d5" stroke-width="4"/><path d="M86 43v34m-17-17h34" stroke="#d6a343" stroke-width="4"/><path d="M117 44h20v-12" fill="none" stroke="#5bb7e8" stroke-width="6"/>';
+ else if(/بخاخ|injector|رشاش/.test(t)) art='<path d="M55 22h58v22l-10 10v27l-9 14H74l-9-14V54L55 44Z" fill="#b7c5d3" stroke="#e8eef4" stroke-width="3"/><rect x="66" y="31" width="36" height="12" rx="3" fill="#d9a13c"/><path d="M80 95l-7 13m16-13 7 13m-24-13 0 11" stroke="#69c9f3" stroke-width="3"/>';
+ else if(/فلتر|filter/.test(t)) art='<path d="M52 25h68l-7 70H59Z" fill="#d8e0e8" stroke="#fff" stroke-width="3"/><path d="M59 36h55M58 45h54M57 54h53M57 63h52M58 72h50M59 81h49" stroke="#52677a" stroke-width="4"/><path d="M64 25v-9h44v9" fill="#d6a343" stroke="#ffe2a0" stroke-width="3"/>';
+ else if(/توقيت|سلسلة|سير|timing|جنزير/.test(t)) art='<circle cx="65" cy="62" r="29" fill="#182331" stroke="#b8c8d8" stroke-width="8"/><circle cx="65" cy="62" r="10" fill="#d7a441"/><circle cx="126" cy="76" r="20" fill="#182331" stroke="#b8c8d8" stroke-width="6"/><path d="M65 33L126 56L126 96L65 91Z" fill="none" stroke="#e5b64e" stroke-width="5"/>';
+ else if(/بطارية|battery/.test(t)) art='<rect x="34" y="34" width="120" height="64" rx="9" fill="#25384a" stroke="#bdcbd8" stroke-width="4"/><rect x="52" y="23" width="22" height="13" rx="3" fill="#d6a343"/><rect x="114" y="23" width="22" height="13" rx="3" fill="#d6a343"/><path d="M52 61h30m-15-15v30m34-15h26" stroke="#dfe8ef" stroke-width="5"/><text x="93" y="91" font-size="13" fill="#fff" text-anchor="middle">12V</text>';
+ else if(/دينمو|مولد|alternator/.test(t)) art='<circle cx="90" cy="62" r="39" fill="#4c6073" stroke="#c6d2de" stroke-width="6"/><circle cx="90" cy="62" r="25" fill="#172330" stroke="#94a9bc" stroke-width="4"/><circle cx="90" cy="62" r="9" fill="#d8a442"/><g stroke="#dce5ee" stroke-width="3">'+Array.from({length:8},(_,i)=>{let a=i*Math.PI/4;return `<path d="M${90+14*Math.cos(a)} ${62+14*Math.sin(a)}L${90+23*Math.cos(a)} ${62+23*Math.sin(a)}"/>`}).join('')+'</g>';
+ else if(/فرامل|دسك|قرص|brake/.test(t)) art='<circle cx="91" cy="62" r="39" fill="#718497" stroke="#dce5ec" stroke-width="4"/><circle cx="91" cy="62" r="17" fill="#182331" stroke="#d8e1e8" stroke-width="4"/><g fill="#182331">'+[[91,35],[116,52],[106,84],[75,84],[66,52]].map(a=>`<circle cx="${a[0]}" cy="${a[1]}" r="4"/>`).join('')+'</g><path d="M121 30l16 8 2 27-15 6" fill="#d6a343" stroke="#ffe1a0" stroke-width="3"/>';
+ else if(/راديتر|مبرد|تبريد|radiator|cooling|مروحة/.test(t)) art='<rect x="47" y="23" width="86" height="78" rx="5" fill="#26394a" stroke="#b9c8d7" stroke-width="4"/><g stroke="#6bc9ef" stroke-width="3">'+Array.from({length:7},(_,i)=>`<path d="M${57+i*11} 29v66"/>`).join('')+'<path d="M51 42h78M51 58h78M51 74h78M51 90h78"/></g>';
+ else if(/كويل|بوجي|spark|ignition|اشعال|إشعال/.test(t)) art='<rect x="65" y="20" width="45" height="45" rx="7" fill="#26394b" stroke="#b6c6d5" stroke-width="3"/><path d="M76 65v17h23V65M82 82v16h11V82" fill="#d4a13e" stroke="#ffe3a3" stroke-width="3"/><path d="M87 98v11" stroke="#dce5ec" stroke-width="4"/>';
+ else if(/قير|ناقل|transmission|gear/.test(t)) art='<path d="M43 40l23-14 25 7 23-8 30 21-8 43-36 17-42-10-20-23Z" fill="#687c90" stroke="#d2dee8" stroke-width="4"/><circle cx="79" cy="61" r="13" fill="#172330" stroke="#d9a542" stroke-width="4"/><circle cx="111" cy="73" r="9" fill="#172330" stroke="#d9a542" stroke-width="4"/>';
+ else if(/عادم|exhaust|كاتلايزر|حفاز/.test(t)) art='<path d="M40 35h40v20h-18v20h40V55h35v25h-18v16H53V75H40Z" fill="#8b654e" stroke="#e3b28d" stroke-width="4"/><path d="M104 55h24" stroke="#d6e1ea" stroke-width="4"/>';
+ else if(/ثروتل|بوابة الهواء|throttle/.test(t)) art='<rect x="43" y="32" width="100" height="62" rx="12" fill="#52677a" stroke="#d4e0e9" stroke-width="4"/><circle cx="93" cy="63" r="25" fill="#172330" stroke="#b9c8d7" stroke-width="4"/><path d="M73 78L113 48" stroke="#d8a343" stroke-width="6"/><rect x="122" y="40" width="22" height="26" rx="4" fill="#d8a343"/>';
+ else art='<path d="M48 35h83l12 19-12 42H48L36 75Z" fill="#607589" stroke="#c7d4df" stroke-width="4"/><path d="M54 45l65 0m-65 13h65m-65 13h65m-65 13h65" stroke="#26394b" stroke-width="4"/><circle cx="88" cy="67" r="9" fill="#d6a343"/>';
+ return '<div class="part-illustration" role="img" aria-label="رسم توضيحي عام لـ '+escapeText(label)+'"><svg viewBox="0 0 190 125" aria-hidden="true"><defs><linearGradient id="partMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dce5ed"/><stop offset=".5" stop-color="#657b90"/><stop offset="1" stop-color="#263748"/></linearGradient></defs>'+art+'</svg></div>';
+}
+function renderParts(){const q=($('partSearch')?.value||'').trim().toLowerCase();const sys=$('partSystem')?.value||'all';const items=partsCatalog.filter(x=>!/(حساس|sensor|ckp|cmp|maf|map|ect|o2|lambda|abs)/i.test(x.name+' '+x.aliases)&& (sys==='all'||x.system===sys)&&(!q||(x.name+' '+x.aliases+' '+x.function+' '+x.checks).toLowerCase().includes(q)));const el=$('partsResults');if(!el)return;el.innerHTML=items.length?items.map((x,i)=>'<article class="result part-card"><div class="small">'+escapeText(partSystemNames[x.system]||x.system)+'</div>'+partIllustrationSVG(x.name,x.system)+'<h3>'+escapeText(x.name)+'</h3><p><b>الوظيفة:</b> '+escapeText(x.function)+'</p><p><b>شنو ينفحص؟</b> '+escapeText(x.checks)+'</p><p class="small"><b>أسماء أخرى:</b> '+escapeText(x.aliases)+'</p><div class="actions"><a class="btn secondary" href="https://www.google.com/search?tbm=isch&q='+encodeURIComponent(x.name+' automotive genuine part')+'" target="_blank" rel="noopener noreferrer">صور حقيقية</a><button type="button" class="btn secondary part-more" data-part-index="'+partsCatalog.indexOf(x)+'" aria-expanded="false">تفاصيل إضافية</button></div><div class="part-extra hidden"><p><b>النظام:</b> '+escapeText(partSystemNames[x.system]||x.system)+'</p><p><b>قبل شراء القطعة:</b> طابق رقم القطعة والمواصفات حسب رقم الهيكل وكتالوج الشركة؛ الاسم وحده لا يضمن التوافق.</p><p><b>ملاحظة فنية:</b> نفّذ الاختبار المذكور قبل الاستبدال، وسجّل نتيجة القياس.</p></div></article>').join(''):'<div class="empty">ماكو قطعة مطابقة. جرّب اسم ثاني أو اختار كل الأنظمة.</div>'}
+$('partSearch')?.addEventListener('input',renderParts);$('partSystem')?.addEventListener('change',renderParts);$('partsResults')?.addEventListener('click',e=>{const b=e.target.closest('.part-more');if(!b)return;const card=b.closest('.part-card');const extra=card?.querySelector('.part-extra');if(!extra)return;const opening=extra.classList.contains('hidden');extra.classList.toggle('hidden',!opening);b.setAttribute('aria-expanded',opening?'true':'false');b.textContent=opening?'إغلاق صفحة القطعة':'تفاصيل إضافية'});document.querySelector('[data-tab="parts"]')?.addEventListener('click',()=>{renderParts();if(!engineView.part)initEngineExplorer()});renderParts();
+
+// V8.9: standalone Toyota sensor library and system-by-system part pages.
+const sensorGroups={engine:'حساسات المحرك والتوقيت',air:'حساسات الهواء والوقود',exhaust:'حساسات العادم والانبعاثات',chassis:'حساسات ABS والثبات',body:'حساسات الهيكل والمقصورة',hybrid:'حساسات وأنظمة الهايبرد'};
+const sensorManual=[
+{code:'CKP',name:'حساس موضع وسرعة عمود المرفق',group:'engine',fn:'يرسل موضع وسرعة دوران الكرنك لوحدة التحكم لتحديد RPM والتوقيت الأساسي.',place:'قد يكون قرب بكرة الكرنك أو على جسم المحرك/بيت القير؛ الموقع الدقيق يتغير حسب رمز المحرك.',sym:'انطفاء أو عدم تشغيل أو فقد قراءة RPM؛ ليست هذه الأعراض دليلاً منفرداً.',test:'راقب RPM أثناء التدوير، وافحص نوع الإشارة والتغذية والضفيرة حسب مخطط المحرك.'},
+{code:'CMP',name:'حساس موضع عمود الكامات',group:'engine',fn:'يحدد طور عمود الكامات ويساعد على مزامنة الحقن والإشعال والتحكم VVT.',place:'عادة على رأس المحرك أو غطاء التوقيت، ويختلف العدد والموقع حسب المحرك.',sym:'صعوبة تشغيل أو أكواد تزامن أو أداء غير مستقر.',test:'قارن إشارات CKP/CMP وبيانات التزامن، وافحص الأسلاك والتوقيت الميكانيكي.'},
+{code:'ECT',name:'حساس حرارة سائل التبريد',group:'engine',fn:'يقيس حرارة سائل التبريد لتعديل الوقود والمراوح واستراتيجية التشغيل.',place:'غالباً في مجرى سائل التبريد بالرأس أو بيت مخرج الماء؛ حسب المحرك.',sym:'قراءة حرارة غير منطقية أو تشغيل مراوح/خليط غير مناسب.',test:'قارن القراءة والمحرك بارد بحرارة الجو ثم راقب ارتفاعها تدريجياً، وافحص الدائرة.'},
+{code:'MAF',name:'حساس كتلة الهواء',group:'air',fn:'يقيس كتلة الهواء الداخل في المحركات المجهزة بنظام MAF.',place:'غالباً في مجرى الهواء بين علبة الفلتر والخانق؛ بعض المحركات لا تستخدمه.',sym:'خلل تقدير الحمل أو تصحيحات الوقود أو ضعف أداء.',test:'تأكد من وجوده أولاً، ثم افحص القراءة الحية والتغذية والتسريب قبل التنظيف أو التبديل.'},
+{code:'MAP',name:'حساس الضغط المطلق لمجمع السحب',group:'air',fn:'يقيس ضغط مجمع السحب ويستخدم لحساب حمل المحرك؛ وقد يستخدم لقياس ضغط الشحن.',place:'على مجمع السحب أو مجرى الشحن حسب تصميم المحرك.',sym:'قراءة حمل غير منطقية أو أكواد ضغط/خليط.',test:'قارن القراءة والاشتعال متوقفاً بالضغط الجوي، ثم افحص الاستجابة والأسلاك.'},
+{code:'IAT',name:'حساس حرارة هواء السحب',group:'air',fn:'يقيس حرارة الهواء الداخل لتصحيح حساب كثافة الهواء والوقود.',place:'قد يكون مدمجاً مع MAF أو منفصلاً بمجرى السحب.',sym:'قراءة حرارة غير منطقية وتصحيحات تشغيل غير مناسبة.',test:'قارن القراءة والمحرك بارد بحرارة الجو وافحص الدائرة.'},
+{code:'O2 / A/F',name:'حساس الأوكسجين أو نسبة الهواء والوقود',group:'exhaust',fn:'يراقب الأوكسجين بالعادم أو نسبة الهواء والوقود حسب نوع الحساس.',place:'على مجمع العادم أو قبل/بعد المحول الحفاز حسب النظام.',sym:'أكواد خليط أو انبعاثات أو تصحيحات وقود غير طبيعية.',test:'حدد نوع الحساس وموقعه من مخطط السيارة، وافحص Fuel Trims والتسريب والاستجابة.'},
+{code:'KNOCK',name:'حساس الطرق',group:'engine',fn:'يرصد اهتزازات مرتبطة بالطرق ليساعد الكمبيوتر على تعديل توقيت الإشعال.',place:'على بلوك المحرك أو موضع محدد أسفل مجمع السحب في بعض المحركات.',sym:'قد يظهر كود طرق أو يقل العزم؛ افحص الوقود والاحتراق والتثبيت أيضاً.',test:'اقرأ بيانات الطرق والأكواد وافحص التوصيل وعزم التثبيت حسب دليل المحرك.'},
+{code:'FRONT / REAR O2',name:'حساسات العادم قبل وبعد المحول الحفاز',group:'exhaust',fn:'الأمامي يساهم في ضبط الخليط، والخلفي يراقب كفاءة المعالجة في أنظمة كثيرة.',place:'على أنبوب العادم قبل المحول الحفاز وبعده؛ العدد يختلف حسب المحرك.',sym:'لمبة المحرك أو أكواد كفاءة المحول/إشارة الحساس.',test:'قارن شكل الإشارات وFuel Trims وافحص التسريب والأسلاك قبل الحكم.'},
+{code:'WSS / ABS',name:'حساس سرعة العجلة',group:'chassis',fn:'يقيس سرعة دوران العجلة لوحدات ABS والثبات والتحكم بالجر.',place:'قرب صرة/محمل كل عجلة أو مدمج معه حسب التصميم.',sym:'لمبات ABS أو الثبات أو قراءة سرعة عجلة متقطعة.',test:'قارن سرعات العجلات الأربع وافحص السلك والحلقة/المشفّر والمحمل.'},
+{code:'SAS',name:'حساس زاوية المقود',group:'chassis',fn:'يرسل زاوية واتجاه المقود لنظام الثبات والتوجيه الكهربائي.',place:'غالباً ضمن مجموعة عمود المقود أو قربه.',sym:'تحذير ثبات أو بيانات زاوية غير منطقية.',test:'اقرأ بيانات SAS وتحقق من المعايرة بعد أعمال التوجيه وفق دليل السيارة.'},
+{code:'YAW / G',name:'حساس الانحراف والتسارع الجانبي',group:'chassis',fn:'يقيس حركة دوران المركبة وتسارعها لدعم نظام الثبات.',place:'عادة داخل المقصورة قرب مركز السيارة؛ الموضع يختلف حسب الهيكل.',sym:'أكواد VSC أو بيانات ثبات غير صحيحة.',test:'اقرأ القيم والسيارة على سطح مستوٍ وتحقق من التثبيت والمعايرة.'},
+{code:'FUEL PRESS',name:'حساس ضغط الوقود',group:'air',fn:'يرسل ضغط سكة الوقود أو دائرة الضغط إلى وحدة التحكم.',place:'على سكة الوقود أو دائرة الضغط حسب نوع الحقن.',sym:'فرق بين الضغط المطلوب والفعلي أو صعوبة تشغيل.',test:'قارن القراءة مع أداة قياس وإجراء المصنع، وافحص التغذية والإشارة.'},
+{code:'EVAP',name:'حساس/مرسل ضغط خزان الوقود',group:'air',fn:'يراقب ضغط نظام أبخرة الوقود في السيارات المجهزة به.',place:'على الخزان أو وحدة مضخة الوقود أو خطوط EVAP حسب التصميم.',sym:'أكواد تسريب EVAP أو قراءة ضغط غير منطقية.',test:'افحص الخراطيم والغطاء وقراءات الضغط باختبار EVAP المخصص.'},
+{code:'DPF ΔP',name:'حساس فرق ضغط فلتر الجسيمات',group:'exhaust',fn:'يقيس فرق الضغط قبل وبعد DPF في محركات الديزل المجهزة به.',place:'مثبت على الهيكل/حجرة المحرك ومتصل بخراطيم إلى جانبي الفلتر.',sym:'تحذير DPF أو قراءة فرق ضغط مرتفعة/غير منطقية.',test:'افحص الخراطيم والانسداد والقراءة الصفرية وفق دليل المحرك.'},
+{code:'A/C PRESS',name:'حساس ضغط المكيّف',group:'body',fn:'يراقب ضغط وسيط التبريد لحماية الضاغط والتحكم بالمراوح.',place:'على خط الضغط العالي أو قرب المكثف حسب النظام.',sym:'تعطّل تشغيل الضاغط أو فصل متكرر للمكيّف.',test:'قارن قراءة الضغط بمقاييس خدمة التكييف، ولا تفرّغ وسيط التبريد للجو.'},
+{code:'PARK',name:'حساسات الاصطفاف',group:'body',fn:'ترسل/تستقبل موجات فوق صوتية لتقدير قرب العوائق.',place:'موزعة في الصدام الأمامي أو الخلفي حسب الفئة.',sym:'تنبيه مستمر أو عدم اكتشاف العوائق.',test:'افحص النظافة والتثبيت والموصلات وأكواد وحدة المساعدة.'},
+{code:'HV BATTERY',name:'حساسات حرارة بطارية الهايبرد',group:'hybrid',fn:'تقيس حرارة وحدات البطارية لتدير وحدة التحكم التبريد والحماية.',place:'داخل مجموعة بطارية الجر أو قنوات الهواء القريبة منها.',sym:'تحذير نظام هايبرد أو تشغيل مروحة البطارية بشكل غير معتاد.',test:'قراءة بيانات Hybrid/Battery ECU فقط وفق دليل السلامة؛ لا تفتح حزمة الجهد العالي.'}
+];
+function renderSensorLibrary(){const q=($('sensorSearch')?.value||'').trim().toLowerCase(),g=$('sensorGroup')?.value||'all';const list=sensorManual.filter(x=>(g==='all'||x.group===g)&&(!q||(x.code+' '+x.name+' '+x.fn+' '+x.place+' '+x.sym).toLowerCase().includes(q)));$('sensorCount').textContent='الحساسات المعروضة: '+list.length+' من '+sensorManual.length+' • معلومات عامة؛ التحديد النهائي حسب رمز المحرك والسوق.';$('sensorResults').innerHTML=list.map(x=>'<article class="sensor-card"><span class="sensor-code">'+escapeText(x.code)+'</span><h3>'+escapeText(x.name)+'</h3><p><b>الوظيفة:</b> '+escapeText(x.fn)+'</p><p><b>الموقع العام:</b> '+escapeText(x.place)+'</p><p><b>أعراض محتملة:</b> '+escapeText(x.sym)+'</p><details><summary>خطة الفحص والتوثيق</summary><p>'+escapeText(x.test)+'</p><p><b>OEM:</b> غير مثبت؛ يحتاج موديل وسنة ورمز محرك وسوق/رقم هيكل.</p></details></article>').join('')||'<div class="empty">ماكو حساس مطابق للبحث.</div>';}
+const systemMeta={engine:['المحرك والميكانيك','البلوك والرأس والتوقيت والتزييت والأجزاء الداخلية.'],fuel:['الوقود والهواء','الخزان والمضخة والفلتر والبخاخات ومجرى السحب.'],ignition:['الإشعال','البواجي والكويلات ووحدات التحكم بالإشعال.'],cooling:['التبريد والتزييت','الراديتر والمضخة والثرموستات والزيت وممراته.'],electrical:['الكهرباء والتشغيل','البطارية والشحن والسلف والفيوزات والضفائر.'],transmission:['القير والدفع','القير ومحول العزم/القابض وأعمدة الإدارة حسب النسخة.'],brakes:['الفرامل والثبات','الأقراص والفحمات والكليبر وABS والثبات.'],suspension:['التعليق والتوجيه','المساعدات والمقصات والجلب والتوجيه.'],exhaust:['العادم والانبعاثات','مجمع العادم والحساسات والمحول الحفاز وDPF إن وجد.'],hvac:['التكييف والتدفئة','الضاغط والمكثف والمبخر والمراوح والتحكم.'],hybrid:['الهايبرد والكهرباء عالية الجهد','بطارية الجر والعاكس وDC-DC والتبريد؛ تتطلب مختصاً مؤهلاً.'],body:['الهيكل والراحة','الأبواب والزجاج والأقفال والكاميرات وأنظمة المقصورة.']};
+let activeToyotaSystem='engine';
+function renderToyotaSystems(){const keys=Object.keys(partSystemNames);$('toyotaSystemGrid').innerHTML=keys.map(k=>'<button type="button" class="system-card" data-system="'+k+'" aria-pressed="'+(k===activeToyotaSystem)+'"><h3>'+escapeText(systemMeta[k]?.[0]||partSystemNames[k])+'</h3><p>'+escapeText(systemMeta[k]?.[1]||'قطع ومكونات النظام وإجراءات فحصها.')+'</p><small>'+partsCatalog.filter(p=>p.system===k&&!/(حساس|sensor|ckp|cmp|maf|map|ect|o2)/i.test(p.name+' '+p.aliases)).length+' مكونات مسجلة</small></button>').join('');showToyotaSystem(activeToyotaSystem);}
+function showToyotaSystem(k){
+ activeToyotaSystem=k;
+ document.querySelectorAll('[data-system]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.system===k)));
+ const meta=systemMeta[k]||[partSystemNames[k],''];
+ const items=partsCatalog.filter(p=>p.system===k&&!/(حساس|sensor|ckp|cmp|maf|map|ect|o2|lambda)/i.test(p.name+' '+p.aliases));
+ const vehicle=[$('systemModel').value,$('systemYear').value||'السنة غير محددة',$('systemEngine').value||'رمز المحرك غير محدد',$('systemMarket').value].join(' • ');
+ const cards=items.map(p=>`<article class="system-part"><div class="part-meta">${escapeText(partSystemNames[p.system]||p.system)}</div><h4>${escapeText(p.name)}</h4><p><b>الوظيفة:</b> ${escapeText(p.function)}</p><p><b>الفحص:</b> ${escapeText(p.checks)}</p><p><b>الموقع:</b> الموقع الدقيق يتغير حسب الجيل ورمز المحرك؛ راجع مخطط مواضع القطع الخاص بالسيارة قبل الفك.</p><p><b>رقم OEM:</b> غير موثق لهذه النسخة — لا تخمين.</p><div class="source-links"><a href="https://toyotaepc.com/" target="_blank" rel="noopener noreferrer">كتالوج رسومات وقطع تويوتا</a><a href="https://partsouq.com/" target="_blank" rel="noopener noreferrer">مطابقة رقم الهيكل والقطعة</a></div></article>`).join('');
+ $('systemDetail').innerHTML=`<h3>${escapeText(meta[0])}</h3><p>${escapeText(meta[1])}</p><div class="detail-note"><b>السيارة المختارة:</b> ${escapeText(vehicle)}<br><b>ملاحظة المطابقة:</b> ${$('systemEngine').value.trim()?'المحرك مدخل، لكن يلزم التحقق من VIN/كتالوج السوق قبل تأكيد القطع.':'أدخل رمز المحرك ورقم الهيكل عند التوفر لتضييق المطابقة.'}</div><h3 style="margin-top:16px">مكونات النظام المسجلة</h3><div class="system-parts-grid">${cards||'<p>لا توجد مكونات مسجلة لهذا النظام بعد. ستتم إضافة بياناته بعد توثيقها من كتالوجات ومراجع الخدمة.</p>'}</div><div class="detail-note" style="margin-top:12px">الرسومات وأرقام OEM لا تُنسب إلى هذه السيارة إلا بعد مطابقة الجيل والسوق ورمز المحرك ورقم الهيكل. لا تعتبر عدد المكونات المسجلة تغطية كاملة للنظام.</div>`;
+}
+$('sensorSearch')?.addEventListener('input',renderSensorLibrary);$('sensorGroup')?.addEventListener('change',renderSensorLibrary);$('toyotaSystemGrid')?.addEventListener('click',e=>{const b=e.target.closest('[data-system]');if(b)showToyotaSystem(b.dataset.system)});['systemModel','systemYear','systemEngine','systemMarket'].forEach(id=>$(id)?.addEventListener('change',()=>showToyotaSystem(activeToyotaSystem)));renderSensorLibrary();renderToyotaSystems();
+
+function renderKnowledge(){const q=($('kbSearch')?.value||'').trim().toLowerCase();const system=$('kbSystem')?.value||'all';const list=kbItems.filter(x=>(system==='all'||x.system===system)&&(!q||(x.title+' '+x.keywords+' '+x.steps.join(' ')).toLowerCase().includes(q)));const el=$('kbResults');if(!el)return;el.innerHTML=list.length?list.map(x=>'<div class="result"><h3>'+escapeText(x.title)+'</h3><ol class="list">'+x.steps.map(s=>'<li>'+escapeText(s)+'</li>').join('')+'</ol></div>').join(''):'<div class="empty">ماكو نتيجة مطابقة بالقاعدة المحلية.</div>'}
+$('kbSearch')?.addEventListener('input',renderKnowledge);$('kbSystem')?.addEventListener('change',renderKnowledge);renderKnowledge();
+function aiPayload(){return {vehicle:{make:$('make').value,model:$('model').value,year:$('year').value,engine:$('engine').value,engineCode:$('engineCode')?.value||'',transmission:$('transmission')?.value||'',drivetrain:$('drivetrain')?.value||'',fuelType:$('fuelType')?.value||'',mileage:$('mileage').value,role:$('role').value},symptom:selectedSymptom?symptomNames[selectedSymptom]:'غير محدد',details:$('details').value,dtc:$('dtc').value,liveData:$('live').value,answers,localReport:currentReport?currentReport.results:[],question:$('aiQuestion')?.value||''}}
+function setAiStatus(message,ok=false){const el=$('aiStatus');if(el){el.className='notice'+(ok?' green':'');el.textContent=message}}
+async function checkAiHealth(){setAiStatus('جاري فحص الخادم...');try{const r=await fetch('/api/health',{headers:{'Accept':'application/json'}});if(!r.ok)throw new Error('الخادم غير متاح');const d=await r.json();setAiStatus(d.aiConfigured?'متصل: الخادم جاهز والذكاء الاصطناعي مضبوط.':'الخادم موجود لكن مفتاح الذكاء الاصطناعي غير مضبوط. التشخيص المحلي يعمل.',!!d.aiConfigured)}catch(e){setAiStatus('غير متصل بخادم الذكاء الاصطناعي. افتح التطبيق من رابط الخادم بعد إعداده؛ التشخيص المحلي ما زال يعمل.')}}
+async function runAi(){const out=$('aiResult');if(!out)return;out.classList.remove('hidden');out.textContent='جاري إرسال الحالة إلى الخادم...';const payload=aiPayload();if(!payload.symptom||payload.symptom==='غير محدد'){payload.symptom='استشارة فنية عامة';}try{const r=await fetch('/api/diagnose',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||'تعذر الاتصال بالخادم');out.textContent=d.answer||'لم يرجع الخادم إجابة قابلة للعرض.';setAiStatus('اكتمل التحليل عبر الخدمة المتصلة. راجع كل خطوة مع دليل المصنع والقياسات.',true)}catch(e){out.textContent='ما قدرنا نوصل للذكاء الاصطناعي: '+e.message+'\n\nتقدر تستخدم التشخيص المحلي وقاعدة المعرفة بدون اتصال. تأكد من إعداد الخادم قبل تجربة التحليل المتصل.';setAiStatus('الذكاء الاصطناعي غير متاح حالياً؛ التشخيص المحلي ما زال يعمل.')}}
+$('aiAskBtn')?.addEventListener('click',runAi);$('askAiFromReport')?.addEventListener('click',()=>{document.querySelector('[data-tab="assistant"]')?.click();if(!$('aiQuestion').value)$('aiQuestion').value='حلّل نتائج التشخيص المحلي الحالية، واذكر الاختبارات التي تميّز بين الاحتمالات دون افتراض أن أي قطعة تالفة.';runAi()});$('aiHealthBtn')?.addEventListener('click',checkAiHealth);
+function downloadJson(name,obj){const blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('backupAllBtn')?.addEventListener('click',()=>downloadJson('car-fault-advisor-v5-backup.json',{app:'مستشار أعطال السيارات',version:7,exportedAt:new Date().toISOString(),records:readRecords(),settings:{role:$('role').value}}));$('exportRecordsV5Btn')?.addEventListener('click',()=>downloadJson('car-fault-records.json',readRecords()));
+let restoreData=null;$('restoreFile')?.addEventListener('change',async e=>{restoreData=null;const f=e.target.files?.[0];if(!f)return;try{const d=JSON.parse(await f.text());restoreData=Array.isArray(d)?d:(Array.isArray(d.records)?d.records:null);$('backupStatus').textContent=restoreData?'تمت قراءة '+restoreData.length+' سجل. اضغط استعادة ودمج السجلات لإكمال العملية.':'صيغة الملف غير معروفة.'}catch(err){$('backupStatus').textContent='الملف غير صالح أو ليس JSON.'}});$('restoreBtn')?.addEventListener('click',()=>{if(!restoreData){$('backupStatus').textContent='اختار ملف نسخة احتياطية صحيح أولاً.';return}if(!confirm('سيتم دمج السجلات المستوردة مع السجلات الموجودة. هل تريد المتابعة؟'))return;const existing=readRecords();const merged=[...restoreData,...existing];try{localStorage.setItem('cfa_records',JSON.stringify(merged.slice(0,2000)));renderRecords();$('backupStatus').textContent='تم دمج '+restoreData.length+' سجل. عدد السجلات الحالي: '+Math.min(merged.length,2000)+'.';restoreData=null}catch(e){$('backupStatus').textContent='تعذرت الاستعادة، قد تكون مساحة التخزين غير كافية.'}});
+
+</script>
+<script>if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}</script>
+
+<script>
+(function(){
+const $c=id=>document.getElementById(id);
+const parts=[
+{id:'oilfilter',name:'فلتر زيت المحرك',cat:'service',art:'filter',function:'يحجز الشوائب من زيت المحرك قبل رجوعه إلى دورة التزييت.',place:'يركب على قاعدة فلتر الزيت؛ مكانه وشكله يتغيران حسب نسخة المحرك.',symptoms:'تلف الفلتر أو انسداده قد يؤثر في تدفق الزيت؛ لمبة ضغط الزيت تحتاج فحصاً فورياً ولا تُشخّص بالفلتر وحده.',checks:['تأكد من النوع وطريقة التركيب ومقاس الحلقة المطاطية.','افحص التسريب بعد التشغيل وفق إجراء الصيانة.','استخدم لزوجة الزيت ومواصفة الفلتر المحددتين للسيارة.']},
+{id:'airfilter',name:'فلتر هواء المحرك',cat:'airfuel',art:'filter',function:'ينقّي الهواء الداخل للمحرك من الغبار.',place:'داخل علبة فلتر الهواء قبل مجرى السحب.',symptoms:'اتساخ شديد قد يقيّد الهواء، لكنه ليس سبباً مؤكداً لكل ضعف عزم.',checks:['افحص عنصر الفلتر وعلبته والجلدة المحيطة.','تأكد من إغلاق غطاء العلبة بإحكام.']},
+{id:'cabinfilter',name:'فلتر المكيّف / المقصورة',cat:'service',art:'filter',function:'يصفّي الهواء الداخل إلى المقصورة.',place:'غالباً خلف درج الراكب، حسب نسخة السوق.',symptoms:'ضعف تدفق هواء المكيّف أو رائحة قد ترتبط بالفلتر أو بأسباب أخرى.',checks:['افحص اتجاه سهم AIR FLOW عند الاستبدال.','طابق الأبعاد ورقم القطعة مع الفئة.']},
+{id:'sparkplug',name:'بواجي الإشعال',cat:'engine',art:'plug',function:'تولّد الشرارة اللازمة لاحتراق خليط الهواء والوقود.',place:'في رأس المحرك تحت كويلات الإشعال.',symptoms:'تقطيع، صعوبة تشغيل أو كود misfire؛ الأعراض ليست دليلاً منفرداً على تلف البواجي.',checks:['افحص الكود والبيانات الحية أولاً.','استخدم نوع الفجوة والمواصفة المحددة لرمز المحرك.','لا تشدّ البواجي بعزم تخميني؛ راجع دليل الصيانة.']},
+{id:'coil',name:'كويل الإشعال',cat:'electrical',art:'coil',function:'يرفع الجهد لتوليد الشرارة في البوجي.',place:'يركب عادة فوق البوجي في المحركات ذات الكويل المنفصل.',symptoms:'تقطيع تحت الحمل أو كود اختلال احتراق على أسطوانة محددة.',checks:['اقرأ أكواد الأسطوانات وبيانات التجميد.','افحص التغذية والأرضي والفيشة.','اختبار التبديل يكون فقط إذا سمحت إجراءات المصنع.']},
+{id:'maf',name:'حساس قياس الهواء MAF (إن وُجد)',cat:'electrical',art:'sensor',function:'يقيس كتلة الهواء الداخل للمحرك في الأنظمة المجهزة به.',place:'في مجرى الهواء قرب علبة الفلتر، حسب التصميم.',symptoms:'خلل قراءة الهواء قد يسبب ضعف أداء أو خليطاً غير صحيح؛ بعض النسخ تستخدم تصميم قياس مختلفاً.',checks:['تأكد أولاً أن هذه النسخة مجهزة به.','افحص البيانات الحية والتغذية والأسلاك وتسريب الهواء.','لا تستبدله لمجرد وجود كود دون اختبارات.']},
+{id:'map',name:'حساس ضغط مجمع السحب MAP (إن وُجد)',cat:'electrical',art:'sensor',function:'يقيس ضغط مجمع السحب لمساعدة وحدة التحكم في حساب الحمل.',place:'على مجمع السحب أو متصل به حسب المحرك.',symptoms:'قراءة ضغط غير منطقية أو أكواد مرتبطة بالحمل.',checks:['قارن القراءة مع الضغط الجوي والمحرك مطفأ وفق الدليل.','افحص الفيشة والتغذية والأسلاك.']},
+{id:'ckp',name:'حساس عمود الكرنك CKP',cat:'electrical',art:'sensor',function:'يوفر إشارة سرعة وموضع دوران عمود الكرنك لوحدة التحكم.',place:'موضعه يختلف حسب رمز المحرك وتصميمه.',symptoms:'توقف مفاجئ أو عدم تشغيل أو فقد إشارة RPM؛ يلزم تأكيد الإشارة قبل التبديل.',checks:['راقب RPM أثناء التدوير بجهاز الفحص.','افحص الإشارة والأسلاك والتغذية حسب نوع الحساس.','لا تعتمد على الاسم وحده لتحديد موقعه أو رقم القطعة.']},
+{id:'cmp',name:'حساس عمود الكامات CMP',cat:'electrical',art:'sensor',function:'يساعد الكمبيوتر على معرفة موضع عمود الكامات وتوقيت الأسطوانات.',place:'على رأس المحرك أو غطائه حسب رمز المحرك.',symptoms:'صعوبة تشغيل أو أكواد توقيت/إشارة؛ قد تكون المشكلة أسلاكاً أو توقيتاً ميكانيكياً.',checks:['اقرأ الأكواد والبيانات الحية.','افحص التغذية والأرضي والإشارة.','قارن علاقة CKP/CMP حسب دليل المصنع.']},
+{id:'injector',name:'بخاخ الوقود',cat:'airfuel',art:'injector',function:'يرش الوقود بكمية وتوقيت تتحكم بهما وحدة المحرك.',place:'على مجرى/سكة الوقود حسب تصميم الحقن.',symptoms:'تقطيع أو خليط غير صحيح أو صعوبة تشغيل؛ هذه الأعراض لها أسباب متعددة.',checks:['افحص الأكواد وتصحيحات الوقود وضغط الوقود.','اختبار التوازن والتسريب يحتاج إجراء ومعدات مناسبة.','تجنب فتح دائرة الوقود المضغوطة دون تفريغ الضغط بالطريقة الصحيحة.']},
+{id:'pump',name:'مضخة الوقود',cat:'airfuel',art:'pump',function:'توصل الوقود بالضغط والتدفق المطلوبين للنظام.',place:'غالباً داخل الخزان في كثير من النسخ، لكن يلزم تأكيد التصميم.',symptoms:'ضعف تشغيل أو توقف أو ضغط غير كافٍ؛ افحص الدائرة الكهربائية والضغط قبل الحكم.',checks:['افحص الفيوز والريليه والتغذية وهبوط الجهد.','قِس الضغط والتدفق حسب مواصفة المحرك.','لا ترفع قيمة الفيوز عن القيمة المحددة من المصنع.']},
+{id:'throttle',name:'بوابة الهواء الإلكترونية',cat:'airfuel',art:'throttle',function:'تنظم كمية الهواء الداخلة حسب طلب السائق وتحكم الكمبيوتر.',place:'بين مجرى السحب ومجمع السحب غالباً.',symptoms:'تذبذب RPM أو ضعف استجابة قد يرتبط بها أو بتسريب هواء أو تعلّم الخانق.',checks:['افحص البيانات الحية وأكواد النظام.','افحص تسريب الهواء والفيشة قبل التنظيف.','إجراء التعلّم بعد التنظيف حسب دليل النسخة.']},
+{id:'thermostat',name:'منظّم حرارة المحرك (ثرموستات)',cat:'cooling',art:'thermostat',function:'ينظم مرور سائل التبريد للمساعدة في الوصول إلى حرارة التشغيل.',place:'ضمن ممر التبريد قرب المحرك؛ الموقع يختلف.',symptoms:'تأخر التسخين أو ارتفاع الحرارة، مع احتمالات أخرى في النظام.',checks:['راقب حرارة ECT والقراءة الفعلية.','اختبر دورة التبريد وفق إجراء آمن والمحرك بارد.','لا تفتح غطاء نظام ساخن ومضغوط.']},
+{id:'waterpump',name:'مضخة سائل التبريد',cat:'cooling',art:'pump',function:'تدوّر سائل التبريد داخل المحرك والراديتر.',place:'موضعها وطريقة تشغيلها يختلفان حسب نسخة المحرك.',symptoms:'تسريب أو ضعف دوران أو ارتفاع حرارة؛ يجب فحص النظام كاملاً.',checks:['افحص آثار التسريب وصوت/حركة المضخة وفق الدليل.','اختبر الضغط والمراوح والثرموستات أيضاً.']},
+{id:'radiator',name:'الراديتر',cat:'cooling',art:'radiator',function:'يطرد حرارة سائل التبريد إلى الهواء.',place:'في مقدمة السيارة أمام المحرك غالباً.',symptoms:'ارتفاع حرارة أو تسريب أو انسداد؛ ليس كل ارتفاع حرارة سببه الراديتر.',checks:['افحص مستوى السائل والمحرك بارد.','افحص المراوح والغطاء والتسريب وانسداد الزعانف.','استخدم سائل التبريد المحدد للمركبة.']},
+{id:'alternator',name:'الدينمو / المولّد',cat:'electrical',art:'alternator',function:'يشحن البطارية ويغذي الأنظمة الكهربائية والمحرك يعمل.',place:'على المحرك ويُدار حسب تصميم السير.',symptoms:'لمبة شحن أو ضعف بطارية أو تذبذب جهد.',checks:['قِس جهد الشحن تحت ظروف الفحص المحددة.','افحص السير والوصلات والأرضي وهبوط الجهد.','القراءات المقبولة تعتمد على نظام الشحن وحرارة البطارية.']},
+{id:'starter',name:'السلف / بادئ الحركة',cat:'electrical',art:'starter',function:'يدير المحرك أثناء بدء التشغيل.',place:'متصل ببيت القير قرب ترس الحدافة غالباً.',symptoms:'نقرة أو تدوير بطيء أو عدم تدوير؛ افحص البطارية والتوصيلات أولاً.',checks:['اختبر البطارية تحت الحمل.','افحص هبوط الجهد في كابلات الموجب والأرضي.','تأكد من إشارة التشغيل قبل الحكم على السلف.']},
+{id:'brakepad',name:'فحمات الفرامل',cat:'brakes',art:'brake',function:'تضغط على قرص الفرامل لتوليد الاحتكاك وإبطاء السيارة.',place:'داخل الكليبر عند كل عجلة مجهزة بفرامل قرصية.',symptoms:'صوت أو ضعف فرملة أو اهتزاز؛ قد تكون الأسباب قرصاً أو كليبر أو نظاماً آخر.',checks:['افحص السماكة والتآكل المتساوي والقرص.','طابق شكل الفحمات ونظام الفرامل الأمامي/الخلفي.','بعد أي عمل على الفرامل اختبرها بأمان وفق الإجراء.']},
+{id:'rotor',name:'قرص الفرامل',cat:'brakes',art:'brake',function:'سطح احتكاك الفحمات أثناء الفرملة.',place:'مثبّت على محور العجلة في أنظمة الفرامل القرصية.',symptoms:'اهتزاز أثناء الكبح أو خدوش أو سماكة دون الحد.',checks:['قِس السماكة والانحراف بأداة مناسبة.','قارن الحد الأدنى المحفور/المحدد في دليل المصنع.','تحقق من الكليبر والتركيب قبل إعادة الاستخدام.']},
+{id:'shock',name:'مساعد / ممتص الصدمات',cat:'brakes',art:'shock',function:'يسيطر على حركة النابض ويحسن تلامس الإطار مع الطريق.',place:'جزء من نظام التعليق عند كل عجلة حسب التصميم.',symptoms:'تأرجح زائد أو تسريب أو تآكل غير طبيعي للإطارات؛ يلزم فحص باقي التعليق.',checks:['افحص التسريب والخلوص والجلب.','افحص الإطارات والزوايا وأجزاء التعليق المرتبطة.']},
+{id:'battery',name:'البطارية',cat:'electrical',art:'battery',function:'توفر الطاقة لبدء التشغيل وتثبيت التغذية الكهربائية.',place:'حامل البطارية في حجرة المحرك أو موضع مخصص حسب النسخة.',symptoms:'تدوير بطيء أو فقد إعدادات أو انخفاض جهد.',checks:['افحص تثبيت الأقطاب ونظافتها.','اختبر حالة الشحن والبطارية تحت الحمل.','طابق السعة والمقاس والقطبية ومواصفة البطارية.']}
+];
+function artSvg(type){
+const common='fill="none" stroke="#d7e1ec" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"';
+let body='';
+if(type==='filter')body='<path d="M58 27h65l-7 72H65Z" fill="#cbd5e1" stroke="#f3f6fa" stroke-width="3"/><path d="M64 39h52M63 49h52M62 59h52M62 69h51M63 79h49M64 89h47" stroke="#526579" stroke-width="4"/><path d="M70 27v-9h40v9" fill="#e4b04c" stroke="#ffe0a0" stroke-width="3"/>';
+else if(type==='sensor')body='<rect x="59" y="31" width="51" height="49" rx="8" fill="#33465a" stroke="#cbd5e1" stroke-width="4"/><rect x="71" y="42" width="27" height="25" rx="4" fill="#e6b14b"/><path d="M84 31V17h31m-4 0v13" '+common+'/><path d="M64 80l-9 16h-13" stroke="#8ed6ff" stroke-width="4"/>';
+else if(type==='pump')body='<rect x="53" y="25" width="66" height="76" rx="17" fill="#687c90" stroke="#e1e8ef" stroke-width="4"/><circle cx="86" cy="62" r="19" fill="#16212e" stroke="#e5b24d" stroke-width="5"/><path d="M86 43v38M67 62h38" stroke="#e5b24d" stroke-width="4"/><path d="M68 25v-9h37v9M119 43h18v-13" stroke="#8bd6f4" stroke-width="5" fill="none"/>';
+else if(type==='injector')body='<path d="M58 21h57v23l-10 10v29l-9 15H78L68 83V54L58 44Z" fill="#b9c7d5" stroke="#f0f4f8" stroke-width="3"/><rect x="69" y="31" width="35" height="12" rx="3" fill="#e5b24d"/><path d="M82 98l-6 12m16-12 6 12m-24-12 0 10" stroke="#75d5ff" stroke-width="3"/>';
+else if(type==='plug')body='<path d="M72 23h29v20l-6 8v21l-7 12H81l-7-12V51l-6-8V23Z" fill="#d4dde7" stroke="#f4f7fb" stroke-width="3"/><path d="M69 32h35M70 39h33M82 84v12h10V84m-5 12v12" stroke="#e7b14a" stroke-width="4"/>';
+else if(type==='coil')body='<rect x="64" y="18" width="45" height="33" rx="6" fill="#26384a" stroke="#dbe4ed" stroke-width="4"/><path d="M74 51v23l8 12h10l8-12V51" fill="#b6c5d3" stroke="#e7edf3" stroke-width="3"/><path d="M72 29h29M79 36h16" stroke="#e4b04c" stroke-width="4"/>';
+else if(type==='throttle')body='<circle cx="85" cy="62" r="38" fill="#40566b" stroke="#d7e1ec" stroke-width="5"/><circle cx="85" cy="62" r="24" fill="#111a25" stroke="#8ca2b8" stroke-width="4"/><path d="M65 74L105 50" stroke="#e6b24c" stroke-width="7"/><rect x="112" y="44" width="24" height="33" rx="5" fill="#27394b" stroke="#d7e1ec" stroke-width="3"/>';
+else if(type==='thermostat')body='<circle cx="86" cy="62" r="34" fill="#26394b" stroke="#d6e1eb" stroke-width="5"/><circle cx="86" cy="62" r="19" fill="#d8a647" stroke="#ffe3a0" stroke-width="4"/><path d="M86 25V12m0 100V96M49 62H35m102 0h-14" stroke="#8fcff1" stroke-width="5"/>';
+else if(type==='radiator')body='<rect x="41" y="22" width="91" height="80" rx="5" fill="#33495d" stroke="#d7e1ec" stroke-width="4"/><path d="M52 31v62m10-62v62m10-62v62m10-62v62m10-62v62m10-62v62m10-62v62m10-62v62" stroke="#83cfee" stroke-width="3"/><path d="M41 35H27m105 52h14" stroke="#e4b04c" stroke-width="6"/>';
+else if(type==='alternator')body='<circle cx="83" cy="62" r="39" fill="#293b4e" stroke="#cbd7e2" stroke-width="8"/><circle cx="83" cy="62" r="24" fill="none" stroke="#7c93a9" stroke-width="5"/><circle cx="83" cy="62" r="8" fill="#e5b14b"/><path d="M109 30l20-10m-7 10l10 13" stroke="#d8e1eb" stroke-width="5"/>';
+else if(type==='starter')body='<path d="M48 44h70a15 15 0 0 1 15 15v10a15 15 0 0 1-15 15H48Z" fill="#5c7185" stroke="#d7e1eb" stroke-width="4"/><circle cx="50" cy="64" r="18" fill="#26394c" stroke="#e5b14b" stroke-width="4"/><path d="M133 57h14v14h-14M76 44V31h28" stroke="#d7e1eb" stroke-width="4" fill="none"/>';
+else if(type==='brake')body='<circle cx="83" cy="62" r="39" fill="#7b8a9b" stroke="#dfe6ee" stroke-width="4"/><circle cx="83" cy="62" r="13" fill="#17212d" stroke="#e4b04c" stroke-width="4"/><circle cx="83" cy="62" r="27" fill="none" stroke="#4b5e72" stroke-width="4"/><path d="M105 29h28v45h-23l-8-10Z" fill="#d5dee8" stroke="#fff" stroke-width="3"/>';
+else if(type==='shock')body='<path d="M76 18h20v17l-8 7v16l8 7v17l-8 7v14H76V90l-8-8V65l8-7V42l-8-7V18Z" fill="#bfcbd7" stroke="#eaf0f5" stroke-width="3"/><path d="M68 38h36M68 55h36M68 72h36" stroke="#52687d" stroke-width="4"/>';
+else if(type==='battery')body='<rect x="43" y="34" width="88" height="62" rx="7" fill="#31465a" stroke="#d8e2ec" stroke-width="4"/><rect x="57" y="25" width="20" height="10" rx="2" fill="#d8e2ec"/><rect x="97" y="25" width="20" height="10" rx="2" fill="#d8e2ec"/><path d="M67 48v22m-11-11h22M106 52v14" stroke="#e5b14b" stroke-width="5"/>';
+else body='<rect x="48" y="27" width="75" height="72" rx="10" fill="#34495e" stroke="#d9e3ed" stroke-width="4"/><path d="M59 43h53M59 56h53M59 69h53M59 82h53" stroke="#e5b14b" stroke-width="4"/>';
+return '<svg viewBox="0 0 170 125" role="img" aria-label="رسم توضيحي عام للقطعة"><defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9e3ed"/><stop offset="1" stop-color="#4a6076"/></linearGradient></defs><circle cx="85" cy="62" r="49" fill="#263342" opacity=".5"/>'+body+'<text x="85" y="119" text-anchor="middle" fill="#9eafc2" font-size="8">TECHNICAL ILLUSTRATION • NOT OEM PHOTO</text></svg>';
+}
+function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+let activeCat='all';
+const catNames={engine:'المحرك والتوقيت',airfuel:'الهواء والوقود',cooling:'التبريد والتزييت',electrical:'الكهرباء والحساسات',brakes:'الفرامل والتعليق',service:'الصيانة الدورية'};
+function draw(){
+const q=($c('corollaSearch').value||'').trim().toLowerCase();
+const cat=$c('corollaCategory').value;
+const chosen=cat==='all'?activeCat:cat;
+const filtered=parts.filter(p=>(chosen==='all'||p.cat===chosen)&&(!q||(p.name+' '+p.function+' '+p.place+' '+p.symptoms).toLowerCase().includes(q)));
+$c('corollaCount').textContent='عدد القطع المعروضة: '+filtered.length+' • بيانات عامة للفحص، وليست تأكيد توافق حسب VIN.';
+$c('corollaPartsGrid').innerHTML=filtered.map(p=>'<article class="c-part"><div class="c-art">'+artSvg(p.art)+'</div><div class="mini-label">'+esc(catNames[p.cat])+'</div><h3>'+esc(p.name)+'</h3><p>'+esc(p.function)+'</p><div class="oem">رقم OEM: غير مؤكد لهذه النسخة — لا تخمين. يلزم VIN/رمز المحرك للتحقق.</div><button type="button" class="c-more" aria-expanded="false" data-cid="'+p.id+'">افتح صفحة القطعة</button><div class="c-details" hidden><h4 class="detail-heading">وظيفة القطعة</h4><p>'+esc(p.function)+'</p><h4 class="detail-heading">مكان القطعة</h4><p>'+esc(p.place)+'</p><h4 class="detail-heading">أعراض العطل المحتملة</h4><p>'+esc(p.symptoms)+'</p><h4 class="detail-heading">طريقة الفحص</h4><ul>'+p.checks.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul><h4 class="detail-heading">رقم القطعة الأصلي OEM</h4><div class="part-status">غير موثّق لهذه السيارة المحددة بعد. لا تستخدم رقماً قبل مطابقة VIN/رمز الهيكل والسوق ورمز المحرك.</div><h4 class="detail-heading">مصادر التحقق من القطعة</h4><div class="source-links"><a href="https://www.toyota.iq/english/toyota-geniune-parts" target="_blank" rel="noopener noreferrer">قطع تويوتا الأصلية — موقع تويوتا العراق</a><a href="https://toyotaepc.com/toyota/corolla" target="_blank" rel="noopener noreferrer">كتالوج Corolla حسب الجيل ورقم الهيكل (VIN)</a><a href="https://partsouq.com/" target="_blank" rel="noopener noreferrer">PartSouq — البحث برقم الهيكل أو رقم القطعة</a></div><p class="source-note">هذه روابط كتالوجات للمراجعة وليست إثباتاً أن القطعة تناسب سيارتك. التوافق النهائي يحتاج تحديد النسخة ومطابقة رقم القطعة في الكتالوج.</p></div></article>').join('')||'<div class="empty">ما لقينا قطع بهذا البحث. جرّب كلمة ثانية أو اختر كل الأقسام.</div>';
+}
+$c('corollaSearch').addEventListener('input',draw);
+$c('corollaCategory').addEventListener('change',()=>{activeCat=$c('corollaCategory').value;document.querySelectorAll('#corollaQuickCats .cat-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===activeCat));draw();});
+$c('corollaQuickCats').addEventListener('click',e=>{const b=e.target.closest('[data-cat]');if(!b)return;activeCat=b.dataset.cat;$c('corollaCategory').value=activeCat;document.querySelectorAll('#corollaQuickCats .cat-btn').forEach(x=>x.classList.toggle('active',x===b));draw();});
+$c('corollaPartsGrid').addEventListener('click',e=>{const b=e.target.closest('[data-cid]');if(!b)return;const card=b.closest('.c-part');const d=card.querySelector('.c-details');const open=d.hidden;d.hidden=!open;b.setAttribute('aria-expanded',String(open));b.textContent=open?'إغلاق صفحة القطعة':'افتح صفحة القطعة';});
+draw();
+})();
+</script>
+
+
+<style>
+/* V8.7: verified external Toyota catalog diagrams — source-linked, not redrawn */
+.toyota-oem-library{margin:24px 0;padding:18px;background:#111821;border:1px solid #344253;border-radius:16px;color:#eef3f8}
+.toyota-oem-library h2{margin:0 0 8px;font-size:21px}
+.toyota-oem-library .intro{color:#c3ceda;line-height:1.9;font-size:14px}
+.toyota-oem-library .oem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:14px}
+.toyota-oem-library .oem-card{background:#192331;border:1px solid #405064;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:9px}
+.toyota-oem-library .oem-card h3{font-size:16px;margin:0;color:#fff}
+.toyota-oem-library .oem-card p{font-size:13px;line-height:1.8;color:#c5d0dc;margin:0;flex:1}
+.toyota-oem-library .oem-card a{display:block;text-decoration:none;background:#e5edf5;color:#111827;border-radius:8px;padding:10px;text-align:center;font-weight:700;font-size:13px}
+.toyota-oem-library .oem-card a.secondary{background:#27384b;color:#f3f7fb;border:1px solid #53677e}
+.toyota-oem-library .scope-note{margin-top:14px;padding:12px;border-right:4px solid #e2ad4e;background:#211d14;color:#f4e4c5;border-radius:8px;font-size:13px;line-height:1.9}
+.toyota-oem-library .source-foot{font-size:11px;color:#9eacbd;margin-top:12px;line-height:1.8}
+</style>
+<section class="toyota-oem-library" id="toyotaOemLibrary" aria-labelledby="toyotaOemTitle">
+  <h2 id="toyotaOemTitle">مكتبة الرسومات الفنية الأصلية — تويوتا</h2>
+  <p class="intro">بدل الرسومات العامة غير المطابقة، هذه المكتبة تربطك بمخططات انفجارية ومخططات مواقع منشورة في كتالوجات فنية. افتح الرسم من مصدره حتى تبقى أرقام الإشارات والتفاصيل كما نشرها المصدر.</p>
+  <div class="oem-grid">
+    <article class="oem-card">
+      <h3>كورولا E170 — رأس المحرك 2ZR-FE</h3>
+      <p>مخطط EPC انفجاري يوضح غطاء الرأس، رأس الأسطوانات، جوان الرأس، مجموعة الكامات، وصمامات التحكم بالزيت. كتالوج أمريكا الشمالية، من 08/2013؛ يجب مطابقة سوق السيارة ورمز الهيكل.</p>
+      <a href="https://toyotaepc.com/diagrams/US_A1/11H265.webp" target="_blank" rel="noopener noreferrer">فتح الرسم الأصلي</a>
+      <a class="secondary" href="https://toyotaepc.com/toyota/corolla/US/cylinder-head" target="_blank" rel="noopener noreferrer">فتح صفحة القطع والتوافق</a>
+    </article>
+    <article class="oem-card">
+      <h3>كورولا E170 — بلوك المحرك 2ZR#</h3>
+      <p>مخطط EPC انفجاري لبلوك الأسطوانات والكرتير ومجموعة التقوية ومجرى قياس الزيت وموانع التسرب. الكتالوج يذكر أكثر من نسخة سوقية وتحديثات حسب تاريخ الإنتاج.</p>
+      <a href="https://toyotaepc.com/diagrams/US_A1/11D486B.webp" target="_blank" rel="noopener noreferrer">فتح الرسم الأصلي</a>
+      <a class="secondary" href="https://toyotaepc.com/toyota/corolla/US/cylinder-block" target="_blank" rel="noopener noreferrer">فتح صفحة القطع والتوافق</a>
+    </article>
+    <article class="oem-card">
+      <h3>كورولا E170 — قواعد المحرك 2ZR-FE</h3>
+      <p>رسم تفكيكي لمساند وقواعد المحرك وحواملها والبراغي. الكتالوج يفصل بين ناقل 4 سرعات و6 سرعات وCVT؛ لا تختار الرسم قبل تحديد ناقل الحركة.</p>
+      <a href="https://toyotaepc.com/diagrams/US_A1/118449A.webp" target="_blank" rel="noopener noreferrer">فتح الرسم الأصلي</a>
+      <a class="secondary" href="https://toyotaepc.com/toyota/corolla/US/mounting" target="_blank" rel="noopener noreferrer">فتح صفحة القطع والتوافق</a>
+    </article>
+    <article class="oem-card">
+      <h3>كورولا 2011 — مواقع مكونات حجرة المحرك</h3>
+      <p>مخطط مواقع من دليل خدمة Corolla L4 1.8L برمز 2ZR-FE؛ يبيّن مواقع مكونات مثل الثروتل، البخاخات، المولد، السلف وبعض الحساسات. هذه سنة وجيل مختلفان عن E170.</p>
+      <a href="https://charm.li/images/IMP33Q313/asian890/1826916823/" target="_blank" rel="noopener noreferrer">فتح مخطط المواقع</a>
+      <a class="secondary" href="https://charm.li/Toyota/2011/Corolla%20L4-1.8L%20%282ZR-FE%29/Repair%20and%20Diagnosis/Diagrams/Components/Position%20of%20Parts%20In%20Engine%20Compartment/" target="_blank" rel="noopener noreferrer">فتح مرجع دليل الخدمة</a>
+    </article>
+  </div>
+  <div class="scope-note"><strong>تنبيه توافق مهم:</strong> هذه مراجع محددة وليست رسماً واحداً ينطبق على كل كورولا أو كل تويوتا. مخططات E170 هنا من كتالوج أمريكا الشمالية، ومخطط المواقع يخص كورولا 2011 بمحرك 2ZR-FE. لا تعتمد رقم قطعة أو موقعها لسيارة عراقية قبل مطابقة رقم الهيكل VIN/Frame ورمز المحرك والسوق وناقل الحركة.</div>
+  <div class="source-foot">المصادر: ToyotaEPC (كتالوج مستقل يصرّح بأنه غير تابع لشركة Toyota Motor Corporation) وOperation CHARM (مرجع دليل خدمة). الروابط تفتح الرسومات عند المصدر الأصلي ولا تنسخ ملفات الرسوم داخل التطبيق.</div>
+</section>
+
+
+<style>
+.corolla-coverage{margin:22px 0;padding:18px;background:#121820;border:1px solid #394858;border-radius:16px;color:#edf2f7}
+.corolla-coverage h2{font-size:21px;margin:0 0 8px}.corolla-coverage .lead{font-size:14px;line-height:1.9;color:#c8d2dd}
+.corolla-coverage .coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
+.corolla-coverage .coverage-card{background:#1a2531;border:1px solid #405064;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.corolla-coverage .coverage-card h3{margin:0;font-size:16px}.corolla-coverage .coverage-card p{margin:0;color:#c5d0dc;font-size:13px;line-height:1.8;flex:1}
+.corolla-coverage .coverage-card a{display:block;padding:9px;border-radius:8px;background:#e4ebf2;color:#111827;text-align:center;text-decoration:none;font-size:13px;font-weight:700}
+.corolla-coverage .coverage-card a.alt{background:#29394b;color:#eef4fa;border:1px solid #52677d}
+.corolla-coverage .coverage-note{margin-top:14px;padding:12px;border-right:4px solid #d6a64e;background:#211e17;border-radius:8px;color:#f0e4c9;font-size:13px;line-height:1.9}
+</style>
+<section class="corolla-coverage" id="corolla2014to2025">
+  <h2>خريطة توثيق كورولا 2014–2025</h2>
+  <p class="lead">هذه خريطة تغطية أولية تمنع خلط الأجيال والأسواق. السنة وحدها لا تكفي لاختيار الرسم أو رقم القطعة؛ يجب تحديد رمز الهيكل والمحرك وبلد/سوق الإنتاج وناقل الحركة. الروابط أدناه تفتح كتالوجات خارجية بحسب السوق، وليست إثباتاً تلقائياً لتوافق قطعة بعينها.</p>
+  <div class="coverage-grid">
+    <article class="coverage-card">
+      <h3>كورولا E170 — عام / جنوب أمريكا</h3>
+      <p>كتالوج عام يذكر فترة 2014–2020 ورموزاً من عائلة ZRE17 وNZE170 وغيرها. مناسب كبداية لفهرسة هذا الفرع، مع ضرورة مطابقة النسخة الفعلية.</p>
+      <a href="https://toyotaepc.com/toyota/corolla-s-america/GR?model_dir=157370" target="_blank" rel="noopener noreferrer">فتح كتالوج E170 العام</a>
+      <a class="alt" href="https://toyota-epc.aftermarketcatalog.com/vehicle/GR/157370" target="_blank" rel="noopener noreferrer">عرض مجموعات القطع والرسومات</a>
+    </article>
+    <article class="coverage-card">
+      <h3>كورولا E170 — Corolla / Altis</h3>
+      <p>فرع كتالوج عام آخر؛ لا نفترض أنه مطابق لكل E170. يجب اختيار بيانات الهيكل وتاريخ الإنتاج والمحرك قبل اعتماد أي نتيجة.</p>
+      <a href="https://toyotaepc.com/toyota/corolla-altis/GR?model_dir=156370" target="_blank" rel="noopener noreferrer">فتح كتالوج Corolla / Altis</a>
+    </article>
+    <article class="coverage-card">
+      <h3>كورولا E180 — فروع إقليمية</h3>
+      <p>بعض الأسواق تسجل كورولا ضمن E180 خلال جزء من سنوات هذه الموسوعة. لا ندمجها تلقائياً مع E170؛ نثبت رمز الهيكل والسوق أولاً.</p>
+      <a href="https://toyotaepc.com/toyota/corolla" target="_blank" rel="noopener noreferrer">اختيار E180 من فهرس كورولا</a>
+    </article>
+    <article class="coverage-card">
+      <h3>كورولا E160 — اليابان وبعض الفئات</h3>
+      <p>فرع مستقل لبعض نسخ كورولا اليابانية، وقد تختلف أسماؤها ومواصفاتها عن السيدان المصدّرة إلى أسواق أخرى.</p>
+      <a href="https://toyotaepc.com/toyota/corolla" target="_blank" rel="noopener noreferrer">اختيار E160 من فهرس كورولا</a>
+    </article>
+    <article class="coverage-card">
+      <h3>كورولا E210 — أوروبا / عام / اليابان</h3>
+      <p>جيل يبدأ من 2018 في بعض الأسواق، وتختلف بياناته بين تركيا واليابان وأمريكا الشمالية. لا نستخدم رسماً من سوق على سيارة سوق آخر دون تحقق.</p>
+      <a href="https://toyotaepc.com/toyota/corolla-jpp/EU" target="_blank" rel="noopener noreferrer">كتالوج E210 — أوروبا / اليابان الصنع</a>
+      <a class="alt" href="https://toyotaepc.com/toyota/corolla-sed-nap/US" target="_blank" rel="noopener noreferrer">كتالوج E210 — أمريكا الشمالية</a>
+    </article>
+  </div>
+  <div class="coverage-note"><b>قاعدة التوثيق داخل التطبيق:</b> لا نعرض رقم OEM نهائياً إلا بعد مطابقة رقم الهيكل/Frame أو بيانات الطراز التفصيلية، ورمز المحرك، والسوق، وتاريخ الإنتاج، وناقل الحركة عند تأثيره. إذا تعذر التحقق، تظهر الحالة «غير موثق — لا تخمين».</div>
+</section>
+
+</body>
+</html>
